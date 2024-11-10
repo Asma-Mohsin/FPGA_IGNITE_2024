@@ -2,17 +2,17 @@
     "DESIGN_NAME": "user_project_wrapper",
     "VERILOG_FILES": [
         "dir::../../verilog/rtl/defines.v",
-        "dir::../../verilog/rtl/user_project_wrapper.v"
+        "dir::../../verilog/rtl/*.v"
     ],
     "ROUTING_CORES": 1,
-    "CLOCK_PERIOD": 25,
+    "CLOCK_PERIOD": 40,
     "CLOCK_PORT": "wb_clk_i",
-    "CLOCK_NET": "mprj.clk",
+    // "CLOCK_NET": "mprj.clk", --not sure if this is needed
     "FP_PDN_MACRO_HOOKS": "mprj vccd1 vssd1 vccd1 vssd1",
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "MAGIC_DEF_LABELS": 0,
     "VERILOG_FILES_BLACKBOX": [
-        "dir::../../verilog/gl/user_proj_example.v"
+        "dir::../../verilog/gl/20-cvxif_pau.pnl.v"
     ],
     "EXTRA_LEFS": "dir::../../lef/user_proj_example.lef",
     "EXTRA_GDS_FILES": "dir::../../gds/user_proj_example.gds",

@@ -1,8 +1,8 @@
-CARAVEL_ROOT: /usr/caravel_user_project/caravel
-MCW_ROOT: /usr/caravel_user_project/mgmt_core_wrapper
+CARAVEL_ROOT: /caravel
+MCW_ROOT: /mgmt_core_wrapper
 PDK: sky130A
-PDK_ROOT: /usr/pdk
-USER_PROJECT_ROOT: /usr/caravel_user_project
+PDK_ROOT: /dependencies/pdks
+USER_PROJECT_ROOT: /home/user/Desktop/FPGA_IGNITE_2024
 caravan: false
 clk: 25
 emailto:
