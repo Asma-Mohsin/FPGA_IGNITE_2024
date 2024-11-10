@@ -1,16 +1,41 @@
 {
-    "DESIGN_NAME": "user_proj_example",
+    "DESIGN_NAME": "summer_school_top_wrapper",
     "DESIGN_IS_CORE": 0,
     "VERILOG_FILES": [
         "dir::../../verilog/rtl/defines.v",
-        "dir::../../verilog/rtl/user_proj_example.v"
+        "dir::../../verilog/rtl/*.v"
     ],
-    "CLOCK_PERIOD": 25,
+    "CLOCK_PERIOD": 40,
     "CLOCK_PORT": "wb_clk_i",
-    "CLOCK_NET": "counter.clk",
+    // "CLOCK_NET": "counter.clk",     i think this is not needed
     "FP_SIZING": "absolute",
-    "DIE_AREA": "0 0 2800 1760",
-    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "DIE_AREA": "0 0 2900 3500",   // please check this
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg", // Fixed this 
+     
+
+    // TODO please check this
+    "FP_PDN_MACRO_HOOKS": "ppu_inst vccd1 vssd1 vccd1 vssd1",
+    "MACRO_PLACEMENT_CFG": "dir::macro.cfg", //ppu added
+    "MAGIC_DEF_LABELS": 0,
+    "VERILOG_FILES_BLACKBOX": [
+        "dir::../../verilog/gl/cvxif_pau.pnl.v"
+    ],
+    "EXTRA_LEFS": "dir::../../lef/cvxif_pau.lef",
+    "EXTRA_GDS_FILES": "dir::../../gds/cvxif_pau.gds",
+    "EXTRA_LIBS": "dir::../../lib/cvxif_pau.lib",
+    
+
+    // cant find multi-corner analysis for ppu unit
+    /* 
+    "EXTRA_SPEFS": [
+        "user_proj_example", 
+        "dir::../../spef/multicorner/user_proj_example.min.spef", 
+        "dir::../../spef/multicorner/user_proj_example.nom.spef", 
+        "dir::../../spef/multicorner/user_proj_example.max.spef"
+    ],
+     */
+
+
     "MAX_TRANSITION_CONSTRAINT": 1.0,
     "MAX_FANOUT_CONSTRAINT": 16,
     "PL_TARGET_DENSITY": 0.55,
@@ -30,7 +55,7 @@
         "vssd1"
     ],
     "IO_SYNC": 0,
-    "BASE_SDC_FILE": "dir::base_user_proj_example.sdc",
+    "BASE_SDC_FILE": "dir::base_user_proj_example.sdc",   // what to set in sdc
     "RUN_CVC": 1,
     "pdk::sky130*": {
         "FP_CORE_UTIL": 45,
