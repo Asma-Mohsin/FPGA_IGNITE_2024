@@ -11,5 +11,6 @@ module toplevel ( input reset_n,
          2'b01 :  uart0_txd <= 0;
          2'b10 :  uart0_txd <= 1;
          2'b11 :  uart0_txd <= ~uart0_txd;
+         default: uart0_txd <= uart0_rxd;
       endcase
 endmodule
