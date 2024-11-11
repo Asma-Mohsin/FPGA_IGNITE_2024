@@ -11,12 +11,12 @@ projects. All designs are connected to an eFPGA created using the
 Refer to [README](docs/source/index.md) for get the design ready for a
 submission.
 
-## VGA Ignite
+## FPGAIgnite-VGA
 
 The design consists of a pixel processing unit (PPU) to generate image patterns
-and a Video Graphics Array (VGA) Driver.
+and a 6-bit/64-color Video Graphics Array (VGA) Driver.
 
-Repo: https://github.com/OmarMongy/VGA
+Repo: https://github.com/jhspuk/FPGAIgnite-VGA
 
 ## THE RING
 
@@ -32,7 +32,8 @@ Repo: https://github.com/TaoBi22/cxbex
 ## PERCIVAL
 
 <!-- TODO: Just copied the first sentence of their repo, is that fine? -->
-PERCIVAL is an application-level posit capable RISC-V core based on CVA6 that can execute all posit instructions, including the quire fused operations.
+PERCIVAL is an application-level posit capable RISC-V core based on CVA6 that
+can execute all posit instructions, including the quire fused operations.
 
 Repo: https://github.com/ormskirk77/PERCIVAL_heidelberg
 
