@@ -1,3 +1,5 @@
+
+
 module summer_school_top_wrapper #(
     parameter NUM_OF_TOTAL_FABRIC_IOS = 31,
     parameter NUM_OF_LOGIC_ANALYZER_BITS = 128,
@@ -13,6 +15,7 @@ module summer_school_top_wrapper #(
     input [WB_DATA_WIDTH-1:0] wbs_adr_i,
     output [WB_DATA_WIDTH-1:0] wbs_dat_o,
     output reg wbs_ack_o,
+    output wire wbs_sta_o,
 
     // Logic Analyzer Signals
     input  [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_in,
@@ -101,7 +104,7 @@ module summer_school_top_wrapper #(
     wire [57:0] UIO_TOP_UOUT_PAD;
     wire [139:0] UIO_BOT_UOUT_PAD;
 
-    reg [115:0] UIO_BOT_UIN_PAD;
+    reg [114:0] UIO_BOT_UIN_PAD;
 
 
     flexbex_soc_top flexbex_eFPGA (
@@ -109,7 +112,7 @@ module summer_school_top_wrapper #(
         .B_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
         .Config_accessC(),  // NOTE: Dirk said to leave this empty since its not needed
 
-        .CLK(CLK),
+        .clk(CLK),
         .resetn(resetn),
         .SelfWriteStrobe(SelfWriteStrobe),
         .SelfWriteData(SelfWriteData),
@@ -123,10 +126,10 @@ module summer_school_top_wrapper #(
         .O_top(O_top),
         .T_top(T_top),
 
-        .UI0_TOP_UOUT_PAD(UIO_TOP_UOUT_PAD),
-        .UI0_TOP_UIN_PAD(),  // Unused
-        .UI0_BOT_UOUT_PAD(UIO_BOT_UOUT_PAD),
-        .UI0_BOT_UIN_PAD(UIO_BOT_UIN_PAD)
+        .UIO_TOP_UOUT_PAD(UIO_TOP_UOUT_PAD),
+        .UIO_TOP_UIN_PAD(),  // Unused
+        .UIO_BOT_UOUT_PAD(UIO_BOT_UOUT_PAD),
+        .UIO_BOT_UIN_PAD(UIO_BOT_UIN_PAD)
 
     );
 
@@ -148,7 +151,7 @@ module summer_school_top_wrapper #(
     wire [31:0] result_data;  // Signal for result data (assuming 32-bit width)
 
     // POSIT coprocessor
-    pau pau_inst (
+    cvxif_pau cvxif_pau_inst (
         .clk(CLK),
         .rst(!resetn),
         .issue_valid(issue_valid),
@@ -159,11 +162,12 @@ module summer_school_top_wrapper #(
         .issue_resp_register_read(issue_resp_register_read),
         .register_valid(register_valid),
         .register_ready(register_ready),
-        .register_rs(register_rs),
+        .register_rs0(register_rs[0]),
+        .register_rs1(register_rs[1]),
         .register_rs_valid(register_rs_valid),
         .result_valid(result_valid),
         .result_ready(result_ready),
-        .result_data(result_data)
+        .result_data(result_data)       
     );
 
     // THE RING
@@ -190,13 +194,13 @@ module summer_school_top_wrapper #(
         .clk(CLK),
         .rst(!resetn),
         .sync(UIO_BOT_UOUT_PAD[0]),
-        .mode(UIO_BOT_UOUT_PAD[2:1]),
-        .data_i(UIO_BOT_UOUT_PAD[10:3]),
-        .stb_i(UIO_BOT_UOUT_PAD[11]),
+        .mode(UIO_BOT_UOUT_PAD[3:1]),
+        .data_i(UIO_BOT_UOUT_PAD[11:4]),
+        .stb_i(UIO_BOT_UOUT_PAD[12]),
         .ack_i(UIO_BOT_UIN_PAD[0]),
         .data_o(data_o),
         .stb_o(),  //indicates data of current pixel and is not currenly used
-        .ack_o(UIO_BOT_UOUT_PAD[12])
+        .ack_o(UIO_BOT_UOUT_PAD[13])
     );
 
     // Instantiate VGA Driver module
@@ -234,13 +238,13 @@ module summer_school_top_wrapper #(
     always @(*) begin
         la_data_out = 128'b0;
         en = 1'b0;
-        UIO_BOT_UIN_PAD = 68'b0;
+        UIO_BOT_UIN_PAD = 114'b0;
         issue_req_instr = 32'b0;
         issue_valid = 1'b0;
         register_valid = 1'b0;
         register_rs[1] = 32'b0;
         register_rs[0] = 32'b0;
-        register_rs_valid = 1'b0;
+        register_rs_valid = 2'b0;
         result_ready = 1'b0;
 
 
@@ -251,15 +255,17 @@ module summer_school_top_wrapper #(
                 case (sel)
 
                     // Logic Analyzer
-                    1: begin
-                        if (la_oenb[7:0]) la_data_in[7:0] <= d_out;
-                        else en = la_data_out[8];
+                    1'b1: begin
+                        if (la_oenb[7:0]) en = la_data_in[8];
+                        else
+                        la_data_out[7:0] <= d_out; 
+                        
                     end
 
                     //eFPGA
                     default: begin
                         //inputs
-                        en = UIO_BOT_UOUT_PAD[13];
+                        en = UIO_BOT_UOUT_PAD[14];
                         //outputs
                         UIO_BOT_UIN_PAD[8:1] = d_out;
                     end
@@ -271,7 +277,7 @@ module summer_school_top_wrapper #(
                 case (sel)
 
                     // LA
-                    1: begin
+                    1'b1: begin
                         //inputs
                         if (la_oenb[101:1]) begin
                             issue_req_instr = la_data_in[101:70];
@@ -299,13 +305,13 @@ module summer_school_top_wrapper #(
                         // inputs
                         issue_req_instr[17:0] = UIO_TOP_UOUT_PAD[17:0];
 
-                        issue_req_instr[31:18] = UIO_BOT_UOUT_PAD[95:82];
-                        issue_valid = UIO_BOT_UOUT_PAD[81];
-                        register_valid = UIO_BOT_UOUT_PAD[80];
-                        register_rs[1] = UIO_BOT_UOUT_PAD[79:48];
-                        register_rs[0] = UIO_BOT_UOUT_PAD[47:16];
-                        register_rs_valid = UIO_BOT_UOUT_PAD[15:14];
-                        result_ready = UIO_BOT_UOUT_PAD[13];
+                        issue_req_instr[31:18] = UIO_BOT_UOUT_PAD[96:83];
+                        issue_valid = UIO_BOT_UOUT_PAD[82];
+                        register_valid = UIO_BOT_UOUT_PAD[81];
+                        register_rs[1] = UIO_BOT_UOUT_PAD[80:49];
+                        register_rs[0] = UIO_BOT_UOUT_PAD[48:17];
+                        register_rs_valid = UIO_BOT_UOUT_PAD[16:15];
+                        result_ready = UIO_BOT_UOUT_PAD[14];
 
                         //outputs
                         UIO_BOT_UIN_PAD[39] = issue_ready;

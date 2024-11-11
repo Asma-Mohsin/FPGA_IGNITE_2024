@@ -18,9 +18,9 @@ module flexbex_soc_top #() (
         output [15:0] T_top,
         // eFPGA user interface padding ports
         output [57:0] UIO_TOP_UOUT_PAD,
-        input [14:0] UIO_TOP_UIN_PAD,
+        input [13:0] UIO_TOP_UIN_PAD,
         output [139:0] UIO_BOT_UOUT_PAD,
-        input [115:0] UIO_BOT_UIN_PAD
+        input [113:0] UIO_BOT_UIN_PAD
 );
     wire [139:0] UIO_BOT_UIN;
     wire [139:0] UIO_BOT_UOUT;
@@ -41,6 +41,7 @@ module flexbex_soc_top #() (
     wire [31:0]mem_instr_rdata_i;
     wire mem_instr_gnt_i;
     wire mem_instr_rvalid_i;
+    // just 12 bits are used, since the memory macro just supports 12 bits
     wire [11:0]mem_instr_addr_o;
     wire mem_instr_gnt_o;
     wire mem_instr_req_o;
@@ -51,6 +52,7 @@ module flexbex_soc_top #() (
     wire mem_data_gnt_i;
     wire mem_data_rvalid_i;
     wire [31:0]mem_data_wdata_o;
+    // just 12 bits are used, since the memory macro just supports 12 bits
     wire [11:0]mem_data_addr_o;
     wire [3:0]mem_data_be_o;
     wire mem_data_req_o;
@@ -117,8 +119,8 @@ module flexbex_soc_top #() (
     // top user inputs
     assign UIO_BOT_UIN = {
     UIO_BOT_UIN_PAD,
-    cx_func_o // 24
-    };// 24 bits
+    cx_func_o // 25
+    };// 25 bits
 
     // we only conncect DATA memory to this 1kb ram block
     // instruction memory is connected to the fabric
@@ -135,7 +137,7 @@ module flexbex_soc_top #() (
     .clk1(/*clk*/), //clk
     .csb1(/*~instr_req_i*/),  //active low chip select
     .addr1(/*instr_addr_i*/), //read address
-    .dout1(/*instr_rdata_o*/), // read data 1
+    .dout1(/*instr_rdata_o*/) // read data 1
     );
 
     ibex_core ibex_i (
@@ -150,7 +152,7 @@ module flexbex_soc_top #() (
         .instr_req_o(mem_instr_req_o),
         .instr_gnt_i(mem_instr_gnt_i),
         .instr_rvalid_i(mem_instr_rvalid_i),
-        .instr_addr_o(mem_instr_addr_o),
+        .instr_addr_o(mem_instr_addr_o), // just 12 bits are used, since the memory macro just supports 12 bits
         .instr_rdata_i(mem_instr_rdata_i),
 
         .data_req_o(mem_data_req_o),
@@ -158,7 +160,7 @@ module flexbex_soc_top #() (
         .data_rvalid_i(mem_data_rvalid_i),
         .data_we_o(mem_data_we_o),
         .data_be_o(mem_data_be_o),
-        .data_addr_o(mem_data_addr_o),
+        .data_addr_o(mem_data_addr_o), // just 12 bits are used, since the memory macro just supports 12 bits
         .data_wdata_o(mem_data_wdata_o),
         .data_rdata_i(mem_data_rdata_i),
         .data_err_i(1'b0),
