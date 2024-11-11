@@ -111,7 +111,6 @@ summer_school_top_wrapper FPGA_IGNITE (
     .io_oeb([37:7]),
 
     // Independent clock (on independent integer divider)
-    // NOTE: unused, we are using the wishbone clock
     .user_clock2(user_clock2)
 );
 endmodule	// user_project_wrapper
