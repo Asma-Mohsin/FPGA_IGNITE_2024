@@ -32,7 +32,7 @@ module summer_school_top_wrapper #(
 );
 
     // The number of IOs that can be used by the FPGA user design
-    localparam NUM_FABRIC_USER_IOS = 16;
+    localparam NUM_FABRIC_USER_IOS = 12;
     localparam [31:0] BASE_WB_ADDRESS = 32'h3000_0000;
     localparam [31:0] CONFIG_DATA_WB_ADDRESS = BASE_WB_ADDRESS;
     localparam [31:0] TO_FABRIC_IOS_WB_ADDRESS = BASE_WB_ADDRESS + 4;
@@ -47,13 +47,17 @@ module summer_school_top_wrapper #(
     localparam RECEIVE_LED_IO = 6;
 
     // eFPGA IOs
-    localparam EFPGA_USED_NUM_IOS = 13;  // Due to pin count limitation, we don't use all eFPGA IOs
+    localparam EFPGA_USED_NUM_IOS = 12;  // Due to pin count limitation, we don't use all eFPGA IOs
     localparam EFPGA_IO_LOWEST = 7; // This maps to MPRJ_IO[14], which is io[0] on the FABulous board
     localparam EFPGA_IO_HIGHEST = EFPGA_IO_LOWEST + EFPGA_USED_NUM_IOS - 1;
+    // NOTE:: This was introduced since the fabric was changed shortly before
+    // the submission and with this all other pins can stay at their previous
+    // location
+    localparam EFPGA_IO_PADDING = 1;
 
     // VGA IOs
     localparam VGA_NUM_IOS = 8;
-    localparam VGA_IO_LOWEST = EFPGA_IO_HIGHEST + 1;  // VGA is located after the eFPGA pins
+    localparam VGA_IO_LOWEST = EFPGA_IO_HIGHEST + 1 + EFPGA_IO_PADDING;  // VGA is located after the eFPGA pins
     localparam VGA_IO_HIGHEST = VGA_IO_LOWEST + VGA_NUM_IOS - 1;
 
     // NOVACORE IOs
@@ -167,7 +171,7 @@ module summer_school_top_wrapper #(
         .register_rs_valid(register_rs_valid),
         .result_valid(result_valid),
         .result_ready(result_ready),
-        .result_data(result_data)       
+        .result_data(result_data)
     );
 
     // THE RING
@@ -257,9 +261,8 @@ module summer_school_top_wrapper #(
                     // Logic Analyzer
                     1'b1: begin
                         if (la_oenb[7:0]) en = la_data_in[8];
-                        else
-                        la_data_out[7:0] <= d_out; 
-                        
+                        else la_data_out[7:0] <= d_out;
+
                     end
 
                     //eFPGA
@@ -415,3 +418,4 @@ module summer_school_top_wrapper #(
 
     assign CLK = clk_sel ? wb_clk_i : user_clock2;
 endmodule
+

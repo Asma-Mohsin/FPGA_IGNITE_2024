@@ -1,26 +1,27 @@
-module flexbex_soc_top #() (
-        //Config related ports
-        input clk,
-        input resetn,
-        input SelfWriteStrobe,
-        input [31:0] SelfWriteData,
-        input Rx,
-        output ComActive,
-        output ReceiveLED,
-        input s_clk,
-        input s_data,
-        //efpga_top related ports
-        output [31:0] A_config_C,
-        output [31:0] B_config_C,
-        output [31:0] Config_accessC,
-        output [15:0] I_top,
-        input [15:0] O_top,
-        output [15:0] T_top,
-        // eFPGA user interface padding ports
-        output [57:0] UIO_TOP_UOUT_PAD,
-        input [13:0] UIO_TOP_UIN_PAD,
-        output [139:0] UIO_BOT_UOUT_PAD,
-        input [113:0] UIO_BOT_UIN_PAD
+module flexbex_soc_top #(
+) (
+    //Config related ports
+    input clk,
+    input resetn,
+    input SelfWriteStrobe,
+    input [31:0] SelfWriteData,
+    input Rx,
+    output ComActive,
+    output ReceiveLED,
+    input s_clk,
+    input s_data,
+    //efpga_top related ports
+    output [31:0] A_config_C,
+    output [31:0] B_config_C,
+    output [31:0] Config_accessC,
+    output [11:0] I_top,
+    input [11:0] O_top,
+    output [11:0] T_top,
+    // eFPGA user interface padding ports
+    output [57:0] UIO_TOP_UOUT_PAD,
+    input [13:0] UIO_TOP_UIN_PAD,
+    output [139:0] UIO_BOT_UOUT_PAD,
+    input [113:0] UIO_BOT_UIN_PAD
 );
     wire [139:0] UIO_BOT_UIN;
     wire [139:0] UIO_BOT_UOUT;
@@ -32,29 +33,29 @@ module flexbex_soc_top #() (
     wire ibex_fetch_enable_i;
     //irq
     wire ibex_irq_i;
-    wire [4:0]ibex_irq_id_i;
-    wire [4:0]ibex_irq_id_o;
+    wire [4:0] ibex_irq_id_i;
+    wire [4:0] ibex_irq_id_o;
     wire ibex_irq_ack_o;
     // ---------------------- 8 inputs / 6 outputs
 
     //instruction memory --> eFPGA
-    wire [31:0]mem_instr_rdata_i;
+    wire [31:0] mem_instr_rdata_i;
     wire mem_instr_gnt_i;
     wire mem_instr_rvalid_i;
     // just 12 bits are used, since the memory macro just supports 12 bits
-    wire [11:0]mem_instr_addr_o;
+    wire [11:0] mem_instr_addr_o;
     wire mem_instr_gnt_o;
     wire mem_instr_req_o;
     // ------------------- 34 inputs / 14 outputs
 
     // data memory --> sram macro
-    wire [31:0]mem_data_rdata_i;
+    wire [31:0] mem_data_rdata_i;
     wire mem_data_gnt_i;
     wire mem_data_rvalid_i;
-    wire [31:0]mem_data_wdata_o;
+    wire [31:0] mem_data_wdata_o;
     // just 12 bits are used, since the memory macro just supports 12 bits
-    wire [11:0]mem_data_addr_o;
-    wire [3:0]mem_data_be_o;
+    wire [11:0] mem_data_addr_o;
+    wire [3:0] mem_data_be_o;
     wire mem_data_req_o;
     wire mem_data_we_o;
     // ------------------- 34 inputs / 50  outputs --> sram macro
@@ -69,7 +70,7 @@ module flexbex_soc_top #() (
     wire [1:0] cx_cxu_id_o;
     wire [1:0] cx_state_id_o;
     wire cx_rst_o;
-    wire  cx_req_valid_o;
+    wire cx_req_valid_o;
     // ------------------- 131 outputs - 59 not connected = 72 outputs
     wire [31:0] cx_resp_data_i;
     wire [3:0] cx_resp_status_i;
@@ -78,70 +79,69 @@ module flexbex_soc_top #() (
     // ------------------- 38 inputs
 
 
-    assign UIO_TOP_UOUT = { //140 bits ibex inputs <-> eFPGA outputs
-    UIO_TOP_UOUT_PAD,
-    ibex_debug_req_i, // 1 bit
-    ibex_fetch_enable_i, // 1 bit
-    ibex_irq_i, // 1 bit
-    ibex_irq_id_i, // 5 bits
-    cx_resp_valid_i, // 1 bit
-    cx_resp_state_i, // 1 bit
-    cx_resp_status_i, // 4 bits
-    cx_resp_data_i, // 32 bits
-    mem_data_gnt_i, // 1 bit ??? not sure
-    mem_data_rvalid_i, // 1 bit ??? not sure
-    mem_instr_gnt_i, // 1 bit
-    mem_instr_rvalid_i, // 1 bit
-    mem_instr_rdata_i //32 bits
-    };//80
+    assign UIO_TOP_UOUT = {  //140 bits ibex inputs <-> eFPGA outputs
+            UIO_TOP_UOUT_PAD,
+            ibex_debug_req_i,  // 1 bit
+            ibex_fetch_enable_i,  // 1 bit
+            ibex_irq_i,  // 1 bit
+            ibex_irq_id_i,  // 5 bits
+            cx_resp_valid_i,  // 1 bit
+            cx_resp_state_i,  // 1 bit
+            cx_resp_status_i,  // 4 bits
+            cx_resp_data_i,  // 32 bits
+            mem_data_gnt_i,  // 1 bit ??? not sure
+            mem_data_rvalid_i,  // 1 bit ??? not sure
+            mem_instr_gnt_i,  // 1 bit
+            mem_instr_rvalid_i,  // 1 bit
+            mem_instr_rdata_i  //32 bits
+        };  //80
 
-    assign UIO_TOP_UIN = { //140 bits ibex outputs <-> eFPGA inputs
-    UIO_TOP_UIN_PAD,
-    ibex_irq_ack_o, // 1 bit
-    ibex_irq_id_o, // 5 bits
-    cx_rst_o, // 1 bit
-    cx_virt_state_id_o, // 2 bits
-    cx_id_o,   // 2
-    cx_cxu_id_o, // 2 bits
-    cx_state_id_o, // 2 bits
-    cx_req_valid_o, // 1 bit
-    cx_insn_o, // 32 bits
-    cx_req_data1_o, // 32 bits
-    cx_req_data0_o, // 32 bits
-    mem_instr_req_o, // 1 bit
-    mem_instr_gnt_o, // 1 bit
-    mem_instr_addr_o // 12 bits
-    };//126
+    assign UIO_TOP_UIN = {  //140 bits ibex outputs <-> eFPGA inputs
+            UIO_TOP_UIN_PAD,
+            ibex_irq_ack_o,  // 1 bit
+            ibex_irq_id_o,  // 5 bits
+            cx_rst_o,  // 1 bit
+            cx_virt_state_id_o,  // 2 bits
+            cx_id_o,  // 2
+            cx_cxu_id_o,  // 2 bits
+            cx_state_id_o,  // 2 bits
+            cx_req_valid_o,  // 1 bit
+            cx_insn_o,  // 32 bits
+            cx_req_data1_o,  // 32 bits
+            cx_req_data0_o,  // 32 bits
+            mem_instr_req_o,  // 1 bit
+            mem_instr_gnt_o,  // 1 bit
+            mem_instr_addr_o  // 12 bits
+        };  //126
 
     assign UIO_BOT_UOUT = UIO_BOT_UOUT_PAD;
 
     // cx_func_o needs to go to bottom. since there is no space left in
     // top user inputs
     assign UIO_BOT_UIN = {
-    UIO_BOT_UIN_PAD,
-    cx_func_o // 25
-    };// 25 bits
+        UIO_BOT_UIN_PAD, cx_func_o  // 25
+    };  // 25 bits
 
     // we only conncect DATA memory to this 1kb ram block
     // instruction memory is connected to the fabric
-    sram_1rw1r_32_256_8_sky130 data_mem_i(
-      // read write port
-    .clk0(clk),
-    .csb0(~mem_data_req_o), // chip select active low
-    .web0(~mem_data_we_o), // active low write control
-    .wmask0(mem_data_be_o), // write mask
-    .addr0(mem_data_addr_o), // write address
-    .din0(mem_data_wdata_o), // write data
-    .dout0(mem_data_rdata_i), // read data 0
-    // read only port:
-    .clk1(/*clk*/), //clk
-    .csb1(/*~instr_req_i*/),  //active low chip select
-    .addr1(/*instr_addr_i*/), //read address
-    .dout1(/*instr_rdata_o*/) // read data 1
+    sram_1rw1r_32_256_8_sky130 data_mem_i (
+        // read write port
+        .clk0(clk),
+        .csb0(~mem_data_req_o),  // chip select active low
+        .web0(~mem_data_we_o),  // active low write control
+        .wmask0(mem_data_be_o),  // write mask
+        .addr0(mem_data_addr_o),  // write address
+        .din0(mem_data_wdata_o),  // write data
+        .dout0(mem_data_rdata_i),  // read data 0
+        // read only port:
+        .clk1(  /*clk*/),  //clk
+        .csb1(  /*~instr_req_i*/),  //active low chip select
+        .addr1(  /*instr_addr_i*/),  //read address
+        .dout1(  /*instr_rdata_o*/)  // read data 1
     );
 
     ibex_core ibex_i (
-        .clk_i(clk), //
+        .clk_i (clk),    //
         .rst_ni(resetn),
 
         .test_en_i(1'b1),
@@ -172,7 +172,7 @@ module flexbex_soc_top #() (
 
         .debug_req_i(ibex_debug_req_i),
 
-        .cx_clk(), // not connected since we are using global clock
+        .cx_clk(),  // not connected since we are using global clock
         .cx_rst(cx_rst_o),
         .cx_req_valid(cx_req_valid_o),
         .cx_cxu_id(cx_cxu_id_o),
@@ -188,30 +188,30 @@ module flexbex_soc_top #() (
         .cx_insn_o(cx_insn_o),
         .cx_func_o(cx_func_o),
 
-        .fetch_enable_i(ibex_fetch_enable_i), //start_ibex
-        .ext_perf_counters_i(1'b0) //
+        .fetch_enable_i(ibex_fetch_enable_i),  //start_ibex
+        .ext_perf_counters_i(1'b0)  //
     );
 
     eFPGA_top eFPGA_top_i (
-      .CLK(clk),
-      .resetn(resetn),
-      .SelfWriteStrobe(SelfWriteStrobe),
-      .SelfWriteData(SelfWriteData),
-      .Rx(Rx),
-      .ComActive(ComActive),
-      .ReceiveLED(ReceiveLED),
-      .s_clk(s_clk),
-      .s_data(s_data),
-      .A_config_C(A_config_C),
-      .B_config_C(B_config_C),
-      .Config_accessC(Config_accessC),
-      .I_top(I_top),
-      .O_top(O_top),
-      .T_top(T_top),
-      .UIO_BOT_UIN(UIO_BOT_UIN),
-      .UIO_BOT_UOUT(UIO_BOT_UOUT),
-      .UIO_TOP_UIN(UIO_TOP_UIN),
-      .UIO_TOP_UOUT(UIO_TOP_UOUT)
+        .CLK(clk),
+        .resetn(resetn),
+        .SelfWriteStrobe(SelfWriteStrobe),
+        .SelfWriteData(SelfWriteData),
+        .Rx(Rx),
+        .ComActive(ComActive),
+        .ReceiveLED(ReceiveLED),
+        .s_clk(s_clk),
+        .s_data(s_data),
+        .A_config_C(A_config_C),
+        .B_config_C(B_config_C),
+        .Config_accessC(Config_accessC),
+        .I_top(I_top),
+        .O_top(O_top),
+        .T_top(T_top),
+        .UIO_BOT_UIN(UIO_BOT_UIN),
+        .UIO_BOT_UOUT(UIO_BOT_UOUT),
+        .UIO_TOP_UIN(UIO_TOP_UIN),
+        .UIO_TOP_UOUT(UIO_TOP_UOUT)
 
     );
 
@@ -219,36 +219,45 @@ endmodule
 
 // just copied from BlockRAM_1KB.v
 (* blackbox *)
-module sram_1rw1r_32_256_8_sky130(
-//`ifdef USE_POWER_PINS
-//	vdd,
-//	gnd,
-//`endif
-// Port 0: RW
-    clk0,csb0,web0,wmask0,addr0,din0,dout0,
-// Port 1: R
-    clk1,csb1,addr1,dout1
-  );
+module sram_1rw1r_32_256_8_sky130 (
+    //`ifdef USE_POWER_PINS
+    //	vdd,
+    //	gnd,
+    //`endif
+    // Port 0: RW
+    clk0,
+    csb0,
+    web0,
+    wmask0,
+    addr0,
+    din0,
+    dout0,
+    // Port 1: R
+    clk1,
+    csb1,
+    addr1,
+    dout1
+);
 
-  parameter NUM_WMASKS = 4 ;
-  parameter DATA_WIDTH = 32 ;
-  parameter ADDR_WIDTH = 8 ;
-  parameter RAM_DEPTH = 1 << ADDR_WIDTH;
-  // FIXME: This delay is arbitrary.
-  parameter DELAY = 3 ;
-//`ifdef USE_POWER_PINS
- // inout vdd;
- // inout gnd;
-//`endif
-  input  clk0; // clock
-  input   csb0; // active low chip select
-  input  web0; // active low write control
-  input [NUM_WMASKS-1:0]   wmask0; // write mask
-  input [ADDR_WIDTH-1:0]  addr0;
-  input [DATA_WIDTH-1:0]  din0;
-  output [DATA_WIDTH-1:0] dout0;
-  input  clk1; // clock
-  input   csb1; // active low chip select
-  input [ADDR_WIDTH-1:0]  addr1;
-  output [DATA_WIDTH-1:0] dout1;
+    parameter NUM_WMASKS = 4;
+    parameter DATA_WIDTH = 32;
+    parameter ADDR_WIDTH = 8;
+    parameter RAM_DEPTH = 1 << ADDR_WIDTH;
+    // FIXME: This delay is arbitrary.
+    parameter DELAY = 3;
+    //`ifdef USE_POWER_PINS
+    // inout vdd;
+    // inout gnd;
+    //`endif
+    input clk0;  // clock
+    input csb0;  // active low chip select
+    input web0;  // active low write control
+    input [NUM_WMASKS-1:0] wmask0;  // write mask
+    input [ADDR_WIDTH-1:0] addr0;
+    input [DATA_WIDTH-1:0] din0;
+    output [DATA_WIDTH-1:0] dout0;
+    input clk1;  // clock
+    input csb1;  // active low chip select
+    input [ADDR_WIDTH-1:0] addr1;
+    output [DATA_WIDTH-1:0] dout1;
 endmodule
