@@ -14,7 +14,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 MAKEFLAGS+=--warn-undefined-variables
-
+export PWD =/home/user/Desktop/FPGA_IGNITE_2024/
 export CARAVEL_ROOT?=$(PWD)/caravel
 export UPRJ_ROOT?=$(PWD)
 PRECHECK_ROOT?=${HOME}/mpw_precheck

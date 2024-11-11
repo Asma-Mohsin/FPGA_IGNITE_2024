@@ -106,9 +106,9 @@ summer_school_top_wrapper FPGA_IGNITE (
    .la_oenb(la_oenb),
 
     // IOs
-    .io_in(io_in([37:7]),
+    .io_in(io_in[37:7]),
     .io_out(io_out[37:7]),
-    .io_oeb([37:7]),
+    .io_oeb(io_oeb[37:7]),
 
     // Independent clock (on independent integer divider)
     .user_clock2(user_clock2)
