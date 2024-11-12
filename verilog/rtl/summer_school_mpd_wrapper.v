@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+`timescale 1ns / 1ps
 
 
 module summer_school_top_wrapper #(
@@ -37,6 +39,7 @@ module summer_school_top_wrapper #(
     localparam [31:0] CONFIG_DATA_WB_ADDRESS = BASE_WB_ADDRESS;
     localparam [31:0] TO_FABRIC_IOS_WB_ADDRESS = BASE_WB_ADDRESS + 4;
 
+    // The Output enable input of the IO cell is inverted, so define parameters for increased readability
     localparam OUTPUT_ENABLE = 1'b0;
     localparam OUTPUT_DISABLE = 1'b1;
 
@@ -78,6 +81,7 @@ module summer_school_top_wrapper #(
     wire CLK;  // This clock can go to the CPU (connects to the fabric LUT output flops)
     wire resetn;
     wire external_clock;
+    wire external_clock_shifted;
 
     // CPU configuration port
     wire SelfWriteStrobe;  // must decode address and write enable
@@ -161,6 +165,7 @@ module summer_school_top_wrapper #(
     wire [31:0] result_data;  // Signal for result data (assuming 32-bit width)
 
     // POSIT coprocessor
+    (* blackbox *)
     cvxif_pau cvxif_pau_inst (
         .clk(CLK),
         .rst(!resetn),
@@ -231,6 +236,23 @@ module summer_school_top_wrapper #(
         .de     ()          //simulation signals
     );
 
+    // piso piso_inst (
+    //     .clk1(CLK),
+    //     .clk2(external_clock_shifted),
+    //     .rst(!resetn),
+    //     .load(),
+    //     .parallel_in(),
+    //     .serial_out()
+    // );
+    //
+    // posi posi_inst (
+    //     .clk1(CLK),
+    //     .clk2(external_clock_shifted),
+    //     .rst(!resetn),
+    //     .serial_in(),
+    //     .parallel_out()
+    // );
+
     // Module Select
     always @(*) begin
         la_data_out = 128'b0;
@@ -253,8 +275,8 @@ module summer_school_top_wrapper #(
 
                     // Logic Analyzer
                     1'b1: begin
-                        if (la_oenb[7:0]) en = la_data_in[8];
-                        else la_data_out[7:0] <= d_out;
+                        en = la_data_in[8];
+                        la_data_out[7:0] <= d_out;
 
                     end
 
@@ -275,25 +297,25 @@ module summer_school_top_wrapper #(
                     // LA
                     1'b1: begin
                         //inputs
-                        if (la_oenb[101:1]) begin
-                            issue_req_instr = la_data_in[101:70];
-                            issue_valid = la_data_in[69];
-                            register_valid = la_data_in[68];
-                            register_rs[1] = la_data_in[67:36];
-                            register_rs[0] = la_data_in[35:4];
-                            register_rs_valid = la_data_in[3:2];
-                            result_ready = la_data_in[1];
-
-
-                        end else begin
-                            la_data_out[39] = issue_ready;
-                            la_data_out[38] = issue_resp_accept;
-                            la_data_out[37] = issue_resp_writeback;
-                            la_data_out[36:35] = issue_resp_register_read;
-                            la_data_out[34] = register_ready;
-                            la_data_out[33] = result_valid;
-                            la_data_out[32:1] = result_data;
-                        end
+                        // if (la_oenb[101:1]) begin
+                        //     issue_req_instr = la_data_in[101:70];
+                        //     issue_valid = la_data_in[69];
+                        //     register_valid = la_data_in[68];
+                        //     register_rs[1] = la_data_in[67:36];
+                        //     register_rs[0] = la_data_in[35:4];
+                        //     register_rs_valid = la_data_in[3:2];
+                        //     result_ready = la_data_in[1];
+                        //
+                        //
+                        // end else begin
+                        //     la_data_out[39] = issue_ready;
+                        //     la_data_out[38] = issue_resp_accept;
+                        //     la_data_out[37] = issue_resp_writeback;
+                        //     la_data_out[36:35] = issue_resp_register_read;
+                        //     la_data_out[34] = register_ready;
+                        //     la_data_out[33] = result_valid;
+                        //     la_data_out[32:1] = result_data;
+                        // end
                     end
 
                     // eFPGA
@@ -388,9 +410,11 @@ module summer_school_top_wrapper #(
     assign efpga_uart_rx = io_in[EFPGA_UART_RX_IO];
     assign io_out[RECEIVE_LED_IO] = ReceiveLED;
 
-    assign resetn = io_in[RESETN_IO];
     assign select_module = io_in[SELECT_MODULE_IO];
     assign sel = io_in[SEL_IO];
+
+    assign resetn = io_in[RESETN_IO];
+    assign external_clock_shifted = io_in[EXTERNAL_CLK_SHIFTED_IO];
 
     assign io_oeb[EXTERNAL_CLK_IO] = OUTPUT_DISABLE;
     assign io_oeb[CLK_SEL_0_IO] = OUTPUT_DISABLE;
@@ -398,22 +422,26 @@ module summer_school_top_wrapper #(
     assign io_oeb[S_CLK_IO] = OUTPUT_DISABLE;
     assign io_oeb[S_DATA_IO] = OUTPUT_DISABLE;
     assign io_oeb[EFPGA_UART_RX_IO] = OUTPUT_ENABLE;
-    assign io_oeb[RECEIVE_LED_IO] = OUTPUT_DISABLE;  // The only output of the fabric IOs
+    assign io_oeb[RECEIVE_LED_IO] = OUTPUT_DISABLE;  // The only fabric IO output
 
-    assign io_oeb[RESETN_IO] = OUTPUT_DISABLE;
     assign io_oeb[SELECT_MODULE_IO] = OUTPUT_DISABLE;
     assign io_oeb[SEL_IO] = OUTPUT_DISABLE;
 
+    assign io_oeb[RESETN_IO] = OUTPUT_DISABLE;
+    assign io_oeb[EXTERNAL_CLK_SHIFTED_IO] = OUTPUT_DISABLE;
 
+
+    // Config signals
     assign SelfWriteStrobe = config_strobe;
     assign SelfWriteData = config_data;
 
+    // Debug signals
     assign la_data_out[103:102] = {ReceiveLED, efpga_uart_rx};
 
+    // eFPGA external IOs
     assign O_top[EFPGA_USED_NUM_IOS-1:0] = io_in[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST];
     assign io_out[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST] = I_top[EFPGA_USED_NUM_IOS-1:0];
     assign io_oeb[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST] = T_top[EFPGA_USED_NUM_IOS-1:0];
 
     assign CLK = clk_sel[CLK_SEL_0_IO] ? (clk_sel[CLK_SEL_1_IO] ? user_clock2 : wb_clk_i) : external_clock;
 endmodule
-

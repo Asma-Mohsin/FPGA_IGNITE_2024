@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module RAM_IO
     #(
 `ifdef EMULATION

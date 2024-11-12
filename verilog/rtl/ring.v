@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module ro_top #(
     parameter SIZE = 8
 ) (
@@ -108,4 +109,3 @@ module randModule (
     );
     assign randOut = w2;
 endmodule
-

@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
  // NumberOfConfigBits: 106
 module W_IO_switch_matrix
     #(

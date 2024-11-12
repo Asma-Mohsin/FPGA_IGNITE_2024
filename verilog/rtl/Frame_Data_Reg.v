@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module Frame_Data_Reg (
     FrameData_I,
     FrameData_O,
@@ -16,4 +17,3 @@ module Frame_Data_Reg (
         if (RowSelect == Row) FrameData_O <= FrameData_I;
     end  //CLK
 endmodule
-

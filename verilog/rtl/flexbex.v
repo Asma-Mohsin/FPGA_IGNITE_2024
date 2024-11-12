@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module cont_2_uart (
 	clk_i,
 	rst_i,
@@ -75,7 +76,8 @@ module cont_2_uart (
 						else
 							send <= PKT_WRITE_CMD;
 						transmit <= 1;
-						$display("C2U - Send new cmd \n");
+						$display("C2U - Send new cmd 
+");
 						UART_STATE <= WAIT_CMD_CONFIRM;
 						idle_count <= 0;
 						complete <= 0;
@@ -143,7 +145,8 @@ module cont_2_uart (
 						else if (data_count == 0) begin
 							send <= data[7:0];
 							UART_STATE <= IDLE;
-							$display("C2U - data senf last \n");
+							$display("C2U - data senf last 
+");
 							complete <= 1;
 						end
 						else
@@ -4719,7 +4722,8 @@ module uart_to_mem (
 							end
 							else if (rx_byte_o[7:0] == PKT_READ_CMD[7:0]) begin
 								tx_byte_i <= PKT_READ_CMD;
-								$display("IDLE to WAIT_ADDR_HEAD \n");
+								$display("IDLE to WAIT_ADDR_HEAD 
+");
 								we <= 0;
 								transmit <= 1;
 								UART_STATE <= WAIT_ADDR_HEAD;
@@ -4738,7 +4742,8 @@ module uart_to_mem (
 							MEMORY_ADDRESS[12:8] <= rx_byte_o[4:0];
 							transmit <= 1;
 							UART_STATE <= WAIT_ADDR_TAIL;
-							$display("WAIT_ADDR_HEAD to WAIT_ADDR_TAIL\n");
+							$display("WAIT_ADDR_HEAD to WAIT_ADDR_TAIL
+");
 						end
 					end
 					else
@@ -4756,15 +4761,18 @@ module uart_to_mem (
 						end
 						else begin
 							start_read <= 1;
-							$display("WAIT_ADDR_TAIL received_o\n");
+							$display("WAIT_ADDR_TAIL received_o
+");
 						end
 					end
 					else if (read_issued) begin
-						$display("WAIT_ADDR_TAIL READ ISSUED\n");
+						$display("WAIT_ADDR_TAIL READ ISSUED
+");
 						start_read <= 0;
 					end
 					else if (read_complete) begin
-						$display("WAIT_ADDR_TAIL to SEND_READ_DATA\n");
+						$display("WAIT_ADDR_TAIL to SEND_READ_DATA
+");
 						UART_STATE <= SEND_READ_DATA;
 					end
 					else

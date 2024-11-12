@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 // Models for the embedded FPGA fabric
 module LHQD1 (
     input D,

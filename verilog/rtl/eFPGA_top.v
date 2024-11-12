@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module eFPGA_top #(
     parameter include_eFPGA = 1,
     parameter NumberOfRows = 6,

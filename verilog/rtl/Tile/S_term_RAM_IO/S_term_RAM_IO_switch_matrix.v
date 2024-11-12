@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
  // NumberOfConfigBits: 0
 module S_term_RAM_IO_switch_matrix
     #(
