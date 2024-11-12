@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module eFPGA_Config (
     CLK,
     resetn,
@@ -114,4 +115,3 @@ module eFPGA_Config (
     );
 
 endmodule
-

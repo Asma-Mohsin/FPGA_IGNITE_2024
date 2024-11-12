@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module flexbex_soc_top #(
 ) (
     //Config related ports

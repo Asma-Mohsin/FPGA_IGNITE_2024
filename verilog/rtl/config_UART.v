@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module config_UART #(
     parameter Mode = 0, // [0:auto|1:hex|2:bin] auto selects between ASCII-Hex and binary mode and takes a bit more logic,
     // bin is for faster binary mode, but might not work on all machines/boards
@@ -447,4 +448,3 @@ module config_UART #(
     end  //CLK
 
 endmodule
-

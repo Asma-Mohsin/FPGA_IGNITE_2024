@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module Frame_Select (
     FrameStrobe_I,
     FrameStrobe_O,
@@ -18,4 +19,3 @@ module Frame_Select (
         else FrameStrobe_O = 'd0;
     end
 endmodule
-

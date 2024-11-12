@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module bitbang (
     s_clk,
     s_data,
@@ -105,4 +106,3 @@ module bitbang (
     //end process;
 
 endmodule
-

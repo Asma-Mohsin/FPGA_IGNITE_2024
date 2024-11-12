@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module BlockRAM_1KB (
     clk,
     rd_addr,
@@ -183,4 +184,3 @@ module sram_1rw1r_32_256_8_sky130 (
     input [ADDR_WIDTH-1:0] addr1;
     output [DATA_WIDTH-1:0] dout1;
 endmodule
-

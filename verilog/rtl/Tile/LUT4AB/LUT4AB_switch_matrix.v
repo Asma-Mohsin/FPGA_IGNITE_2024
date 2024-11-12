@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
  // NumberOfConfigBits: 462
 module LUT4AB_switch_matrix
     #(

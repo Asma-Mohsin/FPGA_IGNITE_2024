@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 (* FABulous, BelMap,
 C_bit0=0,
 C_bit1=1,
