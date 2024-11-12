@@ -37,10 +37,14 @@ module summer_school_top_wrapper #(
     localparam [31:0] CONFIG_DATA_WB_ADDRESS = BASE_WB_ADDRESS;
     localparam [31:0] TO_FABRIC_IOS_WB_ADDRESS = BASE_WB_ADDRESS + 4;
 
+    localparam OUTPUT_ENABLE = 1'b0;
+    localparam OUTPUT_DISABLE = 1'b1;
+
     // Fabric IOs
-    localparam RESETN_IO = 0;
-    localparam SELECT_MODULE_IO = 1;
-    localparam SEL_IO = 2;
+    localparam EXTERNAL_CLK_IO = 0;
+    localparam CLK_SEL_0_IO = 1;
+    localparam CLK_SEL_1_IO = 2;
+
     localparam S_CLK_IO = 3;
     localparam S_DATA_IO = 4;
     localparam EFPGA_UART_RX_IO = 5;
@@ -53,18 +57,19 @@ module summer_school_top_wrapper #(
     // NOTE:: This was introduced since the fabric was changed shortly before
     // the submission and with this all other pins can stay at their previous
     // location
-    localparam EFPGA_IO_PADDING = 1;
+    localparam EFPGA_IO_PADDING = 0;
+
+    localparam SELECT_MODULE_IO = EFPGA_IO_HIGHEST + 1 + EFPGA_IO_PADDING; // Select module IO is located after the eFPGA IOs
+    localparam SEL_IO = SELECT_MODULE_IO + 1;  // Sel is located after select module
 
     // VGA IOs
     localparam VGA_NUM_IOS = 8;
-    localparam VGA_IO_LOWEST = EFPGA_IO_HIGHEST + 1 + EFPGA_IO_PADDING;  // VGA is located after the eFPGA pins
+    localparam VGA_IO_LOWEST = SEL_IO + 1;  // VGA is located after the eFPGA pins
     localparam VGA_IO_HIGHEST = VGA_IO_LOWEST + VGA_NUM_IOS - 1;
 
-    // NOVACORE IOs
-    localparam NOVACORE_UART_RX_IO = VGA_IO_HIGHEST + 1; // NOVACORE UART is located after the VGA pins
-    localparam NOVACORE_UART_TX_IO = NOVACORE_UART_RX_IO + 1;
+    localparam RESETN_IO = VGA_IO_HIGHEST + 1;  // resetn is located after the VGA pins
+    localparam EXTERNAL_CLK_SHIFTED_IO = RESETN_IO + 1;  // shifted external clock is located after resetn
 
-    localparam CLK_SEL_IO = NOVACORE_UART_TX_IO + 1;
 
     wire [NUM_FABRIC_USER_IOS-1:0] I_top;
     wire [NUM_FABRIC_USER_IOS-1:0] T_top;
@@ -72,6 +77,7 @@ module summer_school_top_wrapper #(
 
     wire CLK;  // This clock can go to the CPU (connects to the fabric LUT output flops)
     wire resetn;
+    wire external_clock;
 
     // CPU configuration port
     wire SelfWriteStrobe;  // must decode address and write enable
@@ -95,7 +101,7 @@ module summer_school_top_wrapper #(
     wire select_module;
     wire sel;
 
-    wire clk_sel;
+    wire [1:0] clk_sel;
 
     // Latch for config_strobe
     reg latch_config_strobe = 0;
@@ -208,7 +214,7 @@ module summer_school_top_wrapper #(
     );
 
     // Instantiate VGA Driver module
-    assign io_oeb[VGA_IO_HIGHEST:VGA_IO_LOWEST] = 8'b00000000;
+    assign io_oeb[VGA_IO_HIGHEST:VGA_IO_LOWEST] = {8{OUTPUT_ENABLE}};
     assign io_out[VGA_IO_HIGHEST:VGA_IO_LOWEST] = {vga_r, vga_g, vga_b, hsync, vsync};
 
     vga_driver vga_driver_inst (
@@ -224,19 +230,6 @@ module summer_school_top_wrapper #(
         .vsync  (vsync),
         .de     ()          //simulation signals
     );
-
-    //NOVACORE -- a dummy module 
-
-    assign io_oeb[NOVACORE_UART_TX_IO] = 1'b0;
-    assign io_oeb[NOVACORE_UART_RX_IO] = 1'b1;
-    toplevel nova_core (
-        .system_clk(CLK),
-        .system_clk_locked(),  // NOTE: Participant told to leave this unused
-        .reset_n(resetn),
-        .uart0_txd(io_out[NOVACORE_UART_TX_IO]),
-        .uart0_rxd(io_in[NOVACORE_UART_RX_IO])
-    );
-
 
     // Module Select
     always @(*) begin
@@ -388,23 +381,28 @@ module summer_school_top_wrapper #(
             wbs_ack_o <= (wbs_stb_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS));
     end
 
-    assign resetn = io_in[RESETN_IO];
-    assign select_module = io_in[SELECT_MODULE_IO];
-    assign sel = io_in[SEL_IO];
+    assign external_clock = io_in[EXTERNAL_CLK_IO];
+    assign clk_sel = {io_in[CLK_SEL_0_IO], io_in[CLK_SEL_1_IO]};
     assign s_clk = io_in[S_CLK_IO];
     assign s_data = io_in[S_DATA_IO];
     assign efpga_uart_rx = io_in[EFPGA_UART_RX_IO];
     assign io_out[RECEIVE_LED_IO] = ReceiveLED;
-    assign clk_sel = io_in[CLK_SEL_IO];
 
-    assign io_oeb[RESETN_IO] = 1'b1;
-    assign io_oeb[SELECT_MODULE_IO] = 1'b1;
-    assign io_oeb[SEL_IO] = 1'b1;
-    assign io_oeb[S_CLK_IO] = 1'b1;
-    assign io_oeb[S_DATA_IO] = 1'b1;
-    assign io_oeb[EFPGA_UART_RX_IO] = 1'b1;
-    assign io_oeb[RECEIVE_LED_IO] = 1'b0;  // The only output of the fabric IOs
-    assign io_oeb[CLK_SEL_IO] = 1'b1;
+    assign resetn = io_in[RESETN_IO];
+    assign select_module = io_in[SELECT_MODULE_IO];
+    assign sel = io_in[SEL_IO];
+
+    assign io_oeb[EXTERNAL_CLK_IO] = OUTPUT_DISABLE;
+    assign io_oeb[CLK_SEL_0_IO] = OUTPUT_DISABLE;
+    assign io_oeb[CLK_SEL_1_IO] = OUTPUT_DISABLE;
+    assign io_oeb[S_CLK_IO] = OUTPUT_DISABLE;
+    assign io_oeb[S_DATA_IO] = OUTPUT_DISABLE;
+    assign io_oeb[EFPGA_UART_RX_IO] = OUTPUT_ENABLE;
+    assign io_oeb[RECEIVE_LED_IO] = OUTPUT_DISABLE;  // The only output of the fabric IOs
+
+    assign io_oeb[RESETN_IO] = OUTPUT_DISABLE;
+    assign io_oeb[SELECT_MODULE_IO] = OUTPUT_DISABLE;
+    assign io_oeb[SEL_IO] = OUTPUT_DISABLE;
 
 
     assign SelfWriteStrobe = config_strobe;
@@ -416,6 +414,6 @@ module summer_school_top_wrapper #(
     assign io_out[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST] = I_top[EFPGA_USED_NUM_IOS-1:0];
     assign io_oeb[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST] = T_top[EFPGA_USED_NUM_IOS-1:0];
 
-    assign CLK = clk_sel ? wb_clk_i : user_clock2;
+    assign CLK = clk_sel[CLK_SEL_0_IO] ? (clk_sel[CLK_SEL_1_IO] ? user_clock2 : wb_clk_i) : external_clock;
 endmodule
 
