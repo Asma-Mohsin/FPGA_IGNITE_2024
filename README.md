@@ -11,6 +11,9 @@ projects. All designs are connected to an eFPGA created using the
 Refer to [README](docs/source/index.md) for get the design ready for a
 submission.
 
+<!-- TODO: check what to do with the links, probably copy the repos so they will
+not get lost if they are deleted -->
+
 ## Projects
 
 ### FPGAIgnite-VGA
@@ -28,7 +31,7 @@ Repo: https://github.com/matztron/ignite24_rng
 
 ### CXBex
 
-CXBex is small RISC-V SoC, wich allows the user to use reconfigurable custom
+CXBex is a small RISC-V SoC, which allows the user to use reconfigurable custom
 instructions. The SoC is based on the [ibex](https://github.com/lowRISC/ibex)
 core and implements the [Composable Custom Extension
 CX](https://github.com/grayresearch/CX). The CX interface is connected to and
@@ -46,27 +49,36 @@ can execute all posit instructions, including the quire fused operations.
 
 Repo: https://github.com/ormskirk77/PERCIVAL_heidelberg
 
-<!-- TODO: Probably remove -->
-### NOVA Core
-
 
 ## Pinout
 
-| Caravel MPRJ | Top Wrapper `io_in`/`io_out` bit| Fabulous Board                       |  Function                                             |
-|--------------|---------------------------------|--------------------------------------|-------------------------------------------------------|
-|  7           | 0                               | Middle Pin J8                        | Reset (active low)                                    |
-|  8           | 1                               | Middle Pin J11                       | Select module                                         |
-|  9           | 2                               | Middle Pin J13                       | Sel (Find a better description)                       |
-|  10          | 3                               |                                      | Bitbang serial clock                                  |
-|  11          | 4                               |                                      | Bitbang serial data                                   |
-|  12          | 5                               | Bottom left and</br> top right pin J6| eFPGA UART RX                                         |
-|  13          | 6                               | LED D1                               | RX LED                                                |
-|  14-26       | 7-19                            | 0-12                                 | eFPGA IOs                                             |
-|  27          | 20                              | 13                                   | VGA V-SYNC                                            |
-|  28          | 21                              | 14                                   | VGA H-SYNC                                            |
-|  29 + 30     | 22 + 23                         | 15 + 16                              | VGA Blue (2 bit)                                      |
-|  31 + 32     | 24 + 25                         | 17 + 18                              | VGA Green (2 bit)                                     |
-|  33 + 34     | 26 + 27                         | 19 + 20                              | VGA Red (2 bit)                                       |
-|  35          | 28                              | 21                                   | NOVACORE UART RX                                      |
-|  36          | 29                              | 22                                   | NOVACORE UART TX                                      |
-|  37          | 30                              | 23                                   | Clock select UART TX</br> 0: user_clock_2, 1: WB clock|
+| Caravel MPRJ IO | Top Wrapper `io_in`/`io_out` bit| Fabulous Board                       |  Function                       | Default GPIO config  |
+|--------------|---------------------------------|--------------------------------------|---------------------------------|----------------------|
+|  7           | 0                               | Middle Pin J8                        | External Clock                  | INPUT_NOPULL         |
+|  8           | 1                               | Middle Pin J11                       | CLK_SEL_0                       | INPUT_NOPULL         |
+|  9           | 2                               | Middle Pin J13                       | CLK_SEL_1                       | INPUT_NOPULL         |
+|  10          | 3                               |                                      | Bitbang serial clock            | INPUT_NOPULL         |
+|  11          | 4                               |                                      | Bitbang serial data             | INPUT_NOPULL         |
+|  12          | 5                               | Bottom left and</br> top right pin J6| eFPGA UART RX                   | INPUT_NOPULL         |
+|  13          | 6                               | LED D1                               | RX LED                          | OUTPUT               |
+|  14-25       | 7-18                            | 0-11                                 | eFPGA IOs                       | BIDIRECTIONAL        |
+|  26          | 19                              | 12                                   | Select module                   | INPUT_NOPULL         |
+|  27          | 20                              | 13                                   | Sel (Find a better description) | INPUT_NOPULL         |
+|  28          | 21                              | 14                                   | VGA V-SYNC                      | OUTPUT               |
+|  29          | 22                              | 15                                   | VGA H-SYNC                      | OUTPUT               |
+|  30 + 31     | 23 + 24                         | 16 + 17                              | VGA Blue (2 bit)                | OUTPUT               |
+|  32 + 33     | 25 + 26                         | 18 + 19                              | VGA Green (2 bit)               | OUTPUT               |
+|  34 + 35     | 27 + 28                         | 20 + 21                              | VGA Red (2 bit)                 | OUTPUT               |
+|  36          | 29                              | 22                                   | Reset (active low)              | INPUT_NOPULL         |
+|  37          | 30                              | 23                                   | External Clock shifted          | INPUT_NOPULL         |
+
+
+### Clock selection
+
+
+
+| MPRJI IO_8/CLK_SEL_0 | MPRJ IO_9/CLK_SEL_1 | Clock source                 |
+|----------------------|---------------------|------------------------------|
+|  0                   |  X                  | external (IO_7)              |
+|  1                   |  0                  | wishbone (10 MHz)            |
+|  1                   |  1                  | user_clock2 (default 10 MHz) |
