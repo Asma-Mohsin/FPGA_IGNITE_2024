@@ -206,7 +206,7 @@ module summer_school_top_wrapper #(
     // Pixel Processing Unit
     ppu ppu_inst (
         .clk(CLK),
-        .rst(!resetn),
+        .rst(resetn),
         .sync(UIO_BOT_UOUT_PAD[0]),
         .mode(UIO_BOT_UOUT_PAD[3:1]),
         .data_i(UIO_BOT_UOUT_PAD[11:4]),
@@ -223,7 +223,7 @@ module summer_school_top_wrapper #(
 
     vga_driver vga_driver_inst (
         .clk_pix(CLK),
-        .rst_pix(!resetn),
+        .rst_pix(resetn),
         .wb_data(data_o),   // PPU's data output is written to VGA
         .vga_r  (vga_r),
         .vga_g  (vga_g),
