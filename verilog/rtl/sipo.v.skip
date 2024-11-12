@@ -1,0 +1,103 @@
+module sipo #(
+    parameter WIDTH = 8             // Parameter to define the bit width
+)(
+    input wire clk1,                 // Clock signal
+    input wire clk2,
+    input wire rst,                 // Reset signal
+    input wire serial_in,           // Serial input
+    input wire load,           // Load the output
+    output wire [WIDTH-1:0] parallel_out // Parameterized parallel output
+);
+
+genvar i;
+wire [WIDTH-1:0] shift_reg;
+reg [WIDTH-1:0] parallel_shadow;
+
+generate
+    for (i = 0; i < WIDTH; i = i + 1) begin : sipo_bits
+        if (i == 0) begin
+            // First master-slave latch pair receives the serial input
+            MasterSlaveLatch msl (
+                .clk1(clk1),
+                .clk2(clk2),
+                .rst(rst),
+                .d(serial_in),
+                .q(shift_reg[i])
+            );
+        end else begin
+            // Each subsequent master-slave latch pair takes the output of the previous stage
+            MasterSlaveLatch msl (
+                .clk1(clk1),
+                .clk2(clk2),
+                .rst(rst),
+                .d(shift_reg[i-1]),
+                .q(shift_reg[i])
+            );
+        end
+    end
+endgenerate
+
+// Connect the shift register to the output
+assign parallel_shadow = shift_reg;
+always @(clk) begin
+	if(rst) parallel_shadow <= {WIDTH{1'b0}}
+	else begin
+		if (load) begin
+			parallel_out <= parallel_shadow;
+		end
+	end
+
+end
+
+endmodule
+
+// Master-Slave latch with synchronous reset
+module MasterSlaveLatch(
+    input wire clk1,
+    input wire clk2,
+    input wire rst,
+    input wire d,
+    output wire q
+);
+
+wire master_q, slave_q;
+
+// Master latch: Transparent when clk is low
+Latch master (
+    .enable(clk1),         // Master latch is enabled when clk is low
+    .rst(rst),
+    .d(d),
+    .q(master_q)
+);
+
+// Slave latch: Transparent when clk is high
+Latch slave (
+    .enable(clk2),          // Slave latch is enabled when clk is high
+    .rst(rst),
+    .d(master_q),
+    .q(slave_q)
+);
+
+// Output of the slave latch is the output of the master-slave pair
+assign q = slave_q;
+
+endmodule
+
+// Simple latch module with reset
+module Latch(
+    input wire enable,
+    input wire rst,
+    input wire d,
+    output reg q
+);
+
+always @(*) begin
+    if (rst) begin
+        q <= 1'b0;          // Reset the latch
+    end else if (enable) begin
+        q <= d;             // Capture input when enabled
+    end
+end
+
+endmodule
+
