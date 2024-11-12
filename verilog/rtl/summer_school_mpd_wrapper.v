@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps `timescale 1ns / 1ps
+`timescale 1ns / 1ps
 
 
 module summer_school_top_wrapper #(
@@ -295,26 +295,26 @@ module summer_school_top_wrapper #(
 
                     // LA
                     1'b1: begin
-                        //inputs
-                        // if (la_oenb[101:1]) begin
-                        //     issue_req_instr = la_data_in[101:70];
-                        //     issue_valid = la_data_in[69];
-                        //     register_valid = la_data_in[68];
-                        //     register_rs[1] = la_data_in[67:36];
-                        //     register_rs[0] = la_data_in[35:4];
-                        //     register_rs_valid = la_data_in[3:2];
-                        //     result_ready = la_data_in[1];
-                        //
-                        //
-                        // end else begin
-                        //     la_data_out[39] = issue_ready;
-                        //     la_data_out[38] = issue_resp_accept;
-                        //     la_data_out[37] = issue_resp_writeback;
-                        //     la_data_out[36:35] = issue_resp_register_read;
-                        //     la_data_out[34] = register_ready;
-                        //     la_data_out[33] = result_valid;
-                        //     la_data_out[32:1] = result_data;
-                        // end
+                        // inputs
+                         if (& la_oenb[101:1]) begin
+                             issue_req_instr = la_data_in[101:70];
+                             issue_valid = la_data_in[69];
+                             register_valid = la_data_in[68];
+                             register_rs[1] = la_data_in[67:36];
+                             register_rs[0] = la_data_in[35:4];
+                             register_rs_valid = la_data_in[3:2];
+                             result_ready = la_data_in[1];
+                        
+                        
+                         end else begin
+                             la_data_out[39] = issue_ready;
+                             la_data_out[38] = issue_resp_accept;
+                             la_data_out[37] = issue_resp_writeback;
+                             la_data_out[36:35] = issue_resp_register_read;
+                             la_data_out[34] = register_ready;
+                             la_data_out[33] = result_valid;
+                             la_data_out[32:1] = result_data;
+                         end
                     end
 
                     // eFPGA
