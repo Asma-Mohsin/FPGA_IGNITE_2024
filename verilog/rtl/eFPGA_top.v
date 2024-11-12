@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 module eFPGA_top #(
     parameter include_eFPGA = 1,
     parameter NumberOfRows = 6,
@@ -45,9 +45,10 @@ module eFPGA_top #(
     wire [FrameBitsPerRow-1:0] FrameAddressRegister;
     wire LongFrameStrobe;
     wire [31:0] LocalWriteData;
+    /* verilator lint_off WIDTHEXPAND */
     wire LocalWriteStrobe;
+    /* verilator lint_on WIDTHEXPAND */
     wire [RowSelectWidth-1:0] RowSelect;
-    wire resten;
 `ifndef EMULATION
 
     eFPGA_Config #(

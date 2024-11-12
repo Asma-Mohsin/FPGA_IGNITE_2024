@@ -1,9 +1,7 @@
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 // Project F: FPGA Graphics - Simple 640x480p60 Display
 // (C)2023 Will Green, open source hardware released under the MIT License
 // Learn more at https://projectf.io/posts/fpga-graphics/
-
-`timescale 1ns / 1ps
 
 module ppu (
     input wire clk,
@@ -87,8 +85,7 @@ module ppu (
             ring_index <= ring_index + 1;
             ring_line <= {ring_line[buffer_size-8 : 0], data_i};
             ack_i <= 1'b1;
-            // $display("ring_line[7:0]: %d
-", ring_line[7:0]);
+            // $display("ring_line[7:0]: %d ", ring_line[7:0]);
         end else begin
             ack_i <= 1'b0;
         end

@@ -1,5 +1,4 @@
-`timescale 1ns/1ps
-`timescale 1ns / 1ps
+`timescale 1ns / 1ps `timescale 1ns / 1ps
 
 
 module summer_school_top_wrapper #(
@@ -115,7 +114,7 @@ module summer_school_top_wrapper #(
     wire latch_config_strobe_inverted1;
     wire latch_config_strobe_inverted2;
 
-    wire [57:0] UIO_TOP_UOUT_PAD;
+    wire [58:0] UIO_TOP_UOUT_PAD;
     wire [139:0] UIO_BOT_UOUT_PAD;
 
     reg [114:0] UIO_BOT_UIN_PAD;
