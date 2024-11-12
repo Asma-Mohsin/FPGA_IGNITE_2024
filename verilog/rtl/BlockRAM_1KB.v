@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 module BlockRAM_1KB (
     clk,
     rd_addr,
@@ -92,7 +92,9 @@ module BlockRAM_1KB (
         .wmask0(mem_wr_mask),
         .addr0 (wr_addr[7:0]),
         .din0  (muxedDataIn),
+        /* verilator lint_off PINCONNECTEMPTY */
         .dout0 (),
+        /* verilator lint_on PINCONNECTEMPTY */
         .clk1  (clk),
         .csb1  (1'b0),
         .addr1 (rd_addr[7:0]),
