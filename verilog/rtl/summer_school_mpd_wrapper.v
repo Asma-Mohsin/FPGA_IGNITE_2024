@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps `timescale 1ns / 1ps
 
 
 module summer_school_top_wrapper #(
@@ -37,10 +38,15 @@ module summer_school_top_wrapper #(
     localparam [31:0] CONFIG_DATA_WB_ADDRESS = BASE_WB_ADDRESS;
     localparam [31:0] TO_FABRIC_IOS_WB_ADDRESS = BASE_WB_ADDRESS + 4;
 
+    // The Output enable input of the IO cell is inverted, so define parameters for increased readability
+    localparam OUTPUT_ENABLE = 1'b0;
+    localparam OUTPUT_DISABLE = 1'b1;
+
     // Fabric IOs
-    localparam RESETN_IO = 0;
-    localparam SELECT_MODULE_IO = 1;
-    localparam SEL_IO = 2;
+    localparam EXTERNAL_CLK_IO = 0;
+    localparam CLK_SEL_0_IO = 1;
+    localparam CLK_SEL_1_IO = 2;
+
     localparam S_CLK_IO = 3;
     localparam S_DATA_IO = 4;
     localparam EFPGA_UART_RX_IO = 5;
@@ -53,18 +59,19 @@ module summer_school_top_wrapper #(
     // NOTE:: This was introduced since the fabric was changed shortly before
     // the submission and with this all other pins can stay at their previous
     // location
-    localparam EFPGA_IO_PADDING = 1;
+    localparam EFPGA_IO_PADDING = 0;
+
+    localparam SELECT_MODULE_IO = EFPGA_IO_HIGHEST + 1 + EFPGA_IO_PADDING; // Select module IO is located after the eFPGA IOs
+    localparam SEL_IO = SELECT_MODULE_IO + 1;  // Sel is located after select module
 
     // VGA IOs
     localparam VGA_NUM_IOS = 8;
-    localparam VGA_IO_LOWEST = EFPGA_IO_HIGHEST + 1 + EFPGA_IO_PADDING;  // VGA is located after the eFPGA pins
+    localparam VGA_IO_LOWEST = SEL_IO + 1;  // VGA is located after the eFPGA pins
     localparam VGA_IO_HIGHEST = VGA_IO_LOWEST + VGA_NUM_IOS - 1;
 
-    // NOVACORE IOs
-    localparam NOVACORE_UART_RX_IO = VGA_IO_HIGHEST + 1; // NOVACORE UART is located after the VGA pins
-    localparam NOVACORE_UART_TX_IO = NOVACORE_UART_RX_IO + 1;
+    localparam RESETN_IO = VGA_IO_HIGHEST + 1;  // resetn is located after the VGA pins
+    localparam EXTERNAL_CLK_SHIFTED_IO = RESETN_IO + 1;  // shifted external clock is located after resetn
 
-    localparam CLK_SEL_IO = NOVACORE_UART_TX_IO + 1;
 
     wire [NUM_FABRIC_USER_IOS-1:0] I_top;
     wire [NUM_FABRIC_USER_IOS-1:0] T_top;
@@ -72,6 +79,8 @@ module summer_school_top_wrapper #(
 
     wire CLK;  // This clock can go to the CPU (connects to the fabric LUT output flops)
     wire resetn;
+    wire external_clock;
+    wire external_clock_shifted;
 
     // CPU configuration port
     wire SelfWriteStrobe;  // must decode address and write enable
@@ -95,7 +104,7 @@ module summer_school_top_wrapper #(
     wire select_module;
     wire sel;
 
-    wire clk_sel;
+    wire [1:0] clk_sel;
 
     // Latch for config_strobe
     reg latch_config_strobe = 0;
@@ -105,7 +114,7 @@ module summer_school_top_wrapper #(
     wire latch_config_strobe_inverted1;
     wire latch_config_strobe_inverted2;
 
-    wire [57:0] UIO_TOP_UOUT_PAD;
+    wire [58:0] UIO_TOP_UOUT_PAD;
     wire [139:0] UIO_BOT_UOUT_PAD;
 
     reg [114:0] UIO_BOT_UIN_PAD;
@@ -155,6 +164,7 @@ module summer_school_top_wrapper #(
     wire [31:0] result_data;  // Signal for result data (assuming 32-bit width)
 
     // POSIT coprocessor
+    (* blackbox *)
     cvxif_pau cvxif_pau_inst (
         .clk(CLK),
         .rst(!resetn),
@@ -208,7 +218,7 @@ module summer_school_top_wrapper #(
     );
 
     // Instantiate VGA Driver module
-    assign io_oeb[VGA_IO_HIGHEST:VGA_IO_LOWEST] = 8'b00000000;
+    assign io_oeb[VGA_IO_HIGHEST:VGA_IO_LOWEST] = {8{OUTPUT_ENABLE}};
     assign io_out[VGA_IO_HIGHEST:VGA_IO_LOWEST] = {vga_r, vga_g, vga_b, hsync, vsync};
 
     vga_driver vga_driver_inst (
@@ -225,18 +235,22 @@ module summer_school_top_wrapper #(
         .de     ()          //simulation signals
     );
 
-    //NOVACORE -- a dummy module 
-
-    assign io_oeb[NOVACORE_UART_TX_IO] = 1'b0;
-    assign io_oeb[NOVACORE_UART_RX_IO] = 1'b1;
-    toplevel nova_core (
-        .system_clk(CLK),
-        .system_clk_locked(),  // NOTE: Participant told to leave this unused
-        .reset_n(resetn),
-        .uart0_txd(io_out[NOVACORE_UART_TX_IO]),
-        .uart0_rxd(io_in[NOVACORE_UART_RX_IO])
-    );
-
+    // piso piso_inst (
+    //     .clk1(CLK),
+    //     .clk2(external_clock_shifted),
+    //     .rst(!resetn),
+    //     .load(),
+    //     .parallel_in(),
+    //     .serial_out()
+    // );
+    //
+    // posi posi_inst (
+    //     .clk1(CLK),
+    //     .clk2(external_clock_shifted),
+    //     .rst(!resetn),
+    //     .serial_in(),
+    //     .parallel_out()
+    // );
 
     // Module Select
     always @(*) begin
@@ -260,8 +274,8 @@ module summer_school_top_wrapper #(
 
                     // Logic Analyzer
                     1'b1: begin
-                        if (la_oenb[7:0]) en = la_data_in[8];
-                        else la_data_out[7:0] <= d_out;
+                        en = la_data_in[8];
+                        la_data_out[7:0] <= d_out;
 
                     end
 
@@ -282,25 +296,25 @@ module summer_school_top_wrapper #(
                     // LA
                     1'b1: begin
                         //inputs
-                        if (la_oenb[101:1]) begin
-                            issue_req_instr = la_data_in[101:70];
-                            issue_valid = la_data_in[69];
-                            register_valid = la_data_in[68];
-                            register_rs[1] = la_data_in[67:36];
-                            register_rs[0] = la_data_in[35:4];
-                            register_rs_valid = la_data_in[3:2];
-                            result_ready = la_data_in[1];
-
-
-                        end else begin
-                            la_data_out[39] = issue_ready;
-                            la_data_out[38] = issue_resp_accept;
-                            la_data_out[37] = issue_resp_writeback;
-                            la_data_out[36:35] = issue_resp_register_read;
-                            la_data_out[34] = register_ready;
-                            la_data_out[33] = result_valid;
-                            la_data_out[32:1] = result_data;
-                        end
+                        // if (la_oenb[101:1]) begin
+                        //     issue_req_instr = la_data_in[101:70];
+                        //     issue_valid = la_data_in[69];
+                        //     register_valid = la_data_in[68];
+                        //     register_rs[1] = la_data_in[67:36];
+                        //     register_rs[0] = la_data_in[35:4];
+                        //     register_rs_valid = la_data_in[3:2];
+                        //     result_ready = la_data_in[1];
+                        //
+                        //
+                        // end else begin
+                        //     la_data_out[39] = issue_ready;
+                        //     la_data_out[38] = issue_resp_accept;
+                        //     la_data_out[37] = issue_resp_writeback;
+                        //     la_data_out[36:35] = issue_resp_register_read;
+                        //     la_data_out[34] = register_ready;
+                        //     la_data_out[33] = result_valid;
+                        //     la_data_out[32:1] = result_data;
+                        // end
                     end
 
                     // eFPGA
@@ -388,34 +402,45 @@ module summer_school_top_wrapper #(
             wbs_ack_o <= (wbs_stb_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS));
     end
 
-    assign resetn = io_in[RESETN_IO];
-    assign select_module = io_in[SELECT_MODULE_IO];
-    assign sel = io_in[SEL_IO];
+    assign external_clock = io_in[EXTERNAL_CLK_IO];
+    assign clk_sel = {io_in[CLK_SEL_0_IO], io_in[CLK_SEL_1_IO]};
     assign s_clk = io_in[S_CLK_IO];
     assign s_data = io_in[S_DATA_IO];
     assign efpga_uart_rx = io_in[EFPGA_UART_RX_IO];
     assign io_out[RECEIVE_LED_IO] = ReceiveLED;
-    assign clk_sel = io_in[CLK_SEL_IO];
 
-    assign io_oeb[RESETN_IO] = 1'b1;
-    assign io_oeb[SELECT_MODULE_IO] = 1'b1;
-    assign io_oeb[SEL_IO] = 1'b1;
-    assign io_oeb[S_CLK_IO] = 1'b1;
-    assign io_oeb[S_DATA_IO] = 1'b1;
-    assign io_oeb[EFPGA_UART_RX_IO] = 1'b1;
-    assign io_oeb[RECEIVE_LED_IO] = 1'b0;  // The only output of the fabric IOs
-    assign io_oeb[CLK_SEL_IO] = 1'b1;
+    assign select_module = io_in[SELECT_MODULE_IO];
+    assign sel = io_in[SEL_IO];
+
+    assign resetn = io_in[RESETN_IO];
+    assign external_clock_shifted = io_in[EXTERNAL_CLK_SHIFTED_IO];
+
+    assign io_oeb[EXTERNAL_CLK_IO] = OUTPUT_DISABLE;
+    assign io_oeb[CLK_SEL_0_IO] = OUTPUT_DISABLE;
+    assign io_oeb[CLK_SEL_1_IO] = OUTPUT_DISABLE;
+    assign io_oeb[S_CLK_IO] = OUTPUT_DISABLE;
+    assign io_oeb[S_DATA_IO] = OUTPUT_DISABLE;
+    assign io_oeb[EFPGA_UART_RX_IO] = OUTPUT_ENABLE;
+    assign io_oeb[RECEIVE_LED_IO] = OUTPUT_DISABLE;  // The only fabric IO output
+
+    assign io_oeb[SELECT_MODULE_IO] = OUTPUT_DISABLE;
+    assign io_oeb[SEL_IO] = OUTPUT_DISABLE;
+
+    assign io_oeb[RESETN_IO] = OUTPUT_DISABLE;
+    assign io_oeb[EXTERNAL_CLK_SHIFTED_IO] = OUTPUT_DISABLE;
 
 
+    // Config signals
     assign SelfWriteStrobe = config_strobe;
     assign SelfWriteData = config_data;
 
+    // Debug signals
     assign la_data_out[103:102] = {ReceiveLED, efpga_uart_rx};
 
+    // eFPGA external IOs
     assign O_top[EFPGA_USED_NUM_IOS-1:0] = io_in[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST];
     assign io_out[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST] = I_top[EFPGA_USED_NUM_IOS-1:0];
     assign io_oeb[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST] = T_top[EFPGA_USED_NUM_IOS-1:0];
 
-    assign CLK = clk_sel ? wb_clk_i : user_clock2;
+    assign CLK = clk_sel[CLK_SEL_0_IO] ? (clk_sel[CLK_SEL_1_IO] ? user_clock2 : wb_clk_i) : external_clock;
 endmodule
-

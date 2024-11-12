@@ -3,7 +3,14 @@
     "DESIGN_IS_CORE": 0,
     "VERILOG_FILES": [
         "dir::../../verilog/rtl/defines.v",
-        "dir::../../verilog/rtl/*.v"
+        "dir::../../verilog/rtl/*.v",
+        "dir::../../verilog/rtl/Tile/N_term_single/*.v",
+        "dir::../../verilog/rtl/Tile/N_term_RAM_IO/*.v",
+        "dir::../../verilog/rtl/Tile/LUT4AB/*.v",
+        "dir::../../verilog/rtl/Tile/RAM_IO/*.v",
+        "dir::../../verilog/rtl/Tile/S_term_single/*.v",
+        "dir::../../verilog/rtl/Tile/S_term_RAM_IO/*.v",
+        "dir::../../verilog/rtl/Tile/W_IO/*.v"
     ],
     "CLOCK_PERIOD": 40,
     "CLOCK_PORT": "wb_clk_i",
@@ -12,13 +19,11 @@
     "DIE_AREA": "0 0 2900 3500",   
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg", 
      
+    "VERILOG_FILES_BLACKBOX": "dir::../../verilog/rtl/cvxif_pau.v",
 
 
     "FP_PDN_MACRO_HOOKS": "ppu_inst vccd1 vssd1 vccd1 vssd1",
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg", 
-    "VERILOG_FILES_BLACKBOX": [
-        "dir::../../verilog/gl/cvxif_pau.v"
-    ],
     "EXTRA_LEFS": "dir::../../lef/cvxif_pau.lef",
     "EXTRA_GDS_FILES": "dir::../../gds/cvxif_pau.gds",
     "EXTRA_LIBS": "dir::../../lib/cvxif_pau.lib",

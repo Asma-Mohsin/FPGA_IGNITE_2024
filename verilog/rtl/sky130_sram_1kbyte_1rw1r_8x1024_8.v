@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 // OpenRAM SRAM model
 // Words: 1024
 // Word size: 8

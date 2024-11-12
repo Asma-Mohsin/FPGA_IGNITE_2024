@@ -1,9 +1,0 @@
-CARAVEL_ROOT: /home/user/Desktop/FPGA_IGNITE_2024//caravel
-MCW_ROOT: /home/user/Desktop/FPGA_IGNITE_2024//mgmt_core_wrapper
-PDK: sky130A
-PDK_ROOT: /home/user/Desktop/FPGA_IGNITE_2024//dependencies/pdks
-USER_PROJECT_ROOT: /home/user/Desktop/FPGA_IGNITE_2024
-caravan: false
-clk: 25
-emailto:
-- null

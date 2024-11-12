@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module toplevel ( input reset_n,
                input uart0_rxd,
                input system_clk,

@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module ConfigFSM (
     CLK,
     resetn,
@@ -101,4 +102,3 @@ module ConfigFSM (
     end  //CLK
 
 endmodule
-

@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module N_term_single_ConfigMem
     #(
 `ifdef EMULATION

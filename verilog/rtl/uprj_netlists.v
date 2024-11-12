@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 // SPDX-FileCopyrightText: 2020 Efabless Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
