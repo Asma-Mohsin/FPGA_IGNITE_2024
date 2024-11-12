@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module flexbex_soc_top #(
 ) (
     //Config related ports
@@ -18,7 +19,7 @@ module flexbex_soc_top #(
     input [11:0] O_top,
     output [11:0] T_top,
     // eFPGA user interface padding ports
-    output [57:0] UIO_TOP_UOUT_PAD,
+    output [58:0] UIO_TOP_UOUT_PAD,
     input [13:0] UIO_TOP_UIN_PAD,
     output [139:0] UIO_BOT_UOUT_PAD,
     input [113:0] UIO_BOT_UIN_PAD
@@ -78,6 +79,8 @@ module flexbex_soc_top #(
     wire cx_resp_state_i;
     // ------------------- 38 inputs
 
+    // Set to constant 1 to keep the data valid
+    assign mem_data_rvalid_i = 1'b1;
 
     assign UIO_TOP_UOUT = {  //140 bits ibex inputs <-> eFPGA outputs
             UIO_TOP_UOUT_PAD,
@@ -90,11 +93,11 @@ module flexbex_soc_top #(
             cx_resp_status_i,  // 4 bits
             cx_resp_data_i,  // 32 bits
             mem_data_gnt_i,  // 1 bit ??? not sure
-            mem_data_rvalid_i,  // 1 bit ??? not sure
+            // mem_data_rvalid_i,  // 1 bit ??? not sure
             mem_instr_gnt_i,  // 1 bit
             mem_instr_rvalid_i,  // 1 bit
             mem_instr_rdata_i  //32 bits
-        };  //80
+        };  //79
 
     assign UIO_TOP_UIN = {  //140 bits ibex outputs <-> eFPGA inputs
             UIO_TOP_UIN_PAD,
