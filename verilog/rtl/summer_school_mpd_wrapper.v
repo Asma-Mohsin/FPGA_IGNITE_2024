@@ -154,6 +154,7 @@ module summer_school_top_wrapper #(
     reg [31:0] register_rs[1:0];  // Signal for register sources (2 bits)
     reg [1:0] register_rs_valid;  // Signal for register sources validity
     reg result_ready;  // Signal for result readiness
+    reg [31:0] register_rs_shared_input;  // Shared input signal for register sources 
 
     wire issue_ready;  // Signal for issue readiness
     wire issue_resp_accept;  // Signal for issue response accept
@@ -235,28 +236,11 @@ module summer_school_top_wrapper #(
         .de     ()          //simulation signals
     );
 
-    // piso piso_inst (
-    //     .clk1(CLK),
-    //     .clk2(external_clock_shifted),
-    //     .rst(!resetn),
-    //     .load(),
-    //     .parallel_in(),
-    //     .serial_out()
-    // );
-    //
-    // posi posi_inst (
-    //     .clk1(CLK),
-    //     .clk2(external_clock_shifted),
-    //     .rst(!resetn),
-    //     .serial_in(),
-    //     .parallel_out()
-    // );
-
     // Module Select
     always @(*) begin
-        la_data_out = 128'b0;
+        la_data_out[125:0] = 126'b0;
         en = 1'b0;
-        UIO_BOT_UIN_PAD = 114'b0;
+        UIO_BOT_UIN_PAD[114:1] = 114'b0;
         issue_req_instr = 32'b0;
         issue_valid = 1'b0;
         register_valid = 1'b0;
@@ -300,7 +284,7 @@ module summer_school_top_wrapper #(
                              issue_req_instr = la_data_in[101:70];
                              issue_valid = la_data_in[69];
                              register_valid = la_data_in[68];
-                             register_rs[1] = la_data_in[67:36];
+			     register_rs[1] = la_data_in[67:36];
                              register_rs[0] = la_data_in[35:4];
                              register_rs_valid = la_data_in[3:2];
                              result_ready = la_data_in[1];
@@ -435,7 +419,7 @@ module summer_school_top_wrapper #(
     assign SelfWriteData = config_data;
 
     // Debug signals
-    assign la_data_out[103:102] = {ReceiveLED, efpga_uart_rx};
+    assign la_data_out[127:126] = {ReceiveLED, efpga_uart_rx};
 
     // eFPGA external IOs
     assign O_top[EFPGA_USED_NUM_IOS-1:0] = io_in[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST];
