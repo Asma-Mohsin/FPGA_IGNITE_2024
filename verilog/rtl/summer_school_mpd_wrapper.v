@@ -328,6 +328,7 @@ module summer_school_top_wrapper #(
         endcase
     end
 
+    assign wbs_sta_o = 0;
 
     always @(*) begin
         if (config_strobe_reg2) begin
@@ -354,7 +355,7 @@ module summer_school_top_wrapper #(
         .A(latch_config_strobe_inverted1)
     );
 
-    always @(posedge CLK) begin
+    always @(posedge CLK or negedge resetn) begin
         if (!resetn) begin
             config_strobe_reg1 <= 0;
             config_strobe_reg2 <= 0;
