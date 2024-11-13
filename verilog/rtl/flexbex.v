@@ -3,6 +3,14 @@
 
 /* verilator lint_off WIDTHEXPAND */
 /* verilator lint_off ASCRANGE */
+/* verilator lint_off PINCONNECTEMPTY */
+/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNDRIVEN */
+/* verilator lint_off CASEINCOMPLETE */
+/* verilator lint_off COMBDLY */
+/* verilator lint_off LATCH */
+/* verilator lint_off UNOPTFLAT */
+
 module ibex_alu (
     operator_i,
     operand_a_i,
@@ -2064,7 +2072,7 @@ module ibex_eFPGA (
     input wire [3:0] delay_i;
     reg [1:0] eFPGA_fsm_r;
     reg [3:0] count;
-    always @(posedge clk)
+    always @(posedge clk or negedge rst_n)
         if (!rst_n) begin
             eFPGA_fsm_r <= 2'd0;
             count <= 0;
@@ -4093,3 +4101,10 @@ module prim_clock_gating (
 endmodule
 /* verilator lint_on WIDTHEXPAND */
 /* verilator lint_on ASCRANGE */
+/* verilator lint_on PINCONNECTEMPTY */
+/* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNDRIVEN */
+/* verilator lint_on CASEINCOMPLETE */
+/* verilator lint_on COMBDLY */
+/* verilator lint_on LATCH */
+/* verilator lint_on UNOPTFLAT */
