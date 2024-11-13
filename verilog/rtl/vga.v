@@ -34,7 +34,7 @@ reg [9:0] sy;
 reg frame_alternate;
 
 // calculate horizontal and vertical screen position
-always @(posedge clk or negedge rst) begin
+always @(posedge clk) begin
 	if ( (rst==1'b0) || (sync==1) ) begin
 		sx <= 0;
 		sy <= 0;
@@ -56,7 +56,7 @@ end
 
 reg [7:0] frame_counter;
 reg [9:0] pattern_counter; // pattern shift counter
-always @(posedge frame_alternate or negedge rst) begin
+always @(posedge frame_alternate) begin
 	if (!rst) begin
 		frame_counter <= 0;
 	end else begin
@@ -73,7 +73,7 @@ end
 
 
 //input handshake, read in
-always @(posedge clk or negedge rst) begin
+always @(posedge clk) begin
 	if (!rst) begin
 		ring_line[255:0] <= {256{1'b0}};
 		ring_index <= 0;
@@ -230,7 +230,7 @@ module vga_driver (
     end
 
     // calculate horizontal and vertical screen position
-    always @(posedge clk_pix or negedge rst_pix) begin
+    always @(posedge clk_pix) begin
         if ( rst_pix==1'b0 || (wb_data[1:0] == 2'b11)) begin
             sx <= 0;
             sy <= 0;
