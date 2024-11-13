@@ -14,3 +14,4 @@
 /logs
 /venv-cocotb
 /verilog/dv/cocotb/design_info.yaml
+*.swp
