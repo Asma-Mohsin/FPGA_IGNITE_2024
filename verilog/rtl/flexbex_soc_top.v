@@ -22,7 +22,7 @@ module flexbex_soc_top #(
     output [58:0] UIO_TOP_UOUT_PAD,
     input [13:0] UIO_TOP_UIN_PAD,
     output [139:0] UIO_BOT_UOUT_PAD,
-    input [113:0] UIO_BOT_UIN_PAD
+    input [114:0] UIO_BOT_UIN_PAD
 );
     wire [139:0] UIO_BOT_UIN;
     wire [139:0] UIO_BOT_UOUT;
@@ -74,15 +74,13 @@ module flexbex_soc_top #(
     wire cx_req_valid_o;
     // ------------------- 131 outputs - 59 not connected = 72 outputs
     wire [31:0] cx_resp_data_i;
-    wire [3:0] cx_resp_status_i;
-    wire cx_resp_valid_i;
-    wire cx_resp_state_i;
+    wire [3:0] cx_resp_state_i;
     // ------------------- 38 inputs
 
     // Set to constant 1 to keep the data valid
     assign mem_data_rvalid_i = 1'b1;
 
-    assign UIO_TOP_UOUT = {  //140 bits ibex inputs <-> eFPGA outputs
+    assign {  //140 bits ibex inputs <-> eFPGA outputs
             UIO_TOP_UOUT_PAD,
             ibex_debug_req_i,  // 1 bit
             ibex_fetch_enable_i,  // 1 bit
@@ -97,7 +95,7 @@ module flexbex_soc_top #(
             mem_instr_gnt_i,  // 1 bit
             mem_instr_rvalid_i,  // 1 bit
             mem_instr_rdata_i  //32 bits
-        };  //79
+        } = UIO_TOP_UOUT;  //79
 
     assign UIO_TOP_UIN = {  //140 bits ibex outputs <-> eFPGA inputs
             UIO_TOP_UIN_PAD,
@@ -117,7 +115,7 @@ module flexbex_soc_top #(
             mem_instr_addr_o  // 12 bits
         };  //126
 
-    assign UIO_BOT_UOUT = UIO_BOT_UOUT_PAD;
+    assign UIO_BOT_UOUT_PAD = UIO_BOT_UOUT;
 
     // cx_func_o needs to go to bottom. since there is no space left in
     // top user inputs
@@ -127,7 +125,7 @@ module flexbex_soc_top #(
 
     // we only conncect DATA memory to this 1kb ram block
     // instruction memory is connected to the fabric
-    sram_1rw1r_32_256_8_sky130 data_mem_i (
+    sky130_sram_1kbyte_1rw1r_32x256_8 data_mem_i (
         // read write port
         .clk0(clk),
         .csb0(~mem_data_req_o),  // chip select active low
@@ -218,49 +216,4 @@ module flexbex_soc_top #(
 
     );
 
-endmodule
-
-// just copied from BlockRAM_1KB.v
-(* blackbox *)
-module sram_1rw1r_32_256_8_sky130 (
-    //`ifdef USE_POWER_PINS
-    //	vdd,
-    //	gnd,
-    //`endif
-    // Port 0: RW
-    clk0,
-    csb0,
-    web0,
-    wmask0,
-    addr0,
-    din0,
-    dout0,
-    // Port 1: R
-    clk1,
-    csb1,
-    addr1,
-    dout1
-);
-
-    parameter NUM_WMASKS = 4;
-    parameter DATA_WIDTH = 32;
-    parameter ADDR_WIDTH = 8;
-    parameter RAM_DEPTH = 1 << ADDR_WIDTH;
-    // FIXME: This delay is arbitrary.
-    parameter DELAY = 3;
-    //`ifdef USE_POWER_PINS
-    // inout vdd;
-    // inout gnd;
-    //`endif
-    input clk0;  // clock
-    input csb0;  // active low chip select
-    input web0;  // active low write control
-    input [NUM_WMASKS-1:0] wmask0;  // write mask
-    input [ADDR_WIDTH-1:0] addr0;
-    input [DATA_WIDTH-1:0] din0;
-    output [DATA_WIDTH-1:0] dout0;
-    input clk1;  // clock
-    input csb1;  // active low chip select
-    input [ADDR_WIDTH-1:0] addr1;
-    output [DATA_WIDTH-1:0] dout1;
 endmodule
