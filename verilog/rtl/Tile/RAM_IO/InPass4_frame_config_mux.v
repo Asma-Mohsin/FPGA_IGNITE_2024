@@ -1,3 +1,4 @@
+/// sta-blackbox
 `timescale 1ns/1ps
 // Copyright 2021 University of Manchester
 //

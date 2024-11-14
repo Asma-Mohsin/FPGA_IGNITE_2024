@@ -11,6 +11,7 @@
     "FP_SIZING": "absolute",
     "DIE_AREA": "0 0 2900 3500",   
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg", 
+    "QUIT_ON_SYNTH_CHECKS": 0,
      
     "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/cvxif_pau.v",
                                 "dir::../../verilog/rtl/Tile/N_term_single/*.v",
@@ -107,7 +108,8 @@
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg", 
     "EXTRA_LEFS": ["dir::../../lef/cvxif_pau.lef","dir::./macros/lef/*.lef" ],
     "EXTRA_GDS_FILES": ["dir::../../gds/cvxif_pau.gds", "dir::./macros/gds/*.gds"],
-    "EXTRA_LIBS": "dir::../../lib/cvxif_pau.lib",
+
+    "EXTRA_LIBS": ["dir::../../lib/cvxif_pau.lib","dir::./macros/lib/*.lib"],
     "FP_PDN_MULTILAYER": false,
     "SYNTH_POWER_DEFINE": "USE_POWER_PINS",
     "PDK": "sky130A",

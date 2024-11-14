@@ -1,3 +1,4 @@
+/// sta-blackbox
 `timescale 1ns/1ps
 module S_term_single
     #(

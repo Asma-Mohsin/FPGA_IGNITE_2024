@@ -1,3 +1,4 @@
+/// sta-blackbox
 `timescale 1ns/1ps
  // NumberOfConfigBits: 0
 module N_term_RAM_IO_switch_matrix
