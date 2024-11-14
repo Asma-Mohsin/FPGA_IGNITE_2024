@@ -46,6 +46,8 @@ module summer_school_top_wrapper #(
     localparam EXTERNAL_CLK_IO = 0;
     localparam CLK_SEL_0_IO = 1;
     localparam CLK_SEL_1_IO = 2;
+    localparam CLK_SEL_0 = 0;
+    localparam CLK_SEL_1 = 1;
 
     localparam S_CLK_IO = 3;
     localparam S_DATA_IO = 4;
@@ -427,5 +429,5 @@ module summer_school_top_wrapper #(
     assign io_out[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST] = I_top[EFPGA_USED_NUM_IOS-1:0];
     assign io_oeb[EFPGA_IO_HIGHEST:EFPGA_IO_LOWEST] = T_top[EFPGA_USED_NUM_IOS-1:0];
 
-    assign CLK = clk_sel[CLK_SEL_0_IO] ? (clk_sel[CLK_SEL_1_IO] ? user_clock2 : wb_clk_i) : external_clock;
+    assign CLK = clk_sel[CLK_SEL_0] ? (clk_sel[CLK_SEL_1] ? user_clock2 : wb_clk_i) : external_clock;
 endmodule

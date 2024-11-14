@@ -12,9 +12,9 @@ module flexbex_soc_top #(
     input s_clk,
     input s_data,
     //efpga_top related ports
-    output [31:0] A_config_C,
-    output [31:0] B_config_C,
-    output [31:0] Config_accessC,
+    output [23:0] A_config_C,
+    output [23:0] B_config_C,
+    output [23:0] Config_accessC,
     output [11:0] I_top,
     input [11:0] O_top,
     output [11:0] T_top,
@@ -44,7 +44,7 @@ module flexbex_soc_top #(
     wire mem_instr_gnt_i;
     wire mem_instr_rvalid_i;
     // just 12 bits are used, since the memory macro just supports 12 bits
-    wire [11:0] mem_instr_addr_o;
+    wire [31:0] mem_instr_addr_o;
     wire mem_instr_gnt_o;
     wire mem_instr_req_o;
     // ------------------- 34 inputs / 14 outputs
@@ -55,7 +55,7 @@ module flexbex_soc_top #(
     wire mem_data_rvalid_i;
     wire [31:0] mem_data_wdata_o;
     // just 12 bits are used, since the memory macro just supports 12 bits
-    wire [11:0] mem_data_addr_o;
+    wire [31:0] mem_data_addr_o;
     wire [3:0] mem_data_be_o;
     wire mem_data_req_o;
     wire mem_data_we_o;
@@ -74,8 +74,9 @@ module flexbex_soc_top #(
     wire cx_req_valid_o;
     // ------------------- 131 outputs - 59 not connected = 72 outputs
     wire [31:0] cx_resp_data_i;
-    wire [3:0] cx_resp_state_i;
+    wire cx_resp_state_i;
     // ------------------- 38 inputs
+    wire [3:0] cx_resp_status_i;
 
     // Set to constant 1 to keep the data valid
     assign mem_data_rvalid_i = 1'b1;
@@ -131,7 +132,7 @@ module flexbex_soc_top #(
         .csb0(~mem_data_req_o),  // chip select active low
         .web0(~mem_data_we_o),  // active low write control
         .wmask0(mem_data_be_o),  // write mask
-        .addr0(mem_data_addr_o),  // write address
+        .addr0(mem_data_addr_o[7:0]),  // write address
         .din0(mem_data_wdata_o),  // write data
         .dout0(mem_data_rdata_i),  // read data 0
         // read only port:

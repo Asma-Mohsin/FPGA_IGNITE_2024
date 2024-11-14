@@ -16,7 +16,7 @@
 //Library UNISIM;
 //use UNISIM.vcomponents.all;
 
-
+///	sta-blackbox
 module IO_1_bidirectional_frame_config_pass (I, T, O, Q, I_top, T_top, O_top, UserCLK);//, ConfigBits);
 	//parameter NoConfigBits = 0; // has to be adjusted manually (we don't use an arithmetic parser for the value)
 	// Pin0
