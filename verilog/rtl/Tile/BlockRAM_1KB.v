@@ -1,3 +1,6 @@
+(* blackbox *)
+/// sta-blackbox
+`timescale 1ns/1ps
 module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4, C5);
 
 	parameter READ_ADDRESS_MSB_FROM_DATALSB = 24; //default 24 means bits wr_data[25:24] will become bits [9:8] of read address

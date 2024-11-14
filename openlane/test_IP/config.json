@@ -104,9 +104,9 @@
 "flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y7_S_term_single  vccd1 vssd1 vccd1 vssd1",
 "flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y7_S_term_RAM_IO   vccd1 vssd1 vccd1 vssd1",
 
-"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_2 vccd1 vssd1 vccd1 vssd1",
+"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_0 vccd1 vssd1 vccd1 vssd1",
 "flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_1 vccd1 vssd1 vccd1 vssd1",
-"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_0 vccd1 vssd1 vccd1 vssd1"],
+"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_2 vccd1 vssd1 vccd1 vssd1"],
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg", 
     "EXTRA_LEFS": ["dir::../../lef/cvxif_pau.lef","dir::./macros/lef/*.lef" ],
     "EXTRA_GDS_FILES": ["dir::../../gds/cvxif_pau.gds", "dir::./macros/gds/*.gds"],
