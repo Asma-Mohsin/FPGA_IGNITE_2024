@@ -20,10 +20,11 @@
                                  "dir::../../verilog/rtl/Tile/RAM_IO/*.v",
                                 "dir::../../verilog/rtl/Tile/S_term_single/*.v",
                                  "dir::../../verilog/rtl/Tile/S_term_RAM_IO/*.v",
-                                  "dir::../../verilog/rtl/Tile/W_IO/*.v"],
+                                  "dir::../../verilog/rtl/Tile/W_IO/*.v",
+                                "dir::../../verilog/rtl/Tile/*.v"],
     "VERBOSE": 0,
 
-    "FP_PDN_MACRO_HOOKS": ["ppu_inst vccd1 vssd1 vccd1 vssd1",
+    "FP_PDN_MACRO_HOOKS": ["cvxif_pau_inst  vccd1 vssd1 vccd1 vssd1",
                             "flexbex_eFPGA.data_mem_i vccd1 vssd1 vccd1 vssd1",
                             "flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y0_N_term_single  vccd1 vssd1 vccd1 vssd1",
 "flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y0_N_term_single  vccd1 vssd1 vccd1 vssd1",
