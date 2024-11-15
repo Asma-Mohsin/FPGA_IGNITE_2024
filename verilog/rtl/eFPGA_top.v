@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+/* verilator lint_off UNOPTFLAT */
 module eFPGA_top #(
     parameter include_eFPGA = 1,
     parameter NumberOfRows = 6,
@@ -1225,3 +1226,4 @@ module eFPGA_top #(
 
     assign FrameData = {32'h12345678, FrameRegister, 32'h12345678};
 endmodule
+/* verilator lint_off UNOPTFLAT */

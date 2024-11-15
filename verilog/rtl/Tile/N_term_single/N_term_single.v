@@ -1,4 +1,5 @@
  ///  sta-blackbox
+/* verilator lint_off UNOPTFLAT */
 `timescale 1ns/1ps
 module N_term_single
     #(
@@ -113,8 +114,10 @@ wire UIO_TOP_FOUT8;
 wire UIO_TOP_FOUT9;
  //Jump wires
  //internal configuration data signal to daisy-chain all BELs (if any and in the order they are listed in the fabric.csv)
+/* verilator lint_off ASCRANGE */
 wire[NoConfigBits-1:0] ConfigBits;
 wire[NoConfigBits-1:0] ConfigBits_N;
+/* verilator lint_on ASCRANGE */
 
  //Connection for outgoing wires
 wire[FrameBitsPerRow-1:0] FrameData_i;
@@ -563,3 +566,4 @@ N_term_single_switch_matrix Inst_N_term_single_switch_matrix (
 );
 
 endmodule
+/* verilator lint_on UNOPTFLAT */

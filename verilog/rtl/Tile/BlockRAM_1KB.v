@@ -75,6 +75,7 @@ module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4
     end
     wire [31:0] mem_dout;
     //dout0 is unused
+/* verilator lint_off PINCONNECTEMPTY */
     sram_1rw1r_32_256_8_sky130 memory_cell(
     .clk0(clk),
     .csb0(memWriteEnable),
@@ -82,12 +83,13 @@ module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4
     .wmask0(mem_wr_mask),
     .addr0(wr_addr[7:0]),
     .din0(muxedDataIn),
-    .dout0(),
+    .dout0(), //unused
     .clk1(clk),
     .csb1(1'b0),
     .addr1(rd_addr[7:0]),
     .dout1(mem_dout)
     );
+/* verilator lint_on PINCONNECTEMPTY */
     reg [1:0] rd_dout_sel;
     always @ (posedge clk) begin
         rd_dout_sel <= wr_data[READ_ADDRESS_MSB_FROM_DATALSB+1:READ_ADDRESS_MSB_FROM_DATALSB];
@@ -165,3 +167,4 @@ module sram_1rw1r_32_256_8_sky130(
   input [ADDR_WIDTH-1:0]  addr1;
   output [DATA_WIDTH-1:0] dout1;
 endmodule
+

@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+
+/* verilator lint_off UNOPTFLAT */
 module flexbex_soc_top #(
 ) (
     //Config related ports
@@ -20,7 +22,7 @@ module flexbex_soc_top #(
     output [11:0] T_top,
     // eFPGA user interface padding ports
     output [58:0] UIO_TOP_UOUT_PAD,
-    input [13:0] UIO_TOP_UIN_PAD,
+    input [16:0] UIO_TOP_UIN_PAD,
     output [139:0] UIO_BOT_UOUT_PAD,
     input [114:0] UIO_BOT_UIN_PAD
 );
@@ -43,9 +45,10 @@ module flexbex_soc_top #(
     wire [31:0] mem_instr_rdata_i;
     wire mem_instr_gnt_i;
     wire mem_instr_rvalid_i;
-    // just 12 bits are used, since the memory macro just supports 12 bits
+    // 32 bits but just 12 bits are used, since the memory macro just supports 12 bits
+    /* verilator lint_off UNUSEDSIGNAL */
     wire [31:0] mem_instr_addr_o;
-    wire mem_instr_gnt_o;
+    /* verilator lint_on UNUSEDSIGNAL */
     wire mem_instr_req_o;
     // ------------------- 34 inputs / 14 outputs
 
@@ -55,7 +58,9 @@ module flexbex_soc_top #(
     wire mem_data_rvalid_i;
     wire [31:0] mem_data_wdata_o;
     // just 12 bits are used, since the memory macro just supports 12 bits
+    /* verilator lint_off UNUSEDSIGNAL */
     wire [31:0] mem_data_addr_o;
+    /* verilator lint_on UNUSEDSIGNAL */
     wire [3:0] mem_data_be_o;
     wire mem_data_req_o;
     wire mem_data_we_o;
@@ -67,9 +72,9 @@ module flexbex_soc_top #(
     wire [31:0] cx_insn_o;
     wire [24:0] cx_func_o;
     wire [1:0] cx_virt_state_id_o;
-    wire [1:0] cx_id_o;
     wire [1:0] cx_cxu_id_o;
     wire [1:0] cx_state_id_o;
+    wire cx_resp_valid_i;  // 1 bit
     wire cx_rst_o;
     wire cx_req_valid_o;
     // ------------------- 131 outputs - 59 not connected = 72 outputs
@@ -104,7 +109,6 @@ module flexbex_soc_top #(
             ibex_irq_id_o,  // 5 bits
             cx_rst_o,  // 1 bit
             cx_virt_state_id_o,  // 2 bits
-            cx_id_o,  // 2
             cx_cxu_id_o,  // 2 bits
             cx_state_id_o,  // 2 bits
             cx_req_valid_o,  // 1 bit
@@ -112,8 +116,7 @@ module flexbex_soc_top #(
             cx_req_data1_o,  // 32 bits
             cx_req_data0_o,  // 32 bits
             mem_instr_req_o,  // 1 bit
-            mem_instr_gnt_o,  // 1 bit
-            mem_instr_addr_o  // 12 bits
+            mem_instr_addr_o[11:0]  // has 32 bits but our ram only supports 12 bit addressing
         };  //126
 
     assign UIO_BOT_UOUT_PAD = UIO_BOT_UOUT;
@@ -126,6 +129,7 @@ module flexbex_soc_top #(
 
     // we only conncect DATA memory to this 1kb ram block
     // instruction memory is connected to the fabric
+    /* verilator lint_off PINCONNECTEMPTY */
     sky130_sram_1kbyte_1rw1r_32x256_8 data_mem_i (
         // read write port
         .clk0(clk),
@@ -141,6 +145,7 @@ module flexbex_soc_top #(
         .addr1(  /*instr_addr_i*/),  //read address
         .dout1(  /*instr_rdata_o*/)  // read data 1
     );
+    /* verilator lint_on PINCONNECTEMPTY */
 
     ibex_core ibex_i (
         .clk_i (clk),    //
@@ -174,7 +179,9 @@ module flexbex_soc_top #(
 
         .debug_req_i(ibex_debug_req_i),
 
+        /* verilator lint_off PINCONNECTEMPTY */
         .cx_clk(),  // not connected since we are using global clock
+        /* verilator lint_on PINCONNECTEMPTY */
         .cx_rst(cx_rst_o),
         .cx_req_valid(cx_req_valid_o),
         .cx_cxu_id(cx_cxu_id_o),
@@ -186,7 +193,6 @@ module flexbex_soc_top #(
         .cx_resp_status(cx_resp_status_i),
         .cx_resp_data(cx_resp_data_i),
         .cx_virt_state_id(cx_virt_state_id_o),
-        .cx_id_o(cx_id_o),
         .cx_insn_o(cx_insn_o),
         .cx_func_o(cx_func_o),
 
@@ -218,3 +224,5 @@ module flexbex_soc_top #(
     );
 
 endmodule
+/* verilator lint_on UNOPTFLAT */
+
