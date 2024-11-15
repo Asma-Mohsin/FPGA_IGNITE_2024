@@ -1,4 +1,5 @@
 `timescale 1ns/1ps
+/* verilator lint_off UNOPTFLAT */
 // Models for the embedded FPGA fabric
 module LHQD1 (
     input D,
@@ -617,3 +618,4 @@ module cus_mux161_buf (
         .X  (X)
     );
 endmodule
+/* verilator lint_off UNOPTFLAT */

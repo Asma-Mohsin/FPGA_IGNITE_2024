@@ -330,12 +330,12 @@ module config_UART #(
             end else if (Mode==1 || (Mode==0 && Command_Reg[7]==1'b1)) begin // mode [0:auto|1:hex|2:bin]
                 // if hex mode or if auto mode with detected hex mode in the command register
                 if (ComState==GetStopBit && ComTick==1'b1 && HexValue[4]==1'b0 && PresentState==GetData && ReceiveState==LowNibble) begin
-                    CRCReg <= CRCReg + {HighReg, HexValue[3:0]};
+                  CRCReg <= CRCReg + {12'b0, HighReg, HexValue[3:0]}; // 20 bits expected
                     b_counter <= b_counter + 1;
                 end
             end else begin  // binary mode
                 if (ComState == GetStopBit && ComTick == 1'b1 && (PresentState == GetData)) begin
-                    CRCReg <= CRCReg + ReceivedWord;
+                    CRCReg <= CRCReg + {12'b0, ReceivedWord}; // 20 bits expected
                     b_counter <= b_counter + 1;
                 end
             end  // checksum computation
@@ -431,7 +431,7 @@ module config_UART #(
     always @(posedge CLK, negedge resetn) begin : P_TimeOut
         if (!resetn) begin
             TimeToSendCounter <= TimeToSendValue;
-            TimeToSendCounter <= 1'b0;
+            TimeToSendCounter <= 15'b0;
         end else begin
             if (PresentState == Idle || ComState == GetStopBit) begin
                 //Init TimeOut
