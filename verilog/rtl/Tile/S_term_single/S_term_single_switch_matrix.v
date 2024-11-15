@@ -1,4 +1,5 @@
 /// sta-blackbox
+/* verilator lint_off UNOPTFLAT */
 `timescale 1ns/1ps
  // NumberOfConfigBits: 0
 module S_term_single_switch_matrix
@@ -457,3 +458,4 @@ assign UIO_BOT_FIN9 = SS4END6;
 
 
 endmodule
+/* verilator lint_on UNOPTFLAT */

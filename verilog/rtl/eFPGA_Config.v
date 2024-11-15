@@ -1,4 +1,5 @@
 `timescale 1ns/1ps
+/* verilator lint_off UNOPTFLAT */
 module eFPGA_Config (
     CLK,
     resetn,
@@ -115,3 +116,4 @@ module eFPGA_Config (
     );
 
 endmodule
+/* verilator lint_on UNOPTFLAT */

@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 
-
 module summer_school_top_wrapper #(
     parameter NUM_OF_TOTAL_FABRIC_IOS = 31,
     parameter NUM_OF_LOGIC_ANALYZER_BITS = 128,
@@ -122,6 +121,7 @@ module summer_school_top_wrapper #(
     reg [114:0] UIO_BOT_UIN_PAD;
 
 
+/* verilator lint_off PINCONNECTEMPTY */
     flexbex_soc_top flexbex_eFPGA (
         .A_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
         .B_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
@@ -147,6 +147,7 @@ module summer_school_top_wrapper #(
         .UIO_BOT_UIN_PAD(UIO_BOT_UIN_PAD)
 
     );
+/* verilator lint_on PINCONNECTEMPTY */
 
     //posit co-processor (eFPGA and LA)
     // Define intermediate signals
@@ -207,6 +208,7 @@ module summer_school_top_wrapper #(
 
     // https://github.com/jhspuk/FPGAIgnite-VGA
     // Pixel Processing Unit
+/* verilator lint_off PINCONNECTEMPTY */
     ppu ppu_inst (
         .clk(CLK),
         .rst(resetn),
@@ -219,11 +221,13 @@ module summer_school_top_wrapper #(
         .stb_o(),  //indicates data of current pixel and is not currenly used
         .ack_o(UIO_BOT_UOUT_PAD[13])
     );
+/* verilator lint_on PINCONNECTEMPTY */
 
     // Instantiate VGA Driver module
     assign io_oeb[VGA_IO_HIGHEST:VGA_IO_LOWEST] = {8{OUTPUT_ENABLE}};
     assign io_out[VGA_IO_HIGHEST:VGA_IO_LOWEST] = {vga_r, vga_g, vga_b, hsync, vsync};
 
+/* verilator lint_off PINCONNECTEMPTY */
     vga_driver vga_driver_inst (
         .clk_pix(CLK),
         .rst_pix(resetn),
@@ -237,6 +241,7 @@ module summer_school_top_wrapper #(
         .vsync  (vsync),
         .de     ()          //simulation signals
     );
+/* verilator lint_on PINCONNECTEMPTY */
 
     // Module Select
     always @(*) begin

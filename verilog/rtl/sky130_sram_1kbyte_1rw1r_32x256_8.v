@@ -4,6 +4,10 @@
 // Word size: 32
 // Write size: 8
 
+/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNDRIVEN */
+/* verilator lint_off UNUSEDPARAM */
+
 (* blackbox *)
 
 module sky130_sram_1kbyte_1rw1r_32x256_8(
@@ -46,3 +50,7 @@ module sky130_sram_1kbyte_1rw1r_32x256_8(
   reg [DATA_WIDTH-1:0]  dout0;
 
 endmodule
+
+/* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNDRIVEN */
+/* verilator lint_on UNUSEDPARAM */

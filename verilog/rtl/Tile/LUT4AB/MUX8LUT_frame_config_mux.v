@@ -1,4 +1,5 @@
 /// sta-blackbox
+/* verilator lint_off UNOPTFLAT */
 `timescale 1ns/1ps
 // Copyright 2021 University of Manchester
 //
@@ -156,3 +157,5 @@ module MUX8LUT_frame_config_mux #(parameter NoConfigBits = 2)(
 	assign M_EF = EF;
 
 endmodule
+/* verilator lint_on UNOPTFLAT */
+

@@ -1,4 +1,5 @@
 /// sta-blackbox
+/* verilator lint_off UNOPTFLAT */
 `timescale 1ns/1ps
  // NumberOfConfigBits: 106
 module W_IO_switch_matrix
@@ -1034,3 +1035,4 @@ assign DEBUG_select_A_T             = ConfigBits[98:96];
 assign DEBUG_select_B_I             = ConfigBits[102:99];
 assign DEBUG_select_B_T             = ConfigBits[105:103];
 endmodule
+/* verilator lint_on UNOPTFLAT */
