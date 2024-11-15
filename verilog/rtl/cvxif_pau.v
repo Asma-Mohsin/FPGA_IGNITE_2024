@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+/// sta-blackbox
+(* blackbox *)
 module cvxif_pau (
     input             clk,
     input             rst,
@@ -13,6 +15,8 @@ module cvxif_pau (
     input      [31:0] register_rs0,
     input      [31:0] register_rs1,
     input      [ 1:0] register_rs_valid,
+
+
     output reg        result_valid,
     input             result_ready,
     output reg [31:0] result_data

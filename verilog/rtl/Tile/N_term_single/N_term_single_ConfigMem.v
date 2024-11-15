@@ -1,4 +1,5 @@
 ///  sta-blackbox
+/* verilator lint_off UNOPTFLAT */
 `timescale 1ns/1ps
 module N_term_single_ConfigMem
     #(
@@ -22,3 +23,4 @@ module N_term_single_ConfigMem
  //instantiate frame latches
 `endif
 endmodule
+/* verilator lint_on UNOPTFLAT */

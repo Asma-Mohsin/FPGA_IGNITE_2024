@@ -1,4 +1,5 @@
 /// sta-blackbox
+/* verilator lint_off UNOPTFLAT */
 `timescale 1ns/1ps
 module W_IO_ConfigMem
     #(
@@ -938,3 +939,4 @@ LHQD1 Inst_frame3_bit14 (
 
 `endif
 endmodule
+/* verilator lint_on UNOPTFLAT */

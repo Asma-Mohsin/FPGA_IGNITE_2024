@@ -773,7 +773,6 @@ module ibex_core (
     cx_virt_state_id,
     fetch_enable_i,
     ext_perf_counters_i,
-    cx_id_o,
     cx_insn_o,
     cx_func_o
 );
@@ -821,7 +820,6 @@ module ibex_core (
     output wire [1:0] cx_virt_state_id;
     input wire fetch_enable_i;
     input wire [N_EXT_PERF_COUNTERS - 1:0] ext_perf_counters_i;
-    output wire [1:0] cx_id_o;
     output wire [31:0] cx_insn_o;
     output wire [24:0] cx_func_o;
     wire instr_valid_id;
@@ -1715,6 +1713,7 @@ module ibex_decoder (
     output wire [3:0] eFPGA_delay_o;
     output wire [24:0] cx_func_o;
     output wire [31:0] cx_insn_o;
+    assign eFPGA_delay_o = 4'b0000; // since it is not used
     reg regfile_we;
     reg data_req;
     reg mult_int_en;

@@ -1,4 +1,5 @@
 /// sta-blackbox
+/* verilator lint_off UNOPTFLAT */
 `timescale 1ns/1ps
 // Copyright 2021 University of Manchester
 //
@@ -76,3 +77,4 @@ module InPass4_frame_config_mux #(parameter NoConfigBits = 4)(
     .X(O[3])
     );	
 endmodule
+/* verilator lint_on UNOPTFLAT */

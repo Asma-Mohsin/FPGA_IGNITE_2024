@@ -1,4 +1,5 @@
 /// sta-blackbox
+/* verilator lint_off UNOPTFLAT */
 `timescale 1ns/1ps
 module LUT4AB
     #(
@@ -2299,3 +2300,4 @@ LUT4AB_switch_matrix Inst_LUT4AB_switch_matrix (
 );
 
 endmodule
+/* verilator lint_on UNOPTFLAT */

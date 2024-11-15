@@ -1,4 +1,5 @@
 `timescale 1ns/1ps
+/* verilator lint_off UNOPTFLAT */
 module eFPGA
     #(
         parameter MaxFramesPerCol=20,
@@ -6480,3 +6481,4 @@ S_term_RAM_IO Tile_X8Y7_S_term_RAM_IO (
 );
 
 endmodule
+/* verilator lint_on UNOPTFLAT */
