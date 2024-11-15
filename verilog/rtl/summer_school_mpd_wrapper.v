@@ -71,6 +71,9 @@ module summer_school_top_wrapper #(
     localparam VGA_IO_HIGHEST = VGA_IO_LOWEST + VGA_NUM_IOS - 1;
 
     localparam RESETN_IO = VGA_IO_HIGHEST + 1;  // resetn is located after the VGA pins
+
+    // NOTE: The external clock is not used anymore but still left in since we
+    // did not want to mess anything up shortly before the tapeout
     localparam EXTERNAL_CLK_SHIFTED_IO = RESETN_IO + 1;  // shifted external clock is located after resetn
 
 
@@ -121,7 +124,7 @@ module summer_school_top_wrapper #(
     reg [114:0] UIO_BOT_UIN_PAD;
 
 
-/* verilator lint_off PINCONNECTEMPTY */
+    /* verilator lint_off PINCONNECTEMPTY */
     flexbex_soc_top flexbex_eFPGA (
         .A_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
         .B_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
@@ -147,7 +150,7 @@ module summer_school_top_wrapper #(
         .UIO_BOT_UIN_PAD(UIO_BOT_UIN_PAD)
 
     );
-/* verilator lint_on PINCONNECTEMPTY */
+    /* verilator lint_on PINCONNECTEMPTY */
 
     //posit co-processor (eFPGA and LA)
     // Define intermediate signals
@@ -208,7 +211,7 @@ module summer_school_top_wrapper #(
 
     // https://github.com/jhspuk/FPGAIgnite-VGA
     // Pixel Processing Unit
-/* verilator lint_off PINCONNECTEMPTY */
+    /* verilator lint_off PINCONNECTEMPTY */
     ppu ppu_inst (
         .clk(CLK),
         .rst(resetn),
@@ -221,27 +224,27 @@ module summer_school_top_wrapper #(
         .stb_o(),  //indicates data of current pixel and is not currenly used
         .ack_o(UIO_BOT_UOUT_PAD[13])
     );
-/* verilator lint_on PINCONNECTEMPTY */
+    /* verilator lint_on PINCONNECTEMPTY */
 
     // Instantiate VGA Driver module
     assign io_oeb[VGA_IO_HIGHEST:VGA_IO_LOWEST] = {8{OUTPUT_ENABLE}};
     assign io_out[VGA_IO_HIGHEST:VGA_IO_LOWEST] = {vga_r, vga_g, vga_b, hsync, vsync};
 
-/* verilator lint_off PINCONNECTEMPTY */
+    /* verilator lint_off PINCONNECTEMPTY */
     vga_driver vga_driver_inst (
         .clk_pix(CLK),
         .rst_pix(resetn),
-        .wb_data(data_o),   // PPU's data output is written to VGA
+        .wb_data(data_o),  // PPU's data output is written to VGA
         .vga_r  (vga_r),
         .vga_g  (vga_g),
         .vga_b  (vga_b),
-        .sx     (),         //simulation signals
-        .sy     (),         //simulation signals
+        .sx     (),        //simulation signals
+        .sy     (),        //simulation signals
         .hsync  (hsync),
         .vsync  (vsync),
-        .de     ()          //simulation signals
+        .de     ()         //simulation signals
     );
-/* verilator lint_on PINCONNECTEMPTY */
+    /* verilator lint_on PINCONNECTEMPTY */
 
     // Module Select
     always @(*) begin
@@ -287,25 +290,22 @@ module summer_school_top_wrapper #(
                     // LA
                     1'b1: begin
                         // inputs
-                         if (& la_oenb[101:1]) begin
-                             issue_req_instr = la_data_in[101:70];
-                             issue_valid = la_data_in[69];
-                             register_valid = la_data_in[68];
-			     register_rs[1] = la_data_in[67:36];
-                             register_rs[0] = la_data_in[35:4];
-                             register_rs_valid = la_data_in[3:2];
-                             result_ready = la_data_in[1];
-                        
-                        
-                         end else begin
-                             la_data_out[39] = issue_ready;
-                             la_data_out[38] = issue_resp_accept;
-                             la_data_out[37] = issue_resp_writeback;
-                             la_data_out[36:35] = issue_resp_register_read;
-                             la_data_out[34] = register_ready;
-                             la_data_out[33] = result_valid;
-                             la_data_out[32:1] = result_data;
-                         end
+                        issue_req_instr = la_data_in[101:70];
+                        issue_valid = la_data_in[69];
+                        register_valid = la_data_in[68];
+                        register_rs[1] = la_data_in[67:36];
+                        register_rs[0] = la_data_in[35:4];
+                        register_rs_valid = la_data_in[3:2];
+                        result_ready = la_data_in[1];
+
+                        // outputs
+                        la_data_out[39] = issue_ready;
+                        la_data_out[38] = issue_resp_accept;
+                        la_data_out[37] = issue_resp_writeback;
+                        la_data_out[36:35] = issue_resp_register_read;
+                        la_data_out[34] = register_ready;
+                        la_data_out[33] = result_valid;
+                        la_data_out[32:1] = result_data;
                     end
 
                     // eFPGA
@@ -338,12 +338,13 @@ module summer_school_top_wrapper #(
     assign wbs_sta_o = 0;
 
     always @(*) begin
+        latch_config_strobe = 1'b0;
         if (config_strobe_reg2) begin
-            latch_config_strobe = 0;
+            latch_config_strobe = 1'b0;
         end else if (latch_config_strobe_inverted2) begin
-            latch_config_strobe = 0;
+            latch_config_strobe = 1'b0;
         end else if(wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS)) begin
-            latch_config_strobe = 1;
+            latch_config_strobe = 1'b1;
         end
     end
 
@@ -364,9 +365,9 @@ module summer_school_top_wrapper #(
 
     always @(posedge CLK or negedge resetn) begin
         if (!resetn) begin
-            config_strobe_reg1 <= 0;
-            config_strobe_reg2 <= 0;
-            config_strobe_reg3 <= 0;
+            config_strobe_reg1 <= 1'b0;
+            config_strobe_reg2 <= 1'b0;
+            config_strobe_reg3 <= 1'b0;
         end else begin
             config_strobe_reg1 <= latch_config_strobe;
             config_strobe_reg2 <= config_strobe_reg1;
@@ -378,8 +379,12 @@ module summer_school_top_wrapper #(
 
     // Write the config data register from the wishbone bus
     always @(posedge wb_clk_i) begin
-        if (wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS)) begin
-            config_data <= wbs_dat_i;
+        if (wb_rst_i) begin
+            config_data <= 1'b0;
+        end else begin
+            if (wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS)) begin
+                config_data <= wbs_dat_i;
+            end
         end
     end
 
@@ -388,14 +393,14 @@ module summer_school_top_wrapper #(
 
     // acks
     always @(posedge wb_clk_i) begin
-        if (wb_rst_i) wbs_ack_o <= 0;
+        if (wb_rst_i) wbs_ack_o <= 1'b0;
         else
             // return ack immediately
             wbs_ack_o <= (wbs_stb_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS));
     end
 
     assign external_clock = io_in[EXTERNAL_CLK_IO];
-    assign clk_sel = {io_in[CLK_SEL_0_IO], io_in[CLK_SEL_1_IO]};
+    assign clk_sel = {io_in[CLK_SEL_1_IO], io_in[CLK_SEL_0_IO]};
     assign s_clk = io_in[S_CLK_IO];
     assign s_data = io_in[S_DATA_IO];
     assign efpga_uart_rx = io_in[EFPGA_UART_RX_IO];
@@ -412,8 +417,8 @@ module summer_school_top_wrapper #(
     assign io_oeb[CLK_SEL_1_IO] = OUTPUT_DISABLE;
     assign io_oeb[S_CLK_IO] = OUTPUT_DISABLE;
     assign io_oeb[S_DATA_IO] = OUTPUT_DISABLE;
-    assign io_oeb[EFPGA_UART_RX_IO] = OUTPUT_ENABLE;
-    assign io_oeb[RECEIVE_LED_IO] = OUTPUT_DISABLE;  // The only fabric IO output
+    assign io_oeb[EFPGA_UART_RX_IO] = OUTPUT_DISABLE;
+    assign io_oeb[RECEIVE_LED_IO] = OUTPUT_ENABLE;  // The only fabric IO output
 
     assign io_oeb[SELECT_MODULE_IO] = OUTPUT_DISABLE;
     assign io_oeb[SEL_IO] = OUTPUT_DISABLE;
