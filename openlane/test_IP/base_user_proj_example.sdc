@@ -142,3 +142,5 @@ if { $::env(IO_SYNC) } {
 
 # Output loads
 set_load 0.19 [all_outputs]
+
+set_disable_timing [get_pins  -hierarchical -regexp {.*BEG.*}]
