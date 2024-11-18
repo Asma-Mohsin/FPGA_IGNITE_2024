@@ -122,17 +122,7 @@ module summer_school_top_wrapper #(
 
     reg [114:0] UIO_BOT_UIN_PAD;
 
-    assign io_out[30] = 1'b0;
-    assign io_out[29] = 1'b0;
-    assign io_out[20] = 1'b0;
-    assign io_out[19] = 1'b0;
-    assign io_out[5]  = 1'b0;
-    assign io_out[4]  = 1'b0;
-    assign io_out[3]  = 1'b0;
-    assign io_out[2]  = 1'b0;
-    assign io_out[1]  = 1'b0;
-    assign io_out[0]  = 1'b0;
-    
+    // Drive unused IOs low
     assign wbs_dat_o = 32'b0;
 
     /* verilator lint_off PINCONNECTEMPTY */
@@ -437,6 +427,17 @@ module summer_school_top_wrapper #(
     assign io_oeb[RESETN_IO] = OUTPUT_DISABLE;
     assign io_oeb[EXTERNAL_CLK_SHIFTED_IO] = OUTPUT_DISABLE;
 
+    // Drive all unused IOs low
+    assign io_out[EXTERNAL_CLK_IO] = 1'b0;
+    assign io_out[CLK_SEL_0_IO] = 1'b0;
+    assign io_out[CLK_SEL_1_IO] = 1'b0;
+    assign io_out[S_CLK_IO] = 1'b0;
+    assign io_out[S_DATA_IO] = 1'b0;
+    assign io_out[EFPGA_UART_RX_IO] = 1'b0;
+    assign io_out[SELECT_MODULE_IO] = 1'b0;
+    assign io_out[SEL_IO] = 1'b0;
+    assign io_out[RESETN_IO] = 1'b0;
+    assign io_out[EXTERNAL_CLK_SHIFTED_IO] = 1'b0;
 
     // Config signals
     assign SelfWriteStrobe = config_strobe;
