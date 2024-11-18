@@ -1,5 +1,5 @@
 (* blackbox *)
-/// sta-blackbox
+/// sta-blackbox/* verilator lint_off UNUSEDSIGNAL */
 `timescale 1ns/1ps
 module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4, C5);
 
@@ -167,4 +167,4 @@ module sram_1rw1r_32_256_8_sky130(
   input [ADDR_WIDTH-1:0]  addr1;
   output [DATA_WIDTH-1:0] dout1;
 endmodule
-
+/* verilator lint_on UNUSEDSIGNAL */

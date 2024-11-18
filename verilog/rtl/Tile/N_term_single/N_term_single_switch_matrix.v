@@ -1,5 +1,5 @@
  /// sta-blackbox
-/* verilator lint_off UNOPTFLAT */
+/* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
 `timescale 1ns/1ps
  // NumberOfConfigBits: 0
 module N_term_single_switch_matrix
@@ -454,4 +454,4 @@ assign UIO_TOP_FIN9 = NN4END6;
 
 
 endmodule
-/* verilator lint_on UNOPTFLAT */
+/* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */
