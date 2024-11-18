@@ -13,9 +13,7 @@ module summer_school_top_wrapper #(
     input wbs_we_i,
     input [WB_DATA_WIDTH-1:0] wbs_dat_i,
     input [WB_DATA_WIDTH-1:0] wbs_adr_i,
-/* verilator lint_off UNDRIVEN */
     output [WB_DATA_WIDTH-1:0] wbs_dat_o, // not used
-/* verilator lint_on UNDRIVEN */
     output reg wbs_ack_o,
     output wire wbs_sta_o,
 
@@ -26,9 +24,7 @@ module summer_school_top_wrapper #(
 
     // IOs
     input  [NUM_OF_TOTAL_FABRIC_IOS-1:0] io_in,
-/* verilator lint_off UNDRIVEN */
     output [NUM_OF_TOTAL_FABRIC_IOS-1:0] io_out,
-/* verilator lint_on UNDRIVEN */
     output [NUM_OF_TOTAL_FABRIC_IOS-1:0] io_oeb,
 
     // Independent clock (on independent integer divider)
