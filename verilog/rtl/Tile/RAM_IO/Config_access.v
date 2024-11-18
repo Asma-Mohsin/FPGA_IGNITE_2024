@@ -1,5 +1,5 @@
 ///	sta-blackbox
-/* verilator lint_off UNOPTFLAT */
+/* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
 `timescale 1ns/1ps
 (* FABulous, BelMap,
 C_bit0=0,
@@ -24,4 +24,4 @@ module Config_access (C_bit0, C_bit1, C_bit2, C_bit3, ConfigBits);
 	assign C_bit3 = ConfigBits[3];
 
 endmodule
-/* verilator lint_on UNOPTFLAT */
+/* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */

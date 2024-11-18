@@ -1,5 +1,5 @@
 /// sta-blackbox
-/* verilator lint_off UNOPTFLAT */
+/* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
 `timescale 1ns/1ps
 module S_term_single
     #(
@@ -566,4 +566,4 @@ S_term_single_switch_matrix Inst_S_term_single_switch_matrix (
 );
 
 endmodule
-/* verilator lint_on UNOPTFLAT */
+/* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */

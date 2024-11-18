@@ -13,18 +13,22 @@ module summer_school_top_wrapper #(
     input wbs_we_i,
     input [WB_DATA_WIDTH-1:0] wbs_dat_i,
     input [WB_DATA_WIDTH-1:0] wbs_adr_i,
-    output [WB_DATA_WIDTH-1:0] wbs_dat_o,
+/* verilator lint_off UNDRIVEN */
+    output [WB_DATA_WIDTH-1:0] wbs_dat_o, // not used
+/* verilator lint_on UNDRIVEN */
     output reg wbs_ack_o,
     output wire wbs_sta_o,
 
     // Logic Analyzer Signals
     input  [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_in,
     output [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_out,
-    input  [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_oenb,
+    input  [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_oenb, // not used
 
     // IOs
     input  [NUM_OF_TOTAL_FABRIC_IOS-1:0] io_in,
+/* verilator lint_off UNDRIVEN */
     output [NUM_OF_TOTAL_FABRIC_IOS-1:0] io_out,
+/* verilator lint_on UNDRIVEN */
     output [NUM_OF_TOTAL_FABRIC_IOS-1:0] io_oeb,
 
     // Independent clock (on independent integer divider)
@@ -35,7 +39,6 @@ module summer_school_top_wrapper #(
     localparam NUM_FABRIC_USER_IOS = 12;
     localparam [31:0] BASE_WB_ADDRESS = 32'h3000_0000;
     localparam [31:0] CONFIG_DATA_WB_ADDRESS = BASE_WB_ADDRESS;
-    localparam [31:0] TO_FABRIC_IOS_WB_ADDRESS = BASE_WB_ADDRESS + 4;
 
     // The Output enable input of the IO cell is inverted, so define parameters for increased readability
     localparam OUTPUT_ENABLE = 1'b0;
@@ -123,6 +126,18 @@ module summer_school_top_wrapper #(
 
     reg [114:0] UIO_BOT_UIN_PAD;
 
+    assign io_out[30] = 1'b0;
+    assign io_out[29] = 1'b0;
+    assign io_out[20] = 1'b0;
+    assign io_out[19] = 1'b0;
+    assign io_out[5]  = 1'b0;
+    assign io_out[4]  = 1'b0;
+    assign io_out[3]  = 1'b0;
+    assign io_out[2]  = 1'b0;
+    assign io_out[1]  = 1'b0;
+    assign io_out[0]  = 1'b0;
+    
+    assign wbs_dat_o = 32'b0;
 
     /* verilator lint_off PINCONNECTEMPTY */
     flexbex_soc_top flexbex_eFPGA (
@@ -380,7 +395,7 @@ module summer_school_top_wrapper #(
     // Write the config data register from the wishbone bus
     always @(posedge wb_clk_i) begin
         if (wb_rst_i) begin
-            config_data <= 1'b0;
+            config_data <= 32'b0;
         end else begin
             if (wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS)) begin
                 config_data <= wbs_dat_i;
