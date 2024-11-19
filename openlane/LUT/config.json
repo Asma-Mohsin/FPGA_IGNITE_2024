@@ -15,7 +15,7 @@
     "QUIT_ON_SYNTH_CHECKS": 0,
     "LVS_CONNECT_BY_LABEL":1,
     "LVS_INSERT_POWER_PINS": 1,
-    "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/cvxif_pau.v",
+    "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/black_box_modules/cvxif_pau.v",
                                 "dir::../../verilog/rtl/Tile/N_term_single/*.v",
                                 "dir::../../verilog/rtl/Tile/N_term_RAM_IO/*.v",
                                  "dir::../../verilog/rtl/Tile/LUT4AB/*.v",
