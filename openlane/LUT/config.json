@@ -1,0 +1,198 @@
+{
+    "DESIGN_NAME": "summer_school_top_wrapper",
+    "DESIGN_IS_CORE": 1,
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/defines.v",
+        "dir::../../verilog/rtl/*.v"
+    ],
+    "CLOCK_PERIOD": 40,
+    "CLOCK_PORT": "wb_clk_i",
+    "CLOCK_NET":"wb_clk_i",
+    "SYNTH_STRATEGY":"DELAY 4",
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 2920 3520",   
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg", 
+    "QUIT_ON_SYNTH_CHECKS": 0,
+    "LVS_CONNECT_BY_LABEL":1,
+    "LVS_INSERT_POWER_PINS": 1,
+    "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/cvxif_pau.v",
+                                "dir::../../verilog/rtl/Tile/N_term_single/*.v",
+                                "dir::../../verilog/rtl/Tile/N_term_RAM_IO/*.v",
+                                 "dir::../../verilog/rtl/Tile/LUT4AB/*.v",
+                                 "dir::../../verilog/rtl/Tile/RAM_IO/*.v",
+                                "dir::../../verilog/rtl/Tile/S_term_single/*.v",
+                                 "dir::../../verilog/rtl/Tile/S_term_RAM_IO/*.v",
+                                  "dir::../../verilog/rtl/Tile/W_IO/*.v",
+                                "dir::../../verilog/rtl/Tile/*.v"],
+    "ROUTING_CORES": 20,
+    "FP_TAP_HORIZONTAL_HALO":30,
+    "FP_TAP_VERTICAL_HALO":30,
+    "FP_PDN_HORIZONTAL_HALO":0,
+    "FP_PDN_VERTICAL_HALO":0,
+    "FP_PDN_CORE_RING": 1,
+    "FP_PDN_CORE_RING_HOFFSET": 14,
+"FP_PDN_CORE_RING_HSPACING": 1.7,
+"FP_PDN_CORE_RING_HWIDTH": 3.1,
+"FP_PDN_CORE_RING_VOFFSET": 14,
+"FP_PDN_CORE_RING_VSPACING": 1.7,
+"FP_PDN_CORE_RING_VWIDTH": 3.1,
+
+    "FP_PDN_MACRO_HOOKS": ["cvxif_pau_inst  vccd1 vssd1 vccd1 vssd1,",
+                            "flexbex_eFPGA.data_mem_i vccd1 vssd1 vccd1 vssd1,",
+                            "flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y0_N_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y0_N_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X3Y0_N_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X4Y0_N_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X5Y0_N_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X6Y0_N_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y0_N_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y0_N_term_RAM_IO  vccd1 vssd1 vccd1 vssd1,",
+
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X0Y1_W_IO  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y1_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y1_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X3Y1_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X4Y1_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X5Y1_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X6Y1_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y1_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y1_RAM_IO   vccd1 vssd1 vccd1 vssd1,",
+
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X0Y2_W_IO  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y2_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y2_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X3Y2_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X4Y2_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X5Y2_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X6Y2_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y2_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y2_RAM_IO   vccd1 vssd1 vccd1 vssd1,",
+
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X0Y3_W_IO  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y3_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y3_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X3Y3_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X4Y3_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X5Y3_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X6Y3_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y3_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y3_RAM_IO   vccd1 vssd1 vccd1 vssd1,",
+
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X0Y4_W_IO  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y4_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y4_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X3Y4_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X4Y4_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X5Y4_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X6Y4_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y4_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y4_RAM_IO   vccd1 vssd1 vccd1 vssd1,",
+
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X0Y5_W_IO  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y5_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y5_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X3Y5_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X4Y5_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X5Y5_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X6Y5_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y5_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y5_RAM_IO   vccd1 vssd1 vccd1 vssd1,",
+
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X0Y6_W_IO  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y6_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y6_LUT4AB vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X3Y6_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X4Y6_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X5Y6_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X6Y6_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y6_LUT4AB  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y6_RAM_IO   vccd1 vssd1 vccd1 vssd1,",
+
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y7_S_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X2Y7_S_term_single vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X3Y7_S_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X4Y7_S_term_single vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X5Y7_S_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X6Y7_S_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X7Y7_S_term_single  vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X8Y7_S_term_RAM_IO   vccd1 vssd1 vccd1 vssd1,",
+
+"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_0 vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_1 vccd1 vssd1 vccd1 vssd1,",
+"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_2 vccd1 vssd1 vccd1 vssd1"], 
+    "EXTRA_LEFS": ["dir::../../lef/cvxif_pau.lef","dir::./macros/lef/*.lef" ],
+    "EXTRA_GDS_FILES": ["dir::../../gds/cvxif_pau.gds", "dir::./macros/gds/*.gds"],
+
+    "EXTRA_LIBS": ["dir::../../lib/cvxif_pau.lib","dir::./macros/lib/*.lib"],
+    "FP_PDN_MULTILAYER": true,
+    "SYNTH_POWER_DEFINE": "USE_POWER_PINS",
+    "PDK": "sky130A",
+    "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+
+    "RUN_KLAYOUT_XOR": 0,
+    "KLAYOUT_XOR_GDS": 0,
+    "KLAYOUT_XOR_XML": 0,
+    "RUN_CVC": 0,
+    "FP_PDN_CHECK_NODES": 0,
+    "PL_TARGET_DENSITY":0.8,
+    "PL_TIME_DRIVEN":0,
+
+   
+
+    "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
+    
+    
+
+    "MAX_TRANSITION_CONSTRAINT": 1.0,
+    "MAX_FANOUT_CONSTRAINT": 16,
+    
+     "RUN_LINTER": 0,
+
+    "PL_RESIZER_SETUP_SLACK_MARGIN": 0.4,
+    "GLB_RESIZER_SETUP_SLACK_MARGIN": 0.2,
+    "GLB_RESIZER_HOLD_SLACK_MARGIN": 0.2,
+    "PL_RESIZER_HOLD_SLACK_MARGIN": 0.4,
+    "MAGIC_DEF_LABELS": 0,
+    "SYNTH_BUFFERING": 0,
+    "RUN_HEURISTIC_DIODE_INSERTION": 0,
+    "GRT_REPAIR_ANTENNAS":0,
+    
+
+    
+    "VDD_NETS": [
+        "vccd1"
+    ],
+    "GND_NETS": [
+        "vssd1"
+    ],
+    "IO_SYNC": 0,
+    "BASE_SDC_FILE": "dir::base_user_proj_example.sdc",  
+    
+    "pdk::sky130*": {
+        "FP_CORE_UTIL": 30,
+        "scl::sky130_fd_sc_hd": {
+            "CLOCK_PERIOD": 40
+        },
+        "scl::sky130_fd_sc_hdll": {
+            "CLOCK_PERIOD": 10
+        },
+        "scl::sky130_fd_sc_hs": {
+            "CLOCK_PERIOD": 8
+        },
+        "scl::sky130_fd_sc_ls": {
+            "CLOCK_PERIOD": 10,
+            "SYNTH_MAX_FANOUT": 5
+        },
+        "scl::sky130_fd_sc_ms": {
+            "CLOCK_PERIOD": 10
+        }
+    },
+    "pdk::gf180mcuC": {
+        "STD_CELL_LIBRARY": "gf180mcu_fd_sc_mcu7t5v0",
+        "CLOCK_PERIOD": 24.0,
+        "FP_CORE_UTIL": 40,
+        "RT_MAX_LAYER": "Metal4",
+        "SYNTH_MAX_FANOUT": 4,
+        "PL_TARGET_DENSITY": 0.45
+    }
+}
