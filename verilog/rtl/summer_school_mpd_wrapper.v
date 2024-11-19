@@ -157,10 +157,10 @@ module summer_school_top_wrapper #(
     reg issue_valid;  // Signal for issue validity
     reg [31:0] issue_req_instr;  // Signal for issue request instruction (assuming 32-bit width)
     reg register_valid;  // Signal for register validity
-    reg [31:0] register_rs[1:0];  // Signal for register sources (2 bits)
+    // These are truncated to 16 bit since PAU uses only 16 bits internally
+    reg [15:0] register_rs[1:0];  // Signal for register sources (2 bits)
     reg [1:0] register_rs_valid;  // Signal for register sources validity
     reg result_ready;  // Signal for result readiness
-    reg [31:0] register_rs_shared_input;  // Shared input signal for register sources 
 
     wire issue_ready;  // Signal for issue readiness
     wire issue_resp_accept;  // Signal for issue response accept
@@ -290,13 +290,13 @@ module summer_school_top_wrapper #(
                     // LA
                     1'b1: begin
                         // inputs
-                        issue_req_instr = la_data_in[101:70];
-                        issue_valid = la_data_in[69];
-                        register_valid = la_data_in[68];
-                        register_rs[1] = la_data_in[67:36];
-                        register_rs[0] = la_data_in[35:4];
-                        register_rs_valid = la_data_in[3:2];
-                        result_ready = la_data_in[1];
+                        issue_req_instr = la_data_in[112:77];
+                        issue_valid = la_data_in[76];
+                        register_valid = la_data_in[75];
+                        register_rs[1] = la_data_in[74:59];
+                        register_rs[0] = la_data_in[58:43];
+                        register_rs_valid = la_data_in[42:41];
+                        result_ready = la_data_in[40];
 
                         // outputs
                         la_data_out[39] = issue_ready;
@@ -311,13 +311,12 @@ module summer_school_top_wrapper #(
                     // eFPGA
                     default: begin
                         // inputs
-                        issue_req_instr[17:0] = UIO_TOP_UOUT_PAD[17:0];
 
-                        issue_req_instr[31:18] = UIO_BOT_UOUT_PAD[96:83];
-                        issue_valid = UIO_BOT_UOUT_PAD[82];
-                        register_valid = UIO_BOT_UOUT_PAD[81];
-                        register_rs[1] = UIO_BOT_UOUT_PAD[80:49];
-                        register_rs[0] = UIO_BOT_UOUT_PAD[48:17];
+                        issue_req_instr = UIO_BOT_UOUT_PAD[82:51];
+                        issue_valid = UIO_BOT_UOUT_PAD[50];
+                        register_valid = UIO_BOT_UOUT_PAD[49];
+                        register_rs[1] = UIO_BOT_UOUT_PAD[48:33];
+                        register_rs[0] = UIO_BOT_UOUT_PAD[32:17];
                         register_rs_valid = UIO_BOT_UOUT_PAD[16:15];
                         result_ready = UIO_BOT_UOUT_PAD[14];
 
