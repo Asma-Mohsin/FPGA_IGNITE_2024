@@ -1,5 +1,5 @@
 /// sta-blackbox
-/* verilator lint_off UNOPTFLAT */
+/* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
 `timescale 1ns/1ps
  // NumberOfConfigBits: 280
 module RAM_IO_switch_matrix
@@ -2739,4 +2739,4 @@ assign DEBUG_select_J_NS1_BEG1      = ConfigBits[275:274];
 assign DEBUG_select_J_NS1_BEG2      = ConfigBits[277:276];
 assign DEBUG_select_J_NS1_BEG3      = ConfigBits[279:278];
 endmodule
-/* verilator lint_on UNOPTFLAT */
+/* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */

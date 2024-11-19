@@ -1,5 +1,5 @@
 /// sta-blackbox
-/* verilator lint_off UNOPTFLAT */
+/* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
 `timescale 1ns/1ps
 // Copyright 2021 University of Manchester
 //
@@ -158,4 +158,4 @@ module MUX8LUT_frame_config_mux #(parameter NoConfigBits = 2)(
 
 endmodule
 /* verilator lint_on UNOPTFLAT */
-
+/* verilator lint_on UNUSEDSIGNAL */
