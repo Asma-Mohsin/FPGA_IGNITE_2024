@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+/* verilator lint_off UNDRIVEN */
+/* verilator lint_off UNUSEDSIGNAL */
 /// sta-blackbox
 (* blackbox *)
 module cvxif_pau (
@@ -22,4 +24,6 @@ module cvxif_pau (
     output reg [31:0] result_data
 );
 
+/* verilator lint_on UNDRIVEN */
+/* verilator lint_on UNUSEDSIGNAL */
 endmodule

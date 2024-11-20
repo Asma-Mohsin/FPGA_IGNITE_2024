@@ -21,7 +21,7 @@ def deactivate_warning(file_path, warning):
         return
 
     if len(lines) > 1:
-        lines[1] += f"\n/* verilator lint_off {warning} */\n"
+        lines[0] += f"\n/* verilator lint_off {warning} */\n"
         lines[-1] += f"\n/* verilator lint_on {warning} */\n"
     Path(file_path).write_text('\n'.join(lines) + '\n')
 
@@ -38,5 +38,5 @@ for file in files:
     deactivate_warning(file, warning)
     print(f"Deactivated warning {warning} in {file}")
 
-print("Deactivated warning {warning} in {len(files)} files")
+print(f"Deactivated warning {warning} in {len(files)} files")
 
