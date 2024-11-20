@@ -1,0 +1,2304 @@
+{
+  "creator": "Yosys 0.43 (git sha1 ead4718e5, g++ 14.2.1 -march=x86-64 -mtune=generic -O2 -fno-plt -fexceptions -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/build/yosys/src=/usr/src/debug/yosys -fPIC -Os)",
+  "modules": {
+    "RegFile_32x4": {
+      "attributes": {
+        "BD_reg": 1,
+        "AD_reg": 0,
+        "BelMap": 1,
+        "FABulous": 1,
+        "dynports": 1,
+        "cells_not_processed": 1,
+        "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:20.1-112.10"
+      },
+      "parameter_default_values": {
+        "NoConfigBits": 2
+      },
+      "ports": {
+        "D0": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "D1": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "D2": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "D3": {
+          "direction": "input",
+          "bits": [ 5 ]
+        },
+        "W_ADR0": {
+          "direction": "input",
+          "bits": [ 6 ]
+        },
+        "W_ADR1": {
+          "direction": "input",
+          "bits": [ 7 ]
+        },
+        "W_ADR2": {
+          "direction": "input",
+          "bits": [ 8 ]
+        },
+        "W_ADR3": {
+          "direction": "input",
+          "bits": [ 9 ]
+        },
+        "W_ADR4": {
+          "direction": "input",
+          "bits": [ 10 ]
+        },
+        "W_en": {
+          "direction": "input",
+          "bits": [ 11 ]
+        },
+        "AD0": {
+          "direction": "output",
+          "bits": [ 12 ]
+        },
+        "AD1": {
+          "direction": "output",
+          "bits": [ 13 ]
+        },
+        "AD2": {
+          "direction": "output",
+          "bits": [ 14 ]
+        },
+        "AD3": {
+          "direction": "output",
+          "bits": [ 15 ]
+        },
+        "A_ADR0": {
+          "direction": "input",
+          "bits": [ 16 ]
+        },
+        "A_ADR1": {
+          "direction": "input",
+          "bits": [ 17 ]
+        },
+        "A_ADR2": {
+          "direction": "input",
+          "bits": [ 18 ]
+        },
+        "A_ADR3": {
+          "direction": "input",
+          "bits": [ 19 ]
+        },
+        "A_ADR4": {
+          "direction": "input",
+          "bits": [ 20 ]
+        },
+        "BD0": {
+          "direction": "output",
+          "bits": [ 21 ]
+        },
+        "BD1": {
+          "direction": "output",
+          "bits": [ 22 ]
+        },
+        "BD2": {
+          "direction": "output",
+          "bits": [ 23 ]
+        },
+        "BD3": {
+          "direction": "output",
+          "bits": [ 24 ]
+        },
+        "B_ADR0": {
+          "direction": "input",
+          "bits": [ 25 ]
+        },
+        "B_ADR1": {
+          "direction": "input",
+          "bits": [ 26 ]
+        },
+        "B_ADR2": {
+          "direction": "input",
+          "bits": [ 27 ]
+        },
+        "B_ADR3": {
+          "direction": "input",
+          "bits": [ 28 ]
+        },
+        "B_ADR4": {
+          "direction": "input",
+          "bits": [ 29 ]
+        },
+        "UserCLK": {
+          "direction": "input",
+          "bits": [ 30 ]
+        },
+        "ConfigBits": {
+          "direction": "input",
+          "bits": [ 31, 32 ]
+        }
+      },
+      "cells": {
+        "$auto$proc_memwr.cc:45:proc_memwr$133": {
+          "hide_name": 1,
+          "type": "$memwr_v2",
+          "parameters": {
+            "ABITS": 5,
+            "CLK_ENABLE": 1,
+            "CLK_POLARITY": 1,
+            "MEMID": "\\mem",
+            "PORTID": 0,
+            "PRIORITY_MASK": 0,
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90.4-90.19"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "CLK": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ 33, 34, 35, 36, 37 ],
+            "CLK": [ 30 ],
+            "DATA": [ 38, 39, 40, 41 ],
+            "EN": [ 42, 43, 44, 45 ]
+          }
+        },
+        "$eq$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89$39": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": 0,
+            "A_WIDTH": 1,
+            "B_SIGNED": 0,
+            "B_WIDTH": 1,
+            "Y_WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89.7-89.19"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 11 ],
+            "B": [ "1" ],
+            "Y": [ 46 ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$54": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 54,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$55": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 55,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$56": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 56,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$57": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 57,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$58": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 58,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$59": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 59,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$60": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 60,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$61": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 61,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$62": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 62,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$63": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 63,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$64": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 64,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$65": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 65,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$66": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 66,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$67": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 67,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$68": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 68,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$69": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 69,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$70": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 70,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$71": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 71,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$72": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 72,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "1", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$73": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 73,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "1", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$74": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 74,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "0", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$75": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 75,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "0", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$76": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 76,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "1", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$77": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 77,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "1", "1", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$78": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 78,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$79": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 79,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$80": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 80,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "1", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$81": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 81,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "1", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$82": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 82,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "0", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$83": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 83,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "0", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$84": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 84,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "0", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$meminit$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$85": {
+          "hide_name": 1,
+          "type": "$meminit_v2",
+          "parameters": {
+            "ABITS": 32,
+            "MEMID": "\\mem",
+            "PRIORITY": 85,
+            "WIDTH": 4,
+            "WORDS": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83.4-83.20"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "DATA": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "DATA": [ "0", "0", "0", "0" ],
+            "EN": [ "1", "1", "1", "1" ]
+          }
+        },
+        "$memrd$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:94$43": {
+          "hide_name": 1,
+          "type": "$memrd",
+          "parameters": {
+            "ABITS": 5,
+            "CLK_ENABLE": 0,
+            "CLK_POLARITY": 0,
+            "MEMID": "\\mem",
+            "TRANSPARENT": 0,
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:94.14-94.17"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "CLK": "input",
+            "DATA": "output",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ 16, 17, 18, 19, 20 ],
+            "CLK": [ "x" ],
+            "DATA": [ 47, 48, 49, 50 ],
+            "EN": [ "x" ]
+          }
+        },
+        "$memrd$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:95$44": {
+          "hide_name": 1,
+          "type": "$memrd",
+          "parameters": {
+            "ABITS": 5,
+            "CLK_ENABLE": 0,
+            "CLK_POLARITY": 0,
+            "MEMID": "\\mem",
+            "TRANSPARENT": 0,
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:95.14-95.17"
+          },
+          "port_directions": {
+            "ADDR": "input",
+            "CLK": "input",
+            "DATA": "output",
+            "EN": "input"
+          },
+          "connections": {
+            "ADDR": [ 25, 26, 27, 28, 29 ],
+            "CLK": [ "x" ],
+            "DATA": [ 51, 52, 53, 54 ],
+            "EN": [ "x" ]
+          }
+        },
+        "$procdff$128": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:97.5-100.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 30 ],
+            "D": [ 47, 48, 49, 50 ],
+            "Q": [ 55, 56, 57, 58 ]
+          }
+        },
+        "$procdff$129": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:97.5-100.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 30 ],
+            "D": [ 51, 52, 53, 54 ],
+            "Q": [ 59, 60, 61, 62 ]
+          }
+        },
+        "$procdff$130": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 5
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 30 ],
+            "D": [ 33, 34, 35, 36, 37 ],
+            "Q": [ 63, 64, 65, 66, 67 ]
+          }
+        },
+        "$procdff$131": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 30 ],
+            "D": [ 38, 39, 40, 41 ],
+            "Q": [ 68, 69, 70, 71 ]
+          }
+        },
+        "$procdff$132": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 4
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 30 ],
+            "D": [ 42, 43, 44, 45 ],
+            "Q": [ 72, 73, 74, 75 ]
+          }
+        },
+        "$procmux$120": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 4
+          },
+          "attributes": {
+            "full_case": 1,
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89.7-89.19|../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89.3-91.6"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0", "0" ],
+            "B": [ "1", "1", "1", "1" ],
+            "S": [ 46 ],
+            "Y": [ 42, 43, 44, 45 ]
+          }
+        },
+        "$procmux$123": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 4
+          },
+          "attributes": {
+            "full_case": 1,
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89.7-89.19|../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89.3-91.6"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x", "x", "x", "x" ],
+            "B": [ 2, 3, 4, 5 ],
+            "S": [ 46 ],
+            "Y": [ 38, 39, 40, 41 ]
+          }
+        },
+        "$procmux$126": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 5
+          },
+          "attributes": {
+            "full_case": 1,
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89.7-89.19|../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89.3-91.6"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x", "x", "x", "x", "x" ],
+            "B": [ 6, 7, 8, 9, 10 ],
+            "S": [ 46 ],
+            "Y": [ 33, 34, 35, 36, 37 ]
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:102$46": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:102.15-102.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 47 ],
+            "B": [ 55 ],
+            "S": [ 31 ],
+            "Y": [ 12 ]
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:103$47": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:103.15-103.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 48 ],
+            "B": [ 56 ],
+            "S": [ 31 ],
+            "Y": [ 13 ]
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:104$48": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:104.15-104.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 49 ],
+            "B": [ 57 ],
+            "S": [ 31 ],
+            "Y": [ 14 ]
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:105$49": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:105.15-105.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 50 ],
+            "B": [ 58 ],
+            "S": [ 31 ],
+            "Y": [ 15 ]
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:107$50": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:107.15-107.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 51 ],
+            "B": [ 59 ],
+            "S": [ 32 ],
+            "Y": [ 21 ]
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:108$51": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:108.15-108.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 52 ],
+            "B": [ 60 ],
+            "S": [ 32 ],
+            "Y": [ 22 ]
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:109$52": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:109.15-109.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 53 ],
+            "B": [ 61 ],
+            "S": [ 32 ],
+            "Y": [ 23 ]
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:110$53": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:110.15-110.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 54 ],
+            "B": [ 62 ],
+            "S": [ 32 ],
+            "Y": [ 24 ]
+          }
+        }
+      },
+      "memories": {
+        "mem": {
+          "hide_name": 0,
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:60.12-60.15"
+          },
+          "width": 4,
+          "start_offset": 0,
+          "size": 32
+        }
+      },
+      "netnames": {
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$10_EN[3:0]$95": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$11_EN[3:0]$96": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$12_EN[3:0]$97": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$13_EN[3:0]$98": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$14_EN[3:0]$99": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$15_EN[3:0]$100": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$16_EN[3:0]$101": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$17_EN[3:0]$102": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$18_EN[3:0]$103": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$19_EN[3:0]$104": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$20_EN[3:0]$105": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$21_EN[3:0]$106": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$22_EN[3:0]$107": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$23_EN[3:0]$108": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$24_EN[3:0]$109": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$25_EN[3:0]$110": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$26_EN[3:0]$111": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$27_EN[3:0]$112": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$28_EN[3:0]$113": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$29_EN[3:0]$114": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$2_EN[3:0]$87": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$30_EN[3:0]$115": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$31_EN[3:0]$116": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$32_EN[3:0]$117": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$33_EN[3:0]$118": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$3_EN[3:0]$88": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$4_EN[3:0]$89": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$5_EN[3:0]$90": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$6_EN[3:0]$91": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$7_EN[3:0]$92": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$8_EN[3:0]$93": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$9_EN[3:0]$94": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_ADDR[4:0]$36": {
+          "hide_name": 1,
+          "bits": [ 33, 34, 35, 36, 37 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_DATA[3:0]$37": {
+          "hide_name": 1,
+          "bits": [ 38, 39, 40, 41 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          }
+        },
+        "$0$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_EN[3:0]$38": {
+          "hide_name": 1,
+          "bits": [ 42, 43, 44, 45 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          }
+        },
+        "$0\\AD_reg[3:0]": {
+          "hide_name": 1,
+          "bits": [ 47, 48, 49, 50 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:97.5-100.8"
+          }
+        },
+        "$0\\BD_reg[3:0]": {
+          "hide_name": 1,
+          "bits": [ 51, 52, 53, 54 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:97.5-100.8"
+          }
+        },
+        "$0\\i[31:0]": {
+          "hide_name": 1,
+          "bits": [ "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$1$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_ADDR[4:0]$40": {
+          "hide_name": 1,
+          "bits": [ 33, 34, 35, 36, 37 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          }
+        },
+        "$1$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_DATA[3:0]$41": {
+          "hide_name": 1,
+          "bits": [ 38, 39, 40, 41 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          }
+        },
+        "$1$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_EN[3:0]$42": {
+          "hide_name": 1,
+          "bits": [ 42, 43, 44, 45 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:88.2-92.5"
+          }
+        },
+        "$eq$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89$39_Y": {
+          "hide_name": 1,
+          "bits": [ 46 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:89.7-89.19"
+          }
+        },
+        "$memrd$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:94$43_DATA": {
+          "hide_name": 1,
+          "bits": [ 47, 48, 49, 50 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:94.14-94.17"
+          }
+        },
+        "$memrd$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:95$44_DATA": {
+          "hide_name": 1,
+          "bits": [ 51, 52, 53, 54 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:95.14-95.17"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$10_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$11_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$12_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$13_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$14_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$15_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$16_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$17_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$18_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$19_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$20_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$21_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$22_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$23_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$24_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$25_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$26_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$27_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$28_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$29_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$2_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$30_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$31_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$32_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$33_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$3_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$4_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$5_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$6_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$7_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$8_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:83$9_EN": {
+          "hide_name": 1,
+          "bits": [ "1", "1", "1", "1" ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_ADDR": {
+          "hide_name": 1,
+          "bits": [ 63, 64, 65, 66, 67 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_DATA": {
+          "hide_name": 1,
+          "bits": [ 68, 69, 70, 71 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$memwr$\\mem$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:90$34_EN": {
+          "hide_name": 1,
+          "bits": [ 72, 73, 74, 75 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:0.0-0.0"
+          }
+        },
+        "$procmux$120_Y": {
+          "hide_name": 1,
+          "bits": [ 42, 43, 44, 45 ],
+          "attributes": {
+          }
+        },
+        "$procmux$121_CMP": {
+          "hide_name": 1,
+          "bits": [ 46 ],
+          "attributes": {
+          }
+        },
+        "$procmux$123_Y": {
+          "hide_name": 1,
+          "bits": [ 38, 39, 40, 41 ],
+          "attributes": {
+          }
+        },
+        "$procmux$124_CMP": {
+          "hide_name": 1,
+          "bits": [ 46 ],
+          "attributes": {
+          }
+        },
+        "$procmux$126_Y": {
+          "hide_name": 1,
+          "bits": [ 33, 34, 35, 36, 37 ],
+          "attributes": {
+          }
+        },
+        "$procmux$127_CMP": {
+          "hide_name": 1,
+          "bits": [ 46 ],
+          "attributes": {
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:102$46_Y": {
+          "hide_name": 1,
+          "bits": [ 12 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:102.15-102.48"
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:103$47_Y": {
+          "hide_name": 1,
+          "bits": [ 13 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:103.15-103.48"
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:104$48_Y": {
+          "hide_name": 1,
+          "bits": [ 14 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:104.15-104.48"
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:105$49_Y": {
+          "hide_name": 1,
+          "bits": [ 15 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:105.15-105.48"
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:107$50_Y": {
+          "hide_name": 1,
+          "bits": [ 21 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:107.15-107.48"
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:108$51_Y": {
+          "hide_name": 1,
+          "bits": [ 22 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:108.15-108.48"
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:109$52_Y": {
+          "hide_name": 1,
+          "bits": [ 23 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:109.15-109.48"
+          }
+        },
+        "$ternary$../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:110$53_Y": {
+          "hide_name": 1,
+          "bits": [ 24 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:110.15-110.48"
+          }
+        },
+        "AD": {
+          "hide_name": 0,
+          "bits": [ 47, 48, 49, 50 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:67.13-67.15"
+          }
+        },
+        "AD0": {
+          "hide_name": 0,
+          "bits": [ 12 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:34.9-34.12"
+          }
+        },
+        "AD1": {
+          "hide_name": 0,
+          "bits": [ 13 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:35.9-35.12"
+          }
+        },
+        "AD2": {
+          "hide_name": 0,
+          "bits": [ 14 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:36.9-36.12"
+          }
+        },
+        "AD3": {
+          "hide_name": 0,
+          "bits": [ 15 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:37.9-37.12"
+          }
+        },
+        "AD_reg": {
+          "hide_name": 0,
+          "bits": [ 55, 56, 57, 58 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:70.12-70.18"
+          }
+        },
+        "A_ADR": {
+          "hide_name": 0,
+          "bits": [ 16, 17, 18, 19, 20 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:63.13-63.18"
+          }
+        },
+        "A_ADR0": {
+          "hide_name": 0,
+          "bits": [ 16 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:38.8-38.14"
+          }
+        },
+        "A_ADR1": {
+          "hide_name": 0,
+          "bits": [ 17 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:39.8-39.14"
+          }
+        },
+        "A_ADR2": {
+          "hide_name": 0,
+          "bits": [ 18 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:40.8-40.14"
+          }
+        },
+        "A_ADR3": {
+          "hide_name": 0,
+          "bits": [ 19 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:41.8-41.14"
+          }
+        },
+        "A_ADR4": {
+          "hide_name": 0,
+          "bits": [ 20 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:42.8-42.14"
+          }
+        },
+        "BD": {
+          "hide_name": 0,
+          "bits": [ 51, 52, 53, 54 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:68.13-68.15"
+          }
+        },
+        "BD0": {
+          "hide_name": 0,
+          "bits": [ 21 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:44.9-44.12"
+          }
+        },
+        "BD1": {
+          "hide_name": 0,
+          "bits": [ 22 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:45.9-45.12"
+          }
+        },
+        "BD2": {
+          "hide_name": 0,
+          "bits": [ 23 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:46.9-46.12"
+          }
+        },
+        "BD3": {
+          "hide_name": 0,
+          "bits": [ 24 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:47.9-47.12"
+          }
+        },
+        "BD_reg": {
+          "hide_name": 0,
+          "bits": [ 59, 60, 61, 62 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:71.12-71.18"
+          }
+        },
+        "B_ADR": {
+          "hide_name": 0,
+          "bits": [ 25, 26, 27, 28, 29 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:64.13-64.18"
+          }
+        },
+        "B_ADR0": {
+          "hide_name": 0,
+          "bits": [ 25 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:48.8-48.14"
+          }
+        },
+        "B_ADR1": {
+          "hide_name": 0,
+          "bits": [ 26 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:49.8-49.14"
+          }
+        },
+        "B_ADR2": {
+          "hide_name": 0,
+          "bits": [ 27 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:50.8-50.14"
+          }
+        },
+        "B_ADR3": {
+          "hide_name": 0,
+          "bits": [ 28 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:51.8-51.14"
+          }
+        },
+        "B_ADR4": {
+          "hide_name": 0,
+          "bits": [ 29 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:52.8-52.14"
+          }
+        },
+        "ConfigBits": {
+          "hide_name": 0,
+          "bits": [ 31, 32 ],
+          "attributes": {
+            "FABulous": 1,
+            "GLOBAL": 1,
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:56.50-56.60"
+          }
+        },
+        "D": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:66.13-66.14"
+          }
+        },
+        "D0": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:23.8-23.10"
+          }
+        },
+        "D1": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:24.8-24.10"
+          }
+        },
+        "D2": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:25.8-25.10"
+          }
+        },
+        "D3": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:26.8-26.10"
+          }
+        },
+        "UserCLK": {
+          "hide_name": 0,
+          "bits": [ 30 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "SHARED_PORT": 1,
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:54.46-54.53"
+          }
+        },
+        "W_ADR": {
+          "hide_name": 0,
+          "bits": [ 6, 7, 8, 9, 10 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:62.13-62.18"
+          }
+        },
+        "W_ADR0": {
+          "hide_name": 0,
+          "bits": [ 6 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:27.8-27.14"
+          }
+        },
+        "W_ADR1": {
+          "hide_name": 0,
+          "bits": [ 7 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:28.8-28.14"
+          }
+        },
+        "W_ADR2": {
+          "hide_name": 0,
+          "bits": [ 8 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:29.8-29.14"
+          }
+        },
+        "W_ADR3": {
+          "hide_name": 0,
+          "bits": [ 9 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:30.8-30.14"
+          }
+        },
+        "W_ADR4": {
+          "hide_name": 0,
+          "bits": [ 10 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:31.8-31.14"
+          }
+        },
+        "W_en": {
+          "hide_name": 0,
+          "bits": [ 11 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:32.8-32.12"
+          }
+        },
+        "i": {
+          "hide_name": 0,
+          "bits": [ "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+          "signed": 1,
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/RegFile/RegFile_32x4.v:73.10-73.11"
+          }
+        }
+      }
+    }
+  }
+}
