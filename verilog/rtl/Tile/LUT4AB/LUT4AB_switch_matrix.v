@@ -1,5 +1,7 @@
 /// sta-blackbox
 /* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNUSEDPARAM */
+
 `timescale 1ns/1ps
  // NumberOfConfigBits: 462
 module LUT4AB_switch_matrix
@@ -4752,3 +4754,5 @@ assign DEBUG_select_J_SR_BEG0       = ConfigBits[458:456];
 assign DEBUG_select_J_EN_BEG0       = ConfigBits[461:459];
 endmodule
 /* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNUSEDPARAM */
+

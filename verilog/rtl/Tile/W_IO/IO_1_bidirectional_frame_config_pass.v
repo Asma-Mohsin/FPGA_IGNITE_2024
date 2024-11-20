@@ -1,5 +1,7 @@
 `timescale 1ns/1ps
 /* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNUSEDPARAM */
+
 // Copyright 2021 University of Manchester
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -61,3 +63,5 @@ module IO_1_bidirectional_frame_config_pass (I, T, O, Q, I_top, T_top, O_top, Us
 
 endmodule
 /* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNUSEDPARAM */
+

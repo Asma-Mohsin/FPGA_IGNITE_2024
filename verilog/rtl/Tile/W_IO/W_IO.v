@@ -1,5 +1,7 @@
 /// sta-blackbox
 /* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNUSEDPARAM */
+
 `timescale 1ns/1ps
 module W_IO
     #(
@@ -761,3 +763,5 @@ W_IO_switch_matrix Inst_W_IO_switch_matrix (
 
 endmodule
 /* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNUSEDPARAM */
+

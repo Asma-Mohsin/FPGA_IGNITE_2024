@@ -1,5 +1,7 @@
 /// sta-blackbox
 /* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNUSEDPARAM */
+
 `timescale 1ns/1ps
  // NumberOfConfigBits: 0
 module S_term_RAM_IO_switch_matrix
@@ -238,3 +240,5 @@ assign N4BEG15 = S4END0;
 
 endmodule
 /* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNUSEDPARAM */
+
