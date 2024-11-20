@@ -1,4 +1,8 @@
+#!/usr/bin/env python3
 import math
+
+#TODO: Improve this script so e.g. arguments can be given from the command line
+
 
 ignore_strings = ["BlockRAM", "cvxif_pau", "data_mem"]
 
@@ -71,7 +75,16 @@ def rotate_tiles(tiles, origin, angle_degrees):
     
     return tiles
 
-def write_tiles_to_file(tiles, file_path):
+def move_tiles(tiles, x_offset, y_offset):
+    for tile in tiles:
+        if any(ignore_string in tile["name"] for ignore_string in ignore_strings):
+            continue
+        x = tile["x"] + x_offset
+        y = tile["y"] + y_offset
+        tile.update({"x": x, "y": y})
+    return tiles
+
+def write_tiles_to_file_flip(tiles, file_path):
     """
     Writes the tile data to a specified file.
 
@@ -87,25 +100,37 @@ def write_tiles_to_file(tiles, file_path):
                 line = f"{tile['name']} {tile['x']} {tile['y']} {tile['flip']}\n"
             f.write(line)
 
-# Example usage
-input_path = "macro_orig.cfg"  # Path to your input configuration file
-origin = (150, 50)  # Rotation origin (x, y)
-angle = 90  # Rotation angle in degrees
+def write_tiles_to_file(tiles, file_path):
+    """
+    Writes the tile data to a specified file.
 
-# Read the tiles from the input file
-tiles = read_tiles(input_path)
+    Parameters:
+        tiles (list): A list of dictionaries with tile data.
+        file_path (str): Path to the output file.
+    """
+    with open(file_path, "w") as f:
+        for tile in tiles:
+            line = f"{tile['name']} {tile['x']} {tile['y']} {tile['flip']}\n"
+            f.write(line)
 
-# Print the original tiles
-print("Original tiles:")
-print_tiles(tiles)
+def main():
+    input_path = "macro_rotated_orig.cfg"  # Path to your input configuration file
+    output_path = "macro.cfg"
+    origin = (150, 50)  # Rotation origin (x, y)
+    angle = 90  # Rotation angle in degrees
+    x_offset = -100
+    y_offset = 0
 
-# Rotate the tiles around the given origin
-tiles = rotate_tiles(tiles, origin, angle)
+    # Read the tiles from the input file
+    tiles = read_tiles(input_path)
 
-# Print the rotated tiles
-print("\nRotated tiles:")
-print_tiles(tiles)
+    move_tiles(tiles, x_offset, y_offset)
 
-# Write the rotated tiles to the output file
-output_path = "macro.cfg"
-write_tiles_to_file(tiles, output_path)
+    # Rotate the tiles around the given origin
+    # tiles = rotate_tiles(tiles, origin, angle)
+
+    # Write the rotated tiles to the output file
+    write_tiles_to_file(tiles, output_path)
+
+if __name__ == "__main__":
+    main()
