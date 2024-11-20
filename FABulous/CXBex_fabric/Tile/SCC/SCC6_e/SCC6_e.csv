@@ -1,0 +1,16 @@
+TILE,SCC6_e,,,,,,,,,,,,,,,,,
+#direction,source_name,X-offset,Y-offset,destination_name,wires,,,,,,,,,,,,,
+
+# SCC routing, Tile SCC6 is bottom which routes all wires 
+# to the top SCC tiles.
+NORTH,BEG_o_6to0,0,-6,NULL,8,,,,,,,,,,,,,
+SOUTH,NULL,0,6,END_i_0to6,8,,,,,,,,,,,,,
+
+# Super Tile EAST/WEST routing
+EAST,NULL,0,1,o_e2w,56,,,,,,,,,,,,,
+WEST,i_w2e,0,-1,NULL,56,,,,,,,,,,,,,
+
+INCLUDE,../SCC_base.csv,,,,,,,,,,,,,,,,,
+
+MATRIX,./SCC6_e_switchmatrix.list,,,,,,,,,,,,,,,,,
+EndTILE,,,,,,,,,,,,,,,,,,

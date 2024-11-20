@@ -1,0 +1,92 @@
+{
+  "creator": "Yosys 0.43 (git sha1 ead4718e5, g++ 14.2.1 -march=x86-64 -mtune=generic -O2 -fno-plt -fexceptions -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/build/yosys/src=/usr/src/debug/yosys -fPIC -Os)",
+  "modules": {
+    "Config_access": {
+      "attributes": {
+        "C_bit3": 3,
+        "C_bit2": 2,
+        "C_bit1": 1,
+        "C_bit0": 0,
+        "BelMap": 1,
+        "FABulous": 1,
+        "dynports": 1,
+        "cells_not_processed": 1,
+        "src": "../CXBex_fabric/Tile/RAM_IO/Config_access.v:7.1-23.10"
+      },
+      "parameter_default_values": {
+        "NoConfigBits": 4
+      },
+      "ports": {
+        "C_bit0": {
+          "direction": "output",
+          "bits": [ 2 ]
+        },
+        "C_bit1": {
+          "direction": "output",
+          "bits": [ 3 ]
+        },
+        "C_bit2": {
+          "direction": "output",
+          "bits": [ 4 ]
+        },
+        "C_bit3": {
+          "direction": "output",
+          "bits": [ 5 ]
+        },
+        "ConfigBits": {
+          "direction": "input",
+          "bits": [ 2, 3, 4, 5 ]
+        }
+      },
+      "cells": {
+      },
+      "netnames": {
+        "C_bit0": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "../CXBex_fabric/Tile/RAM_IO/Config_access.v:10.33-10.39"
+          }
+        },
+        "C_bit1": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "../CXBex_fabric/Tile/RAM_IO/Config_access.v:11.33-11.39"
+          }
+        },
+        "C_bit2": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "../CXBex_fabric/Tile/RAM_IO/Config_access.v:12.33-12.39"
+          }
+        },
+        "C_bit3": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "../CXBex_fabric/Tile/RAM_IO/Config_access.v:13.33-13.39"
+          }
+        },
+        "ConfigBits": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5 ],
+          "attributes": {
+            "FABulous": 1,
+            "GLOBAL": 1,
+            "src": "../CXBex_fabric/Tile/RAM_IO/Config_access.v:15.49-15.59"
+          }
+        }
+      }
+    }
+  }
+}
