@@ -37,23 +37,29 @@ reg frame_alternate_delayed;
 
 // calculate horizontal and vertical screen position
 always @(posedge clk or negedge rst ) begin
-	if ( (rst==1'b0) || (sync==1) ) begin
+	if (!rst) begin
 		sx <= 0;
 		sy <= 0;
 		frame_alternate <= 0;
-	end else begin
-    frame_alternate_delayed <= frame_alternate;
-		if (sx == LINE) begin  // last pixel on line?
-			sx <= 0;
-			if (sy == SCREEN) begin  // last pixel on line?
-				sy <= 0;
-				frame_alternate <= ~frame_alternate;
-			end else begin
-				sy <= sy + 1;
-			end
-		end else begin
-			sx <= sx + 1;
-		end
+  end else begin
+    if (sync == 1) begin
+      sx <= 0;
+      sy <= 0;
+      frame_alternate <= 0;
+    end else begin
+      frame_alternate_delayed <= frame_alternate;
+      if (sx == LINE) begin  // last pixel on line?
+        sx <= 0;
+        if (sy == SCREEN) begin  // last pixel on line?
+          sy <= 0;
+          frame_alternate <= ~frame_alternate;
+        end else begin
+          sy <= sy + 1;
+        end
+      end else begin
+        sx <= sx + 1;
+      end
+    end
 	end
 end
 
@@ -63,7 +69,7 @@ always @(posedge clk or negedge rst) begin
 	if (!rst) begin
 		frame_counter <= 0;
 	end else begin
-		if (frame_alternate & !frame_alternate_delayed) begin //edge clk
+		if (frame_alternate & !frame_alternate_delayed) begin
 			frame_counter <= frame_counter + 1;
 			if (frame_counter == 1) begin
 				frame_counter <= 0;
@@ -104,7 +110,7 @@ always @(posedge clk or negedge rst) begin
 		data_o <= 0;
 		stb_o <= 0;
 		output_available <= 1;
-	end
+  end else begin
 
 	if (ack_o==1) begin
 
@@ -195,6 +201,7 @@ always @(posedge clk or negedge rst) begin
 		stb_o <= 1;
 		output_available <= 1'b0;
 	end
+  end
 end
 
 endmodule
@@ -228,7 +235,7 @@ module vga_driver (
     parameter VS_END = VS_STA + 2;    // sync ends
     parameter SCREEN = 524;           // last line on screen (after back porch)
 
-    always @* begin
+    always @(*) begin
         hsync = ~(sx >= HS_STA && sx < HS_END);  // invert: negative polarity
         vsync = ~(sy >= VS_STA && sy < VS_END);  // invert: negative polarity
         de = (sx <= HA_END && sy <= VA_END);
@@ -236,19 +243,27 @@ module vga_driver (
 
     // calculate horizontal and vertical screen position
     always @(posedge clk_pix or negedge rst_pix) begin
-        if ( rst_pix==1'b0 || (wb_data[1:0] == 2'b11)) begin
+        if (!rst_pix) begin
             sx <= 0;
             sy <= 0;
+            vga_r <= 0;
+            vga_g <= 0;
+            vga_b <= 0;
         end else begin
-            if (sx == LINE) begin  // last pixel on line?
+            if (wb_data[1:0] == 2'b11) begin
                 sx <= 0;
-                sy <= (sy == SCREEN) ? 0 : sy + 1;  // last line on screen?
+                sy <= 0;
             end else begin
-                sx <= sx + 1;
+              if (sx == LINE) begin  // last pixel on line?
+                  sx <= 0;
+                  sy <= (sy == SCREEN) ? 0 : sy + 1;  // last line on screen?
+              end else begin
+                  sx <= sx + 1;
+              end
             end
+            vga_r <= wb_data[7:6];
+            vga_g <= wb_data[5:4];
+            vga_b <= wb_data[3:2];
         end
-        vga_r <= wb_data[7:6];
-        vga_g <= wb_data[5:4];
-        vga_b <= wb_data[3:2];
     end
 endmodule
