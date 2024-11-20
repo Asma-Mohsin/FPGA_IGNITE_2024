@@ -1,5 +1,9 @@
 (* blackbox *)
-/// sta-blackbox/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNOPTFLAT */
+
+/// sta-blackbox/*
+/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off LATCH */
 `timescale 1ns/1ps
 module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4, C5);
 
@@ -132,7 +136,12 @@ module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4
     end
 endmodule
 
+/* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on LATCH */
 
+/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNUSEDPARAM */
+/* verilator lint_off UNDRIVEN */
 (* blackbox *)
 module sram_1rw1r_32_256_8_sky130(
 //`ifdef USE_POWER_PINS
@@ -168,3 +177,7 @@ module sram_1rw1r_32_256_8_sky130(
   output [DATA_WIDTH-1:0] dout1;
 endmodule
 /* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNUSEDPARAM */
+/* verilator lint_on UNDRIVEN */
+/* verilator lint_on UNOPTFLAT */
+

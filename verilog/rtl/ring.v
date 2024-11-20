@@ -1,4 +1,5 @@
 `timescale 1ns/1ps
+/* verilator lint_off UNOPTFLAT*/
 module ro_top #(
     parameter SIZE = 8
 ) (
@@ -109,3 +110,4 @@ module randModule (
     );
     assign randOut = w2;
 endmodule
+/* verilator lint_on UNOPTFLAT*/

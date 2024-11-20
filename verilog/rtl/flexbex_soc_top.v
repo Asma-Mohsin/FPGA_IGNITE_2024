@@ -21,15 +21,15 @@ module flexbex_soc_top #(
     input [11:0] O_top,
     output [11:0] T_top,
     // eFPGA user interface padding ports
-    output [58:0] UIO_TOP_UOUT_PAD,
-    input [16:0] UIO_TOP_UIN_PAD,
-    output [139:0] UIO_BOT_UOUT_PAD,
-    input [114:0] UIO_BOT_UIN_PAD
+    output [78:0] UIO_TOP_UOUT_PAD,
+    input [11:0] UIO_TOP_UIN_PAD, // 16 + 20 - 25 = 11 bits
+    output [159:0] UIO_BOT_UOUT_PAD,
+    input [159:0] UIO_BOT_UIN_PAD
 );
-    wire [139:0] UIO_BOT_UIN;
-    wire [139:0] UIO_BOT_UOUT;
-    wire [139:0] UIO_TOP_UIN;
-    wire [139:0] UIO_TOP_UOUT;
+    wire [159:0] UIO_BOT_UIN;
+    wire [159:0] UIO_BOT_UOUT;
+    wire [159:0] UIO_TOP_UIN;
+    wire [159:0] UIO_TOP_UOUT;
 
     //general
     wire ibex_debug_req_i;
@@ -112,6 +112,7 @@ module flexbex_soc_top #(
             cx_cxu_id_o,  // 2 bits
             cx_state_id_o,  // 2 bits
             cx_req_valid_o,  // 1 bit
+            cx_func_o,  // 25
             cx_insn_o,  // 32 bits
             cx_req_data1_o,  // 32 bits
             cx_req_data0_o,  // 32 bits
@@ -121,11 +122,7 @@ module flexbex_soc_top #(
 
     assign UIO_BOT_UOUT_PAD = UIO_BOT_UOUT;
 
-    // cx_func_o needs to go to bottom. since there is no space left in
-    // top user inputs
-    assign UIO_BOT_UIN = {
-        UIO_BOT_UIN_PAD, cx_func_o  // 25
-    };  // 25 bits
+    assign UIO_BOT_UIN = UIO_BOT_UIN_PAD;
 
     // we only conncect DATA memory to this 1kb ram block
     // instruction memory is connected to the fabric
