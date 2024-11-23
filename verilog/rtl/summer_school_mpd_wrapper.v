@@ -183,13 +183,7 @@ module summer_school_top_wrapper #(
     wire [31:0] result_data;  // Signal for result data (assuming 32-bit width)
 
     // POSIT coprocessor
-    (* blackbox *)
     cvxif_pau cvxif_pau_inst (
-
-    `ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-    `endif
         .clk(CLK),
         .rst(!resetn),
         .issue_valid(issue_valid),
