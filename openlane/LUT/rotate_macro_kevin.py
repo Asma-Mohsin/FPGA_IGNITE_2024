@@ -4,6 +4,7 @@ import math
 #TODO: Improve this script so e.g. arguments can be given from the command line
 
 
+# ignore_strings = ["BlockRAM", "cvxif_pau", "data_mem", "LUT4AB", "W_IO"]
 ignore_strings = ["BlockRAM", "cvxif_pau", "data_mem"]
 
 def rotate(origin, point, angle):
@@ -69,9 +70,10 @@ def rotate_tiles(tiles, origin, angle_degrees):
     for tile in tiles:
         if any(ignore_string in tile["name"] for ignore_string in ignore_strings):
             continue
+        flip = "N"
         x, y = rotate(origin, (tile["x"], tile["y"]), angle)
         x += 2000
-        tile.update({"x": x, "y": y})
+        tile.update({"x": x, "y": y, "flip": flip})
     
     return tiles
 
@@ -110,16 +112,17 @@ def write_tiles_to_file(tiles, file_path):
     """
     with open(file_path, "w") as f:
         for tile in tiles:
-            line = f"{tile['name']} {tile['x']} {tile['y']} {tile['flip']}\n"
+            line = f"{tile['name']} {tile['x']:.1f} {tile['y']:.1f} {tile['flip']}\n"
             f.write(line)
 
 def main():
-    input_path = "macro_rotated_orig.cfg"  # Path to your input configuration file
-    output_path = "macro.cfg"
+    input_path = "macro_tmp_test.cfg"  # Path to your input configuration file
+    output_path = "macro_shifted_test.cfg"
+    # origin = (2400, 245)  # Rotation origin (x, y)
     origin = (150, 50)  # Rotation origin (x, y)
-    angle = 90  # Rotation angle in degrees
-    x_offset = -100
-    y_offset = 0
+    angle = -90  # Rotation angle in degrees
+    x_offset = 100 
+    y_offset = 100 
 
     # Read the tiles from the input file
     tiles = read_tiles(input_path)
