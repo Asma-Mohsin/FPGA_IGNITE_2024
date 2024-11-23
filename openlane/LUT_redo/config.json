@@ -1,0 +1,30 @@
+{
+    "DESIGN_NAME": "LUT4AB",
+    "DESIGN_IS_CORE": 0,
+    "VERILOG_FILES": [
+        "dir::LUT4AB/*.v"
+    ],
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 223.275 223.115",
+    "PL_TARGET_DENSITY": 0.62,
+    "CLOCK_PERIOD": 40,
+    "CLOCK_PORT": "UserCLK",
+    "RUN_CTS": 1,
+    "SYNTH_NO_FLAT": 1,
+    "FP_PDN_CORE_RING": 0,
+    "GLB_RT_MAXLAYER": 5,
+    "RUN_LINTER": 0,
+    "SYNTH_LATCH_MAP": "dir::gate_map.v",
+    "BASE_SDC_FILE": "dir::LUT4AB.sdc",
+    "FP_IO_VLENGTH": 0.8,
+    "FP_IO_HLENGTH": 0.8,
+    "FP_IO_HTHICKNESS_MULT": 2,
+    "FP_IO_VTHICKNESS_MULT": 2,
+    "FP_IO_MODE": 0,
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "TOP_MARGIN_MULT": 2,
+    "BOTTOM_MARGIN_MULT": 2,
+    "VDD_PINS": "vccd1",
+    "GND_PINS": "vssd1",
+    "ROUTING_CORES": 10
+}
