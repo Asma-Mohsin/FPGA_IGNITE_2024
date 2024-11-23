@@ -3,6 +3,11 @@
 /* verilator lint_off UNOPTFLAT */
 module flexbex_soc_top #(
 ) (
+    `ifdef USE_POWER_PINS
+	input wire vccd1,
+	input wire vssd1,
+`endif
+
     //Config related ports
     input clk,
     input resetn,
@@ -127,7 +132,12 @@ module flexbex_soc_top #(
     // we only conncect DATA memory to this 1kb ram block
     // instruction memory is connected to the fabric
     /* verilator lint_off PINCONNECTEMPTY */
+     (* blackbox *)
     sky130_sram_1kbyte_1rw1r_32x256_8 data_mem_i (
+         `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         // read write port
         .clk0(clk),
         .csb0(~mem_data_req_o),  // chip select active low
@@ -145,6 +155,10 @@ module flexbex_soc_top #(
     /* verilator lint_on PINCONNECTEMPTY */
 
     ibex_core ibex_i (
+         `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .clk_i (clk),    //
         .rst_ni(resetn),
 
@@ -198,6 +212,10 @@ module flexbex_soc_top #(
     );
 
     eFPGA_top eFPGA_top_i (
+         `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .CLK(clk),
         .resetn(resetn),
         .SelfWriteStrobe(SelfWriteStrobe),

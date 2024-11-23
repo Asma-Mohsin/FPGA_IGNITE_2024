@@ -14,6 +14,10 @@ module LUT4AB
     )
     (
  //Side.NORTH
+ `ifdef USE_POWER_PINS
+     input wire vccd1,
+     input wire vssd1,
+ `endif
         output [3:0] N1BEG,        //Port(Name=N1BEG, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=4, Side=NORTH)
         output [7:0] N2BEG,        //Port(Name=N2BEG, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=8, Side=NORTH)
         output [7:0] N2BEGb,        //Port(Name=N2BEGb, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=8, Side=NORTH)
