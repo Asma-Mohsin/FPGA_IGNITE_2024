@@ -9,7 +9,10 @@ module eFPGA
         parameter NoConfigBits=0
 /* verilator lint_on UNUSEDPARAM */
     )
-    (
+    ( `ifdef USE_POWER_PINS
+    inout vccd1,  // User area 1 1.8V supply
+    inout vssd1,  // User area 1 digital ground
+`endif
         input Tile_X1Y0_UIO_TOP_UIN0, //EXTERNAL
         input Tile_X1Y0_UIO_TOP_UIN1, //EXTERNAL
         input Tile_X1Y0_UIO_TOP_UIN10, //EXTERNAL
@@ -2532,6 +2535,10 @@ assign Tile_X9_FrameStrobe = FrameStrobe[MaxFramesPerCol*(9+1)-1:MaxFramesPerCol
 
  //tile IO port will get directly connected to top-level tile module
 N_term_single Tile_X1Y0_N_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X1Y1_N1BEG),
     .N2MID(Tile_X1Y1_N2BEG),
     .N2END(Tile_X1Y1_N2BEGb),
@@ -2592,6 +2599,10 @@ N_term_single Tile_X1Y0_N_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 N_term_single Tile_X2Y0_N_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X2Y1_N1BEG),
     .N2MID(Tile_X2Y1_N2BEG),
     .N2END(Tile_X2Y1_N2BEGb),
@@ -2652,6 +2663,10 @@ N_term_single Tile_X2Y0_N_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 N_term_single Tile_X3Y0_N_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X3Y1_N1BEG),
     .N2MID(Tile_X3Y1_N2BEG),
     .N2END(Tile_X3Y1_N2BEGb),
@@ -2713,6 +2728,10 @@ N_term_single Tile_X3Y0_N_term_single (
  //tile IO port will get directly connected to top-level tile module
 N_term_single Tile_X4Y0_N_term_single (
     .N1END(Tile_X4Y1_N1BEG),
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N2MID(Tile_X4Y1_N2BEG),
     .N2END(Tile_X4Y1_N2BEGb),
     .N4END(Tile_X4Y1_N4BEG),
@@ -2772,6 +2791,10 @@ N_term_single Tile_X4Y0_N_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 N_term_single Tile_X5Y0_N_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X5Y1_N1BEG),
     .N2MID(Tile_X5Y1_N2BEG),
     .N2END(Tile_X5Y1_N2BEGb),
@@ -2832,6 +2855,10 @@ N_term_single Tile_X5Y0_N_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 N_term_single Tile_X6Y0_N_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X6Y1_N1BEG),
     .N2MID(Tile_X6Y1_N2BEG),
     .N2END(Tile_X6Y1_N2BEGb),
@@ -2893,6 +2920,10 @@ N_term_single Tile_X6Y0_N_term_single (
  //tile IO port will get directly connected to top-level tile module
 N_term_single Tile_X7Y0_N_term_single (
     .N1END(Tile_X7Y1_N1BEG),
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N2MID(Tile_X7Y1_N2BEG),
     .N2END(Tile_X7Y1_N2BEGb),
     .N4END(Tile_X7Y1_N4BEG),
@@ -2952,6 +2983,10 @@ N_term_single Tile_X7Y0_N_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 N_term_single Tile_X8Y0_N_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X8Y1_N1BEG),
     .N2MID(Tile_X8Y1_N2BEG),
     .N2END(Tile_X8Y1_N2BEGb),
@@ -3012,6 +3047,10 @@ N_term_single Tile_X8Y0_N_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 N_term_RAM_IO Tile_X9Y0_N_term_RAM_IO (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X9Y1_N1BEG),
     .N2MID(Tile_X9Y1_N2BEG),
     .N2END(Tile_X9Y1_N2BEGb),
@@ -3036,6 +3075,10 @@ W_IO
 `endif
     Tile_X0Y1_W_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .W1END(Tile_X1Y1_W1BEG),
     .W2MID(Tile_X1Y1_W2BEG),
     .W2END(Tile_X1Y1_W2BEGb),
@@ -3078,6 +3121,10 @@ LUT4AB
 `endif
     Tile_X1Y1_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X1Y2_N1BEG),
     .N2MID(Tile_X1Y2_N2BEG),
     .N2END(Tile_X1Y2_N2BEGb),
@@ -3138,6 +3185,10 @@ LUT4AB
 `endif
     Tile_X2Y1_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X2Y2_N1BEG),
     .N2MID(Tile_X2Y2_N2BEG),
     .N2END(Tile_X2Y2_N2BEGb),
@@ -3198,6 +3249,10 @@ LUT4AB
 `endif
     Tile_X3Y1_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X3Y2_N1BEG),
     .N2MID(Tile_X3Y2_N2BEG),
     .N2END(Tile_X3Y2_N2BEGb),
@@ -3258,6 +3313,10 @@ LUT4AB
 `endif
     Tile_X4Y1_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X4Y2_N1BEG),
     .N2MID(Tile_X4Y2_N2BEG),
     .N2END(Tile_X4Y2_N2BEGb),
@@ -3318,6 +3377,10 @@ LUT4AB
 `endif
     Tile_X5Y1_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X5Y2_N1BEG),
     .N2MID(Tile_X5Y2_N2BEG),
     .N2END(Tile_X5Y2_N2BEGb),
@@ -3378,6 +3441,10 @@ LUT4AB
 `endif
     Tile_X6Y1_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X6Y2_N1BEG),
     .N2MID(Tile_X6Y2_N2BEG),
     .N2END(Tile_X6Y2_N2BEGb),
@@ -3438,6 +3505,10 @@ LUT4AB
 `endif
     Tile_X7Y1_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X7Y2_N1BEG),
     .N2MID(Tile_X7Y2_N2BEG),
     .N2END(Tile_X7Y2_N2BEGb),
@@ -3498,6 +3569,10 @@ LUT4AB
 `endif
     Tile_X8Y1_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X8Y2_N1BEG),
     .N2MID(Tile_X8Y2_N2BEG),
     .N2END(Tile_X8Y2_N2BEGb),
@@ -3558,6 +3633,10 @@ RAM_IO
 `endif
     Tile_X9Y1_RAM_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X9Y2_N1BEG),
     .N2MID(Tile_X9Y2_N2BEG),
     .N2END(Tile_X9Y2_N2BEGb),
@@ -3650,6 +3729,10 @@ W_IO
 `endif
     Tile_X0Y2_W_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .W1END(Tile_X1Y2_W1BEG),
     .W2MID(Tile_X1Y2_W2BEG),
     .W2END(Tile_X1Y2_W2BEGb),
@@ -3692,6 +3775,10 @@ LUT4AB
 `endif
     Tile_X1Y2_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X1Y3_N1BEG),
     .N2MID(Tile_X1Y3_N2BEG),
     .N2END(Tile_X1Y3_N2BEGb),
@@ -3752,6 +3839,10 @@ LUT4AB
 `endif
     Tile_X2Y2_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X2Y3_N1BEG),
     .N2MID(Tile_X2Y3_N2BEG),
     .N2END(Tile_X2Y3_N2BEGb),
@@ -3812,6 +3903,10 @@ LUT4AB
 `endif
     Tile_X3Y2_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X3Y3_N1BEG),
     .N2MID(Tile_X3Y3_N2BEG),
     .N2END(Tile_X3Y3_N2BEGb),
@@ -3872,6 +3967,10 @@ LUT4AB
 `endif
     Tile_X4Y2_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X4Y3_N1BEG),
     .N2MID(Tile_X4Y3_N2BEG),
     .N2END(Tile_X4Y3_N2BEGb),
@@ -3932,6 +4031,10 @@ LUT4AB
 `endif
     Tile_X5Y2_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X5Y3_N1BEG),
     .N2MID(Tile_X5Y3_N2BEG),
     .N2END(Tile_X5Y3_N2BEGb),
@@ -3992,6 +4095,10 @@ LUT4AB
 `endif
     Tile_X6Y2_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X6Y3_N1BEG),
     .N2MID(Tile_X6Y3_N2BEG),
     .N2END(Tile_X6Y3_N2BEGb),
@@ -4052,6 +4159,10 @@ LUT4AB
 `endif
     Tile_X7Y2_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X7Y3_N1BEG),
     .N2MID(Tile_X7Y3_N2BEG),
     .N2END(Tile_X7Y3_N2BEGb),
@@ -4112,6 +4223,10 @@ LUT4AB
 `endif
     Tile_X8Y2_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X8Y3_N1BEG),
     .N2MID(Tile_X8Y3_N2BEG),
     .N2END(Tile_X8Y3_N2BEGb),
@@ -4172,6 +4287,10 @@ RAM_IO
 `endif
     Tile_X9Y2_RAM_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X9Y3_N1BEG),
     .N2MID(Tile_X9Y3_N2BEG),
     .N2END(Tile_X9Y3_N2BEGb),
@@ -4264,6 +4383,10 @@ W_IO
 `endif
     Tile_X0Y3_W_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .W1END(Tile_X1Y3_W1BEG),
     .W2MID(Tile_X1Y3_W2BEG),
     .W2END(Tile_X1Y3_W2BEGb),
@@ -4306,6 +4429,10 @@ LUT4AB
 `endif
     Tile_X1Y3_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X1Y4_N1BEG),
     .N2MID(Tile_X1Y4_N2BEG),
     .N2END(Tile_X1Y4_N2BEGb),
@@ -4366,6 +4493,10 @@ LUT4AB
 `endif
     Tile_X2Y3_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X2Y4_N1BEG),
     .N2MID(Tile_X2Y4_N2BEG),
     .N2END(Tile_X2Y4_N2BEGb),
@@ -4426,6 +4557,10 @@ LUT4AB
 `endif
     Tile_X3Y3_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X3Y4_N1BEG),
     .N2MID(Tile_X3Y4_N2BEG),
     .N2END(Tile_X3Y4_N2BEGb),
@@ -4486,6 +4621,10 @@ LUT4AB
 `endif
     Tile_X4Y3_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X4Y4_N1BEG),
     .N2MID(Tile_X4Y4_N2BEG),
     .N2END(Tile_X4Y4_N2BEGb),
@@ -4546,6 +4685,10 @@ LUT4AB
 `endif
     Tile_X5Y3_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X5Y4_N1BEG),
     .N2MID(Tile_X5Y4_N2BEG),
     .N2END(Tile_X5Y4_N2BEGb),
@@ -4606,6 +4749,10 @@ LUT4AB
 `endif
     Tile_X6Y3_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X6Y4_N1BEG),
     .N2MID(Tile_X6Y4_N2BEG),
     .N2END(Tile_X6Y4_N2BEGb),
@@ -4666,6 +4813,10 @@ LUT4AB
 `endif
     Tile_X7Y3_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X7Y4_N1BEG),
     .N2MID(Tile_X7Y4_N2BEG),
     .N2END(Tile_X7Y4_N2BEGb),
@@ -4726,6 +4877,10 @@ LUT4AB
 `endif
     Tile_X8Y3_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X8Y4_N1BEG),
     .N2MID(Tile_X8Y4_N2BEG),
     .N2END(Tile_X8Y4_N2BEGb),
@@ -4786,6 +4941,10 @@ RAM_IO
 `endif
     Tile_X9Y3_RAM_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X9Y4_N1BEG),
     .N2MID(Tile_X9Y4_N2BEG),
     .N2END(Tile_X9Y4_N2BEGb),
@@ -4878,6 +5037,10 @@ W_IO
 `endif
     Tile_X0Y4_W_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .W1END(Tile_X1Y4_W1BEG),
     .W2MID(Tile_X1Y4_W2BEG),
     .W2END(Tile_X1Y4_W2BEGb),
@@ -4920,6 +5083,11 @@ LUT4AB
 `endif
     Tile_X1Y4_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
+
     .N1END(Tile_X1Y5_N1BEG),
     .N2MID(Tile_X1Y5_N2BEG),
     .N2END(Tile_X1Y5_N2BEGb),
@@ -4980,6 +5148,10 @@ LUT4AB
 `endif
     Tile_X2Y4_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X2Y5_N1BEG),
     .N2MID(Tile_X2Y5_N2BEG),
     .N2END(Tile_X2Y5_N2BEGb),
@@ -5040,6 +5212,11 @@ LUT4AB
 `endif
     Tile_X3Y4_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
+
     .N1END(Tile_X3Y5_N1BEG),
     .N2MID(Tile_X3Y5_N2BEG),
     .N2END(Tile_X3Y5_N2BEGb),
@@ -5100,6 +5277,10 @@ LUT4AB
 `endif
     Tile_X4Y4_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X4Y5_N1BEG),
     .N2MID(Tile_X4Y5_N2BEG),
     .N2END(Tile_X4Y5_N2BEGb),
@@ -5160,6 +5341,10 @@ LUT4AB
 `endif
     Tile_X5Y4_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X5Y5_N1BEG),
     .N2MID(Tile_X5Y5_N2BEG),
     .N2END(Tile_X5Y5_N2BEGb),
@@ -5220,6 +5405,10 @@ LUT4AB
 `endif
     Tile_X6Y4_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X6Y5_N1BEG),
     .N2MID(Tile_X6Y5_N2BEG),
     .N2END(Tile_X6Y5_N2BEGb),
@@ -5280,6 +5469,10 @@ LUT4AB
 `endif
     Tile_X7Y4_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X7Y5_N1BEG),
     .N2MID(Tile_X7Y5_N2BEG),
     .N2END(Tile_X7Y5_N2BEGb),
@@ -5340,6 +5533,10 @@ LUT4AB
 `endif
     Tile_X8Y4_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X8Y5_N1BEG),
     .N2MID(Tile_X8Y5_N2BEG),
     .N2END(Tile_X8Y5_N2BEGb),
@@ -5400,6 +5597,10 @@ RAM_IO
 `endif
     Tile_X9Y4_RAM_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X9Y5_N1BEG),
     .N2MID(Tile_X9Y5_N2BEG),
     .N2END(Tile_X9Y5_N2BEGb),
@@ -5492,6 +5693,10 @@ W_IO
 `endif
     Tile_X0Y5_W_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .W1END(Tile_X1Y5_W1BEG),
     .W2MID(Tile_X1Y5_W2BEG),
     .W2END(Tile_X1Y5_W2BEGb),
@@ -5534,6 +5739,10 @@ LUT4AB
 `endif
     Tile_X1Y5_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X1Y6_N1BEG),
     .N2MID(Tile_X1Y6_N2BEG),
     .N2END(Tile_X1Y6_N2BEGb),
@@ -5594,6 +5803,10 @@ LUT4AB
 `endif
     Tile_X2Y5_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X2Y6_N1BEG),
     .N2MID(Tile_X2Y6_N2BEG),
     .N2END(Tile_X2Y6_N2BEGb),
@@ -5654,6 +5867,10 @@ LUT4AB
 `endif
     Tile_X3Y5_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X3Y6_N1BEG),
     .N2MID(Tile_X3Y6_N2BEG),
     .N2END(Tile_X3Y6_N2BEGb),
@@ -5714,6 +5931,10 @@ LUT4AB
 `endif
     Tile_X4Y5_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X4Y6_N1BEG),
     .N2MID(Tile_X4Y6_N2BEG),
     .N2END(Tile_X4Y6_N2BEGb),
@@ -5774,6 +5995,10 @@ LUT4AB
 `endif
     Tile_X5Y5_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X5Y6_N1BEG),
     .N2MID(Tile_X5Y6_N2BEG),
     .N2END(Tile_X5Y6_N2BEGb),
@@ -5834,6 +6059,10 @@ LUT4AB
 `endif
     Tile_X6Y5_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X6Y6_N1BEG),
     .N2MID(Tile_X6Y6_N2BEG),
     .N2END(Tile_X6Y6_N2BEGb),
@@ -5894,6 +6123,10 @@ LUT4AB
 `endif
     Tile_X7Y5_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X7Y6_N1BEG),
     .N2MID(Tile_X7Y6_N2BEG),
     .N2END(Tile_X7Y6_N2BEGb),
@@ -5954,6 +6187,10 @@ LUT4AB
 `endif
     Tile_X8Y5_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X8Y6_N1BEG),
     .N2MID(Tile_X8Y6_N2BEG),
     .N2END(Tile_X8Y6_N2BEGb),
@@ -6014,6 +6251,10 @@ RAM_IO
 `endif
     Tile_X9Y5_RAM_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X9Y6_N1BEG),
     .N2MID(Tile_X9Y6_N2BEG),
     .N2END(Tile_X9Y6_N2BEGb),
@@ -6106,6 +6347,10 @@ W_IO
 `endif
     Tile_X0Y6_W_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .W1END(Tile_X1Y6_W1BEG),
     .W2MID(Tile_X1Y6_W2BEG),
     .W2END(Tile_X1Y6_W2BEGb),
@@ -6148,6 +6393,10 @@ LUT4AB
 `endif
     Tile_X1Y6_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X1Y7_N1BEG),
     .N2MID(Tile_X1Y7_N2BEG),
     .N2END(Tile_X1Y7_N2BEGb),
@@ -6208,6 +6457,10 @@ LUT4AB
 `endif
     Tile_X2Y6_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X2Y7_N1BEG),
     .N2MID(Tile_X2Y7_N2BEG),
     .N2END(Tile_X2Y7_N2BEGb),
@@ -6268,6 +6521,10 @@ LUT4AB
 `endif
     Tile_X3Y6_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X3Y7_N1BEG),
     .N2MID(Tile_X3Y7_N2BEG),
     .N2END(Tile_X3Y7_N2BEGb),
@@ -6328,6 +6585,10 @@ LUT4AB
 `endif
     Tile_X4Y6_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X4Y7_N1BEG),
     .N2MID(Tile_X4Y7_N2BEG),
     .N2END(Tile_X4Y7_N2BEGb),
@@ -6388,6 +6649,10 @@ LUT4AB
 `endif
     Tile_X5Y6_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X5Y7_N1BEG),
     .N2MID(Tile_X5Y7_N2BEG),
     .N2END(Tile_X5Y7_N2BEGb),
@@ -6448,6 +6713,10 @@ LUT4AB
 `endif
     Tile_X6Y6_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X6Y7_N1BEG),
     .N2MID(Tile_X6Y7_N2BEG),
     .N2END(Tile_X6Y7_N2BEGb),
@@ -6508,6 +6777,10 @@ LUT4AB
 `endif
     Tile_X7Y6_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X7Y7_N1BEG),
     .N2MID(Tile_X7Y7_N2BEG),
     .N2END(Tile_X7Y7_N2BEGb),
@@ -6568,6 +6841,10 @@ LUT4AB
 `endif
     Tile_X8Y6_LUT4AB
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X8Y7_N1BEG),
     .N2MID(Tile_X8Y7_N2BEG),
     .N2END(Tile_X8Y7_N2BEGb),
@@ -6628,6 +6905,10 @@ RAM_IO
 `endif
     Tile_X9Y6_RAM_IO
     (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .N1END(Tile_X9Y7_N1BEG),
     .N2MID(Tile_X9Y7_N2BEG),
     .N2END(Tile_X9Y7_N2BEGb),
@@ -6713,6 +6994,10 @@ RAM_IO
 
  //tile IO port will get directly connected to top-level tile module
 S_term_single Tile_X1Y7_S_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X1Y6_S1BEG),
     .S2MID(Tile_X1Y6_S2BEG),
     .S2END(Tile_X1Y6_S2BEGb),
@@ -6773,6 +7058,10 @@ S_term_single Tile_X1Y7_S_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 S_term_single Tile_X2Y7_S_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X2Y6_S1BEG),
     .S2MID(Tile_X2Y6_S2BEG),
     .S2END(Tile_X2Y6_S2BEGb),
@@ -6833,6 +7122,10 @@ S_term_single Tile_X2Y7_S_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 S_term_single Tile_X3Y7_S_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X3Y6_S1BEG),
     .S2MID(Tile_X3Y6_S2BEG),
     .S2END(Tile_X3Y6_S2BEGb),
@@ -6893,6 +7186,10 @@ S_term_single Tile_X3Y7_S_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 S_term_single Tile_X4Y7_S_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X4Y6_S1BEG),
     .S2MID(Tile_X4Y6_S2BEG),
     .S2END(Tile_X4Y6_S2BEGb),
@@ -6953,6 +7250,10 @@ S_term_single Tile_X4Y7_S_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 S_term_single Tile_X5Y7_S_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X5Y6_S1BEG),
     .S2MID(Tile_X5Y6_S2BEG),
     .S2END(Tile_X5Y6_S2BEGb),
@@ -7013,6 +7314,10 @@ S_term_single Tile_X5Y7_S_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 S_term_single Tile_X6Y7_S_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X6Y6_S1BEG),
     .S2MID(Tile_X6Y6_S2BEG),
     .S2END(Tile_X6Y6_S2BEGb),
@@ -7073,6 +7378,10 @@ S_term_single Tile_X6Y7_S_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 S_term_single Tile_X7Y7_S_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X7Y6_S1BEG),
     .S2MID(Tile_X7Y6_S2BEG),
     .S2END(Tile_X7Y6_S2BEGb),
@@ -7133,6 +7442,10 @@ S_term_single Tile_X7Y7_S_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 S_term_single Tile_X8Y7_S_term_single (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X8Y6_S1BEG),
     .S2MID(Tile_X8Y6_S2BEG),
     .S2END(Tile_X8Y6_S2BEGb),
@@ -7193,6 +7506,10 @@ S_term_single Tile_X8Y7_S_term_single (
 
  //tile IO port will get directly connected to top-level tile module
 S_term_RAM_IO Tile_X9Y7_S_term_RAM_IO (
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
     .S1END(Tile_X9Y6_S1BEG),
     .S2MID(Tile_X9Y6_S2BEG),
     .S2END(Tile_X9Y6_S2BEGb),
