@@ -1,6 +1,11 @@
 `timescale 1ns / 1ps
 
 module ppu(
+	`ifdef USE_POWER_PINS
+	input wire vccd1,
+	input wire vssd1,
+`endif
+
 	input wire clk,
 	input wire rst,
 
@@ -210,6 +215,11 @@ endmodule
 
 
 module vga_driver (
+	`ifdef USE_POWER_PINS
+	input wire vccd1,
+	input wire vssd1,
+`endif
+
     input  wire clk_pix,   // pixel clock
     input  wire rst_pix,   // reset in pixel clock domain
     input  wire [7:0] wb_data, // write data

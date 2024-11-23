@@ -5,6 +5,11 @@ module summer_school_top_wrapper #(
     parameter NUM_OF_LOGIC_ANALYZER_BITS = 128,
     parameter WB_DATA_WIDTH = 32
 ) (
+`ifdef USE_POWER_PINS
+    inout vccd1,  // User area 1 1.8V supply
+    inout vssd1,  // User area 1 digital ground
+`endif
+
     // Wishbone ports (WB MI A)
     input wb_clk_i,
     input wb_rst_i,
@@ -13,15 +18,15 @@ module summer_school_top_wrapper #(
     input wbs_we_i,
     input [WB_DATA_WIDTH-1:0] wbs_dat_i,
     input [WB_DATA_WIDTH-1:0] wbs_adr_i,
-    output [WB_DATA_WIDTH-1:0] wbs_dat_o, // not used
+    output [WB_DATA_WIDTH-1:0] wbs_dat_o,  // not used
     output reg wbs_ack_o,
     output wire wbs_sta_o,
 
     // Logic Analyzer Signals
     output [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_out,
     /* verilator lint_off UNUSEDSIGNAL */
-    input  [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_in, // la_data_in'[127:109,39:9,7:0] not used
-    input  [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_oenb, // not used
+    input [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_in,  // la_data_in'[127:109,39:9,7:0] not used
+    input [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_oenb,  // not used
     /* verilator lint_on UNUSEDSIGNAL */
 
     // IOs
@@ -129,6 +134,10 @@ module summer_school_top_wrapper #(
 
     /* verilator lint_off PINCONNECTEMPTY */
     flexbex_soc_top flexbex_eFPGA (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .A_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
         .B_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
         .Config_accessC(),  // NOTE: Dirk said to leave this empty since its not needed
@@ -176,6 +185,11 @@ module summer_school_top_wrapper #(
     // POSIT coprocessor
     (* blackbox *)
     cvxif_pau cvxif_pau_inst (
+
+    `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .clk(CLK),
         .rst(!resetn),
         .issue_valid(issue_valid),
@@ -198,6 +212,10 @@ module summer_school_top_wrapper #(
     reg en;
     wire [7:0] d_out;
     ro_top ring_inst (
+         `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .clk(CLK),
         .en(en),
         .d_out(d_out)
@@ -216,6 +234,10 @@ module summer_school_top_wrapper #(
     // Pixel Processing Unit
     /* verilator lint_off PINCONNECTEMPTY */
     ppu ppu_inst (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .clk(CLK),
         .rst(resetn),
         .sync(UIO_BOT_UOUT_PAD[0]),
@@ -235,6 +257,10 @@ module summer_school_top_wrapper #(
 
     /* verilator lint_off PINCONNECTEMPTY */
     vga_driver vga_driver_inst (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .clk_pix(CLK),
         .rst_pix(resetn),
         .wb_data(data_o),  // PPU's data output is written to VGA
@@ -341,27 +367,27 @@ module summer_school_top_wrapper #(
     //TODO test behaviour of this clock domain crossing (assume condition is
     //true
     always @(posedge wb_clk_i or negedge resetn) begin
-      if (!resetn) begin
-        wb_to_fpga <= 1'b0;
-      end else begin
-        if (feedback1 && !(wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS))) begin
-          wb_to_fpga <= 1'b0;
-        end else if (wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS)) begin
-          wb_to_fpga <= 1'b1;
-          end else begin
-          wb_to_fpga <= wb_to_fpga;
+        if (!resetn) begin
+            wb_to_fpga <= 1'b0;
+        end else begin
+            if (feedback1 && !(wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS))) begin
+                wb_to_fpga <= 1'b0;
+            end else if (wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS)) begin
+                wb_to_fpga <= 1'b1;
+            end else begin
+                wb_to_fpga <= wb_to_fpga;
+            end
         end
-      end
     end
 
     always @(posedge wb_clk_i or negedge resetn) begin
-      if(!resetn) begin
-        feedback0 <= 1'b0;
-        feedback1 <= 1'b0;
-      end else begin
-        feedback0 <= config_strobe_reg2;
-        feedback1 <= feedback0;
-      end
+        if (!resetn) begin
+            feedback0 <= 1'b0;
+            feedback1 <= 1'b0;
+        end else begin
+            feedback0 <= config_strobe_reg2;
+            feedback1 <= feedback0;
+        end
     end
 
 

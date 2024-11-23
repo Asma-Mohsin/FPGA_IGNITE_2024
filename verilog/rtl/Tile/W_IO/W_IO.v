@@ -14,6 +14,10 @@ module W_IO
     )
     (
  //Side.EAST
+ `ifdef USE_POWER_PINS
+     input wire vccd1,
+     input wire vssd1,
+ `endif
         output [3:0] E1BEG,        //Port(Name=E1BEG, IO=OUTPUT, XOffset=1, YOffset=0, WireCount=4, Side=EAST)
         output [7:0] E2BEG,        //Port(Name=E2BEG, IO=OUTPUT, XOffset=1, YOffset=0, WireCount=8, Side=EAST)
         output [7:0] E2BEGb,        //Port(Name=E2BEGb, IO=OUTPUT, XOffset=1, YOffset=0, WireCount=8, Side=EAST)
