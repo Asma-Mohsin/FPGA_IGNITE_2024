@@ -1,0 +1,680 @@
+* NGSPICE file created from N_term_RAM_IO.ext - technology: sky130A
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__fill_2 abstract view
+.subckt sky130_fd_sc_hd__fill_2 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_1 abstract view
+.subckt sky130_fd_sc_hd__clkbuf_1 A VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_ef_sc_hd__decap_12 abstract view
+.subckt sky130_ef_sc_hd__decap_12 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__fill_1 abstract view
+.subckt sky130_fd_sc_hd__fill_1 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__buf_2 abstract view
+.subckt sky130_fd_sc_hd__buf_2 A VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_4 abstract view
+.subckt sky130_fd_sc_hd__clkbuf_4 A VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__decap_8 abstract view
+.subckt sky130_fd_sc_hd__decap_8 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__decap_4 abstract view
+.subckt sky130_fd_sc_hd__decap_4 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__decap_6 abstract view
+.subckt sky130_fd_sc_hd__decap_6 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__decap_3 abstract view
+.subckt sky130_fd_sc_hd__decap_3 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__buf_1 abstract view
+.subckt sky130_fd_sc_hd__buf_1 A VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__tapvpwrvgnd_1 abstract view
+.subckt sky130_fd_sc_hd__tapvpwrvgnd_1 VGND VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_2 abstract view
+.subckt sky130_fd_sc_hd__clkbuf_2 A VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__diode_2 abstract view
+.subckt sky130_fd_sc_hd__diode_2 DIODE VGND VNB VPB VPWR
+.ends
+
+.subckt N_term_RAM_IO FrameStrobe[0] FrameStrobe[10] FrameStrobe[11] FrameStrobe[12]
++ FrameStrobe[13] FrameStrobe[14] FrameStrobe[15] FrameStrobe[16] FrameStrobe[17]
++ FrameStrobe[18] FrameStrobe[19] FrameStrobe[1] FrameStrobe[2] FrameStrobe[3] FrameStrobe[4]
++ FrameStrobe[5] FrameStrobe[6] FrameStrobe[7] FrameStrobe[8] FrameStrobe[9] FrameStrobe_O[0]
++ FrameStrobe_O[10] FrameStrobe_O[11] FrameStrobe_O[12] FrameStrobe_O[13] FrameStrobe_O[14]
++ FrameStrobe_O[15] FrameStrobe_O[16] FrameStrobe_O[17] FrameStrobe_O[18] FrameStrobe_O[19]
++ FrameStrobe_O[1] FrameStrobe_O[2] FrameStrobe_O[3] FrameStrobe_O[4] FrameStrobe_O[5]
++ FrameStrobe_O[6] FrameStrobe_O[7] FrameStrobe_O[8] FrameStrobe_O[9] N1END[0] N1END[1]
++ N1END[2] N1END[3] N2END[0] N2END[1] N2END[2] N2END[3] N2END[4] N2END[5] N2END[6]
++ N2END[7] N2MID[0] N2MID[1] N2MID[2] N2MID[3] N2MID[4] N2MID[5] N2MID[6] N2MID[7]
++ N4END[0] N4END[10] N4END[11] N4END[12] N4END[13] N4END[14] N4END[15] N4END[1] N4END[2]
++ N4END[3] N4END[4] N4END[5] N4END[6] N4END[7] N4END[8] N4END[9] S1BEG[0] S1BEG[1]
++ S1BEG[2] S1BEG[3] S2BEG[0] S2BEG[1] S2BEG[2] S2BEG[3] S2BEG[4] S2BEG[5] S2BEG[6]
++ S2BEG[7] S2BEGb[0] S2BEGb[1] S2BEGb[2] S2BEGb[3] S2BEGb[4] S2BEGb[5] S2BEGb[6] S2BEGb[7]
++ S4BEG[0] S4BEG[10] S4BEG[11] S4BEG[12] S4BEG[13] S4BEG[14] S4BEG[15] S4BEG[1] S4BEG[2]
++ S4BEG[3] S4BEG[4] S4BEG[5] S4BEG[6] S4BEG[7] S4BEG[8] S4BEG[9] UserCLK UserCLKo
++ VGND VPWR
+XFILLER_0_7_81 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+Xstrobe_outbuf_12._0_ strobe_inbuf_12.X VGND VGND VPWR VPWR strobe_outbuf_12.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_39 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_6_233 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_3_225 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_49_ strobe_outbuf_13.X VGND VGND VPWR VPWR net62 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_8_158 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xstrobe_outbuf_7._0_ strobe_inbuf_7.X VGND VGND VPWR VPWR strobe_outbuf_7.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_191 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xoutput64 net64 VGND VGND VPWR VPWR FrameStrobe_O[15] sky130_fd_sc_hd__buf_2
+Xoutput75 net75 VGND VGND VPWR VPWR FrameStrobe_O[7] sky130_fd_sc_hd__clkbuf_4
+Xoutput97 net97 VGND VGND VPWR VPWR S2BEGb[7] sky130_fd_sc_hd__buf_2
+Xoutput86 net86 VGND VGND VPWR VPWR S2BEG[4] sky130_fd_sc_hd__buf_2
+XFILLER_0_7_60 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XFILLER_0_9_253 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_6_245 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_4_83 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_9_17 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+X_48_ strobe_outbuf_12.X VGND VGND VPWR VPWR net61 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_237 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_6_29 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_8_115 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_8_104 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+Xoutput65 net65 VGND VGND VPWR VPWR FrameStrobe_O[16] sky130_fd_sc_hd__buf_2
+Xoutput76 net76 VGND VGND VPWR VPWR FrameStrobe_O[8] sky130_fd_sc_hd__buf_2
+Xoutput87 net87 VGND VGND VPWR VPWR S2BEG[5] sky130_fd_sc_hd__clkbuf_4
+Xoutput98 net98 VGND VGND VPWR VPWR S4BEG[0] sky130_fd_sc_hd__clkbuf_4
+XFILLER_0_4_195 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_7_94 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_47_ strobe_outbuf_11.X VGND VGND VPWR VPWR net60 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_205 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_inbuf_0._0_ net1 VGND VGND VPWR VPWR strobe_inbuf_0.X sky130_fd_sc_hd__clkbuf_1
+Xoutput66 net66 VGND VGND VPWR VPWR FrameStrobe_O[17] sky130_fd_sc_hd__clkbuf_4
+Xoutput77 net77 VGND VGND VPWR VPWR FrameStrobe_O[9] sky130_fd_sc_hd__buf_2
+XFILLER_0_7_160 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xoutput88 net88 VGND VGND VPWR VPWR S2BEG[6] sky130_fd_sc_hd__clkbuf_4
+Xoutput99 net99 VGND VGND VPWR VPWR S4BEG[10] sky130_fd_sc_hd__clkbuf_4
+Xstrobe_outbuf_15._0_ strobe_inbuf_15.X VGND VGND VPWR VPWR strobe_outbuf_15.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_141 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_7_51 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_7_73 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_4_41 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_4_85 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_inbuf_12._0_ net4 VGND VGND VPWR VPWR strobe_inbuf_12.X sky130_fd_sc_hd__clkbuf_1
+X_46_ strobe_outbuf_10.X VGND VGND VPWR VPWR net59 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_217 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+X_29_ Inst_N_term_RAM_IO_switch_matrix.S4BEG9 VGND VGND VPWR VPWR net113 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_8_139 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xoutput67 net67 VGND VGND VPWR VPWR FrameStrobe_O[18] sky130_fd_sc_hd__clkbuf_4
+Xoutput78 net78 VGND VGND VPWR VPWR S1BEG[0] sky130_fd_sc_hd__buf_2
+Xoutput89 net89 VGND VGND VPWR VPWR S2BEG[7] sky130_fd_sc_hd__buf_2
+XFILLER_0_4_153 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_4_197 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_4_53 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_4_97 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_45_ strobe_outbuf_9.X VGND VGND VPWR VPWR net77 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_1_10 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_28_ Inst_N_term_RAM_IO_switch_matrix.S4BEG8 VGND VGND VPWR VPWR net112 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_173 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xoutput68 net68 VGND VGND VPWR VPWR FrameStrobe_O[19] sky130_fd_sc_hd__clkbuf_4
+Xoutput79 net79 VGND VGND VPWR VPWR S1BEG[1] sky130_fd_sc_hd__clkbuf_4
+XFILLER_0_4_121 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_4_165 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_7_86 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XInst_N_term_RAM_IO_switch_matrix._19_ net25 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEGb7
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_65 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_44_ strobe_outbuf_8.X VGND VGND VPWR VPWR net76 sky130_fd_sc_hd__clkbuf_1
+Xstrobe_inbuf_3._0_ net14 VGND VGND VPWR VPWR strobe_inbuf_3.X sky130_fd_sc_hd__clkbuf_1
+X_27_ Inst_N_term_RAM_IO_switch_matrix.S4BEG7 VGND VGND VPWR VPWR net111 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_8_119 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+Xstrobe_outbuf_18._0_ strobe_inbuf_18.X VGND VGND VPWR VPWR strobe_outbuf_18.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_185 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_7_152 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+Xoutput69 net69 VGND VGND VPWR VPWR FrameStrobe_O[1] sky130_fd_sc_hd__clkbuf_4
+Xoutput58 net58 VGND VGND VPWR VPWR FrameStrobe_O[0] sky130_fd_sc_hd__buf_2
+XPHY_0 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_4_133 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_4_177 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_7_98 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XFILLER_0_7_3 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_outbuf_0._0_ strobe_inbuf_0.X VGND VGND VPWR VPWR strobe_outbuf_0.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_1_169 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XInst_N_term_RAM_IO_switch_matrix._35_ net53 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG9
++ sky130_fd_sc_hd__clkbuf_1
+Xstrobe_inbuf_15._0_ net7 VGND VGND VPWR VPWR strobe_inbuf_15.X sky130_fd_sc_hd__clkbuf_1
+XInst_N_term_RAM_IO_switch_matrix._18_ net26 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEGb6
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_77 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+X_43_ strobe_outbuf_7.X VGND VGND VPWR VPWR net75 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_253 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+X_26_ Inst_N_term_RAM_IO_switch_matrix.S4BEG6 VGND VGND VPWR VPWR net110 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_8_109 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+X_09_ Inst_N_term_RAM_IO_switch_matrix.S2BEG5 VGND VGND VPWR VPWR net87 sky130_fd_sc_hd__clkbuf_1
+Xoutput59 net59 VGND VGND VPWR VPWR FrameStrobe_O[10] sky130_fd_sc_hd__clkbuf_4
+XFILLER_0_7_164 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XPHY_1 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_4_189 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_7_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XInst_N_term_RAM_IO_switch_matrix._34_ net54 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG8
++ sky130_fd_sc_hd__clkbuf_1
+XInst_N_term_RAM_IO_switch_matrix._17_ net27 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEGb5
++ sky130_fd_sc_hd__clkbuf_1
+X_42_ strobe_outbuf_6.X VGND VGND VPWR VPWR net74 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_1_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_25_ Inst_N_term_RAM_IO_switch_matrix.S4BEG5 VGND VGND VPWR VPWR net109 sky130_fd_sc_hd__clkbuf_1
+X_08_ Inst_N_term_RAM_IO_switch_matrix.S2BEG4 VGND VGND VPWR VPWR net86 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_132 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_7_121 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XPHY_2 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_1_138 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XInst_N_term_RAM_IO_switch_matrix._33_ net55 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG7
++ sky130_fd_sc_hd__clkbuf_1
+XInst_N_term_RAM_IO_switch_matrix._16_ net28 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEGb4
++ sky130_fd_sc_hd__clkbuf_1
+Xstrobe_inbuf_6._0_ net17 VGND VGND VPWR VPWR strobe_inbuf_6.X sky130_fd_sc_hd__clkbuf_1
+X_41_ strobe_outbuf_5.X VGND VGND VPWR VPWR net73 sky130_fd_sc_hd__clkbuf_1
+X_24_ Inst_N_term_RAM_IO_switch_matrix.S4BEG4 VGND VGND VPWR VPWR net108 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_9_9 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_7_177 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+X_07_ Inst_N_term_RAM_IO_switch_matrix.S2BEG3 VGND VGND VPWR VPWR net85 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_111 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xstrobe_outbuf_3._0_ strobe_inbuf_3.X VGND VGND VPWR VPWR strobe_outbuf_3.X sky130_fd_sc_hd__clkbuf_1
+XPHY_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_7_68 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_9_228 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_9_217 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_9_206 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XInst_N_term_RAM_IO_switch_matrix._32_ net56 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG6
++ sky130_fd_sc_hd__clkbuf_1
+Xstrobe_inbuf_18._0_ net10 VGND VGND VPWR VPWR strobe_inbuf_18.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_6_209 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_5_3 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XInst_N_term_RAM_IO_switch_matrix._15_ net29 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEGb3
++ sky130_fd_sc_hd__clkbuf_1
+X_40_ strobe_outbuf_4.X VGND VGND VPWR VPWR net72 sky130_fd_sc_hd__clkbuf_1
+X_23_ Inst_N_term_RAM_IO_switch_matrix.S4BEG3 VGND VGND VPWR VPWR net107 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_145 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_06_ Inst_N_term_RAM_IO_switch_matrix.S2BEG2 VGND VGND VPWR VPWR net84 sky130_fd_sc_hd__clkbuf_1
+XPHY_4 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_3_181 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XInst_N_term_RAM_IO_switch_matrix._31_ net42 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG5
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_0_151 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XInst_N_term_RAM_IO_switch_matrix._14_ net30 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEGb2
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_15 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_22_ Inst_N_term_RAM_IO_switch_matrix.S4BEG2 VGND VGND VPWR VPWR net106 sky130_fd_sc_hd__clkbuf_1
+X_05_ Inst_N_term_RAM_IO_switch_matrix.S2BEG1 VGND VGND VPWR VPWR net83 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_113 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_2_81 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XPHY_5 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_7_15 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_3_193 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_outbuf_11._0_ strobe_inbuf_11.X VGND VGND VPWR VPWR strobe_outbuf_11.X sky130_fd_sc_hd__clkbuf_1
+XInst_N_term_RAM_IO_switch_matrix._30_ net43 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG4
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_8_230 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_inbuf_9._0_ net20 VGND VGND VPWR VPWR strobe_inbuf_9.X sky130_fd_sc_hd__clkbuf_1
+XInst_N_term_RAM_IO_switch_matrix._13_ net31 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEGb1
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_21_ Inst_N_term_RAM_IO_switch_matrix.S4BEG1 VGND VGND VPWR VPWR net105 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_81 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_outbuf_6._0_ strobe_inbuf_6.X VGND VGND VPWR VPWR strobe_outbuf_6.X sky130_fd_sc_hd__clkbuf_1
+X_04_ Inst_N_term_RAM_IO_switch_matrix.S2BEG0 VGND VGND VPWR VPWR net82 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_169 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XPHY_6 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_4_139 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_7_27 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_3_161 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_8_253 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_8_242 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XInst_N_term_RAM_IO_switch_matrix._12_ net32 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEGb0
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_223 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_3_3 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_2_215 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_5_93 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_20_ Inst_N_term_RAM_IO_switch_matrix.S4BEG0 VGND VGND VPWR VPWR net98 sky130_fd_sc_hd__clkbuf_1
+Xinput1 FrameStrobe[0] VGND VGND VPWR VPWR net1 sky130_fd_sc_hd__clkbuf_1
+X_03_ Inst_N_term_RAM_IO_switch_matrix.S1BEG3 VGND VGND VPWR VPWR net81 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_137 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XFILLER_0_7_126 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XPHY_7 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_7_39 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_0_110 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_8_71 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XFILLER_0_4_29 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XInst_N_term_RAM_IO_switch_matrix._11_ net33 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEG7
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_227 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+Xinput2 FrameStrobe[10] VGND VGND VPWR VPWR net2 sky130_fd_sc_hd__buf_1
+X_02_ Inst_N_term_RAM_IO_switch_matrix.S1BEG2 VGND VGND VPWR VPWR net80 sky130_fd_sc_hd__clkbuf_1
+Xstrobe_outbuf_14._0_ strobe_inbuf_14.X VGND VGND VPWR VPWR strobe_outbuf_14.X sky130_fd_sc_hd__clkbuf_1
+XPHY_8 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XInst_N_term_RAM_IO_switch_matrix._10_ net34 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEG6
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_225 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_inbuf_11._0_ net3 VGND VGND VPWR VPWR strobe_inbuf_11.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_51 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XTAP_70 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+Xstrobe_outbuf_9._0_ strobe_inbuf_9.X VGND VGND VPWR VPWR strobe_outbuf_9.X sky130_fd_sc_hd__clkbuf_1
+Xinput3 FrameStrobe[11] VGND VGND VPWR VPWR net3 sky130_fd_sc_hd__buf_1
+X_01_ Inst_N_term_RAM_IO_switch_matrix.S1BEG1 VGND VGND VPWR VPWR net79 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_106 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_7_117 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xinst_clk_buf net57 VGND VGND VPWR VPWR net114 sky130_fd_sc_hd__clkbuf_2
+XFILLER_0_2_85 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_2_96 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_4_109 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XPHY_9 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+Xinput50 N4END[3] VGND VGND VPWR VPWR net50 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_237 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_1_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XTAP_71 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_60 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+Xinput4 FrameStrobe[12] VGND VGND VPWR VPWR net4 sky130_fd_sc_hd__clkbuf_1
+X_00_ Inst_N_term_RAM_IO_switch_matrix.S1BEG0 VGND VGND VPWR VPWR net78 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_6_195 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_2_42 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xinput51 N4END[4] VGND VGND VPWR VPWR net51 sky130_fd_sc_hd__clkbuf_1
+Xinput40 N2MID[7] VGND VGND VPWR VPWR net40 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_8_96 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XFILLER_0_8_85 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XFILLER_0_8_41 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_5_205 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_5_249 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_1_241 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xstrobe_inbuf_2._0_ net13 VGND VGND VPWR VPWR strobe_inbuf_2.X sky130_fd_sc_hd__clkbuf_1
+Xinput5 FrameStrobe[13] VGND VGND VPWR VPWR net5 sky130_fd_sc_hd__clkbuf_1
+XTAP_72 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_61 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_50 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+Xstrobe_outbuf_17._0_ strobe_inbuf_17.X VGND VGND VPWR VPWR strobe_outbuf_17.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_6_141 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_2_65 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xinput41 N4END[0] VGND VGND VPWR VPWR net41 sky130_fd_sc_hd__buf_1
+Xinput30 N2END[5] VGND VGND VPWR VPWR net30 sky130_fd_sc_hd__clkbuf_1
+Xinput52 N4END[5] VGND VGND VPWR VPWR net52 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_111 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_0_136 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_8_53 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xstrobe_inbuf_14._0_ net6 VGND VGND VPWR VPWR strobe_inbuf_14.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_217 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_1_231 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XTAP_73 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_62 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+Xinput6 FrameStrobe[14] VGND VGND VPWR VPWR net6 sky130_fd_sc_hd__clkbuf_1
+XTAP_40 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_51 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_6_197 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_6_153 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xinput31 N2END[6] VGND VGND VPWR VPWR net31 sky130_fd_sc_hd__clkbuf_1
+Xinput20 FrameStrobe[9] VGND VGND VPWR VPWR net20 sky130_fd_sc_hd__buf_1
+Xinput42 N4END[10] VGND VGND VPWR VPWR net42 sky130_fd_sc_hd__clkbuf_1
+Xinput53 N4END[6] VGND VGND VPWR VPWR net53 sky130_fd_sc_hd__buf_1
+XFILLER_0_3_167 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_0_126 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_8_65 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_4_251 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_1_254 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_5_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XTAP_63 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_30 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_41 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+Xinput7 FrameStrobe[15] VGND VGND VPWR VPWR net7 sky130_fd_sc_hd__clkbuf_1
+XTAP_52 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_9_162 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_6_165 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_2_89 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_6_121 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xinput54 N4END[7] VGND VGND VPWR VPWR net54 sky130_fd_sc_hd__clkbuf_1
+Xinput43 N4END[11] VGND VGND VPWR VPWR net43 sky130_fd_sc_hd__clkbuf_1
+Xinput32 N2END[7] VGND VGND VPWR VPWR net32 sky130_fd_sc_hd__clkbuf_1
+Xinput21 N1END[0] VGND VGND VPWR VPWR net21 sky130_fd_sc_hd__clkbuf_1
+Xinput10 FrameStrobe[18] VGND VGND VPWR VPWR net10 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_113 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_inbuf_5._0_ net16 VGND VGND VPWR VPWR strobe_inbuf_5.X sky130_fd_sc_hd__clkbuf_1
+XTAP_64 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_53 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_20 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_31 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+Xinput8 FrameStrobe[16] VGND VGND VPWR VPWR net8 sky130_fd_sc_hd__clkbuf_1
+XTAP_42 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_6_177 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_6_133 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_2_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+X_39_ strobe_outbuf_3.X VGND VGND VPWR VPWR net71 sky130_fd_sc_hd__clkbuf_1
+Xstrobe_outbuf_2._0_ strobe_inbuf_2.X VGND VGND VPWR VPWR strobe_outbuf_2.X sky130_fd_sc_hd__clkbuf_1
+Xinput44 N4END[12] VGND VGND VPWR VPWR net44 sky130_fd_sc_hd__clkbuf_1
+Xinput55 N4END[8] VGND VGND VPWR VPWR net55 sky130_fd_sc_hd__clkbuf_1
+Xinput22 N1END[1] VGND VGND VPWR VPWR net22 sky130_fd_sc_hd__clkbuf_1
+Xinput33 N2MID[0] VGND VGND VPWR VPWR net33 sky130_fd_sc_hd__buf_1
+Xinput11 FrameStrobe[19] VGND VGND VPWR VPWR net11 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_125 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_3_169 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_8_206 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_inbuf_17._0_ net9 VGND VGND VPWR VPWR strobe_inbuf_17.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_253 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_5_57 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XTAP_65 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_54 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_21 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_32 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+Xinput9 FrameStrobe[17] VGND VGND VPWR VPWR net9 sky130_fd_sc_hd__clkbuf_1
+XTAP_43 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+X_55_ strobe_outbuf_19.X VGND VGND VPWR VPWR net68 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_6_189 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+Xoutput110 net110 VGND VGND VPWR VPWR S4BEG[6] sky130_fd_sc_hd__clkbuf_4
+XFILLER_0_2_69 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xinput56 N4END[9] VGND VGND VPWR VPWR net56 sky130_fd_sc_hd__clkbuf_1
+Xinput23 N1END[2] VGND VGND VPWR VPWR net23 sky130_fd_sc_hd__clkbuf_1
+Xinput34 N2MID[1] VGND VGND VPWR VPWR net34 sky130_fd_sc_hd__buf_1
+Xinput12 FrameStrobe[1] VGND VGND VPWR VPWR net12 sky130_fd_sc_hd__buf_1
+Xinput45 N4END[13] VGND VGND VPWR VPWR net45 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_137 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_38_ strobe_outbuf_2.X VGND VGND VPWR VPWR net70 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_8_218 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_8_79 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_8_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XFILLER_0_4_221 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_5_69 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XTAP_22 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_33 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_66 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_55 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_44 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_9_110 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XInst_N_term_RAM_IO_switch_matrix._29_ net44 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG3
++ sky130_fd_sc_hd__clkbuf_1
+X_54_ strobe_outbuf_18.X VGND VGND VPWR VPWR net67 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_15 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_2_37 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+Xoutput111 net111 VGND VGND VPWR VPWR S4BEG[7] sky130_fd_sc_hd__clkbuf_4
+Xoutput100 net100 VGND VGND VPWR VPWR S4BEG[11] sky130_fd_sc_hd__clkbuf_4
+Xinput24 N1END[3] VGND VGND VPWR VPWR net24 sky130_fd_sc_hd__clkbuf_1
+Xinput13 FrameStrobe[2] VGND VGND VPWR VPWR net13 sky130_fd_sc_hd__buf_1
+Xinput35 N2MID[2] VGND VGND VPWR VPWR net35 sky130_fd_sc_hd__buf_1
+Xinput46 N4END[14] VGND VGND VPWR VPWR net46 sky130_fd_sc_hd__clkbuf_1
+Xinput57 UserCLK VGND VGND VPWR VPWR net57 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_105 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_3_149 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_37_ strobe_outbuf_1.X VGND VGND VPWR VPWR net69 sky130_fd_sc_hd__buf_1
+Xstrobe_outbuf_10._0_ strobe_inbuf_10.X VGND VGND VPWR VPWR strobe_outbuf_10.X sky130_fd_sc_hd__clkbuf_1
+Xstrobe_inbuf_8._0_ net19 VGND VGND VPWR VPWR strobe_inbuf_8.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_233 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_8_3 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_5_15 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XTAP_67 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_23 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_34 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_45 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_56 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_9_188 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XInst_N_term_RAM_IO_switch_matrix._28_ net45 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG2
++ sky130_fd_sc_hd__clkbuf_1
+X_53_ strobe_outbuf_17.X VGND VGND VPWR VPWR net66 sky130_fd_sc_hd__clkbuf_1
+Xstrobe_outbuf_5._0_ strobe_inbuf_5.X VGND VGND VPWR VPWR strobe_outbuf_5.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xoutput112 net112 VGND VGND VPWR VPWR S4BEG[8] sky130_fd_sc_hd__clkbuf_4
+Xoutput101 net101 VGND VGND VPWR VPWR S4BEG[12] sky130_fd_sc_hd__clkbuf_4
+Xinput25 N2END[0] VGND VGND VPWR VPWR net25 sky130_fd_sc_hd__clkbuf_1
+Xinput36 N2MID[3] VGND VGND VPWR VPWR net36 sky130_fd_sc_hd__buf_1
+Xinput14 FrameStrobe[3] VGND VGND VPWR VPWR net14 sky130_fd_sc_hd__buf_1
+X_36_ strobe_outbuf_0.X VGND VGND VPWR VPWR net58 sky130_fd_sc_hd__buf_1
+Xinput47 N4END[15] VGND VGND VPWR VPWR net47 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_81 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_8_15 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_7_253 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_7_220 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+X_19_ Inst_N_term_RAM_IO_switch_matrix.S2BEGb7 VGND VGND VPWR VPWR net97 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_245 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_5_27 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XTAP_68 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_24 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_35 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_46 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_57 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_9_178 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XInst_N_term_RAM_IO_switch_matrix._27_ net41 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG15
++ sky130_fd_sc_hd__clkbuf_1
+X_52_ strobe_outbuf_16.X VGND VGND VPWR VPWR net65 sky130_fd_sc_hd__clkbuf_1
+Xoutput113 net113 VGND VGND VPWR VPWR S4BEG[9] sky130_fd_sc_hd__clkbuf_4
+Xoutput102 net102 VGND VGND VPWR VPWR S4BEG[13] sky130_fd_sc_hd__clkbuf_4
+XFILLER_0_5_181 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xinput26 N2END[1] VGND VGND VPWR VPWR net26 sky130_fd_sc_hd__clkbuf_1
+Xinput37 N2MID[4] VGND VGND VPWR VPWR net37 sky130_fd_sc_hd__buf_1
+Xinput15 FrameStrobe[4] VGND VGND VPWR VPWR net15 sky130_fd_sc_hd__buf_1
+Xinput48 N4END[1] VGND VGND VPWR VPWR net48 sky130_fd_sc_hd__buf_1
+X_35_ Inst_N_term_RAM_IO_switch_matrix.S4BEG15 VGND VGND VPWR VPWR net104 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_195 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_3_93 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_8_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_18_ Inst_N_term_RAM_IO_switch_matrix.S2BEGb6 VGND VGND VPWR VPWR net96 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_39 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XTAP_69 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_58 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_25 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_36 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_47 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_9_113 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XInst_N_term_RAM_IO_switch_matrix._26_ net48 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG14
++ sky130_fd_sc_hd__clkbuf_1
+X_51_ strobe_outbuf_15.X VGND VGND VPWR VPWR net64 sky130_fd_sc_hd__clkbuf_1
+Xoutput114 net114 VGND VGND VPWR VPWR UserCLKo sky130_fd_sc_hd__clkbuf_4
+Xoutput103 net103 VGND VGND VPWR VPWR S4BEG[14] sky130_fd_sc_hd__buf_2
+XFILLER_0_2_29 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XInst_N_term_RAM_IO_switch_matrix._09_ net35 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEG5
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_193 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_outbuf_13._0_ strobe_inbuf_13.X VGND VGND VPWR VPWR strobe_outbuf_13.X sky130_fd_sc_hd__clkbuf_1
+Xinput49 N4END[2] VGND VGND VPWR VPWR net49 sky130_fd_sc_hd__buf_1
+Xinput27 N2END[2] VGND VGND VPWR VPWR net27 sky130_fd_sc_hd__clkbuf_1
+Xinput38 N2MID[5] VGND VGND VPWR VPWR net38 sky130_fd_sc_hd__clkbuf_1
+Xinput16 FrameStrobe[5] VGND VGND VPWR VPWR net16 sky130_fd_sc_hd__buf_1
+X_34_ Inst_N_term_RAM_IO_switch_matrix.S4BEG14 VGND VGND VPWR VPWR net103 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_141 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+X_17_ Inst_N_term_RAM_IO_switch_matrix.S2BEGb5 VGND VGND VPWR VPWR net95 sky130_fd_sc_hd__buf_1
+XFILLER_0_9_71 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_9_60 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+Xstrobe_inbuf_10._0_ net2 VGND VGND VPWR VPWR strobe_inbuf_10.X sky130_fd_sc_hd__clkbuf_1
+XTAP_59 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_26 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_37 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_48 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_6_3 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_9_136 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+Xstrobe_outbuf_8._0_ strobe_inbuf_8.X VGND VGND VPWR VPWR strobe_outbuf_8.X sky130_fd_sc_hd__clkbuf_1
+XInst_N_term_RAM_IO_switch_matrix._25_ net49 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG13
++ sky130_fd_sc_hd__clkbuf_1
+XPHY_10 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_6_83 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_50_ strobe_outbuf_14.X VGND VGND VPWR VPWR net63 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_6_139 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xoutput104 net104 VGND VGND VPWR VPWR S4BEG[15] sky130_fd_sc_hd__clkbuf_4
+XInst_N_term_RAM_IO_switch_matrix._08_ net36 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEG4
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_161 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+Xinput28 N2END[3] VGND VGND VPWR VPWR net28 sky130_fd_sc_hd__clkbuf_1
+Xinput39 N2MID[6] VGND VGND VPWR VPWR net39 sky130_fd_sc_hd__clkbuf_1
+Xinput17 FrameStrobe[6] VGND VGND VPWR VPWR net17 sky130_fd_sc_hd__buf_1
+X_33_ Inst_N_term_RAM_IO_switch_matrix.S4BEG13 VGND VGND VPWR VPWR net102 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_3_51 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_8_29 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_16_ Inst_N_term_RAM_IO_switch_matrix.S2BEGb4 VGND VGND VPWR VPWR net94 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_0_85 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XTAP_27 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_38 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_49 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_0_9_126 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XInst_N_term_RAM_IO_switch_matrix._24_ net50 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG12
++ sky130_fd_sc_hd__buf_1
+XPHY_11 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_8_170 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+Xoutput105 net105 VGND VGND VPWR VPWR S4BEG[1] sky130_fd_sc_hd__clkbuf_4
+XInst_N_term_RAM_IO_switch_matrix._07_ net37 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEG3
++ sky130_fd_sc_hd__clkbuf_1
+Xinput18 FrameStrobe[7] VGND VGND VPWR VPWR net18 sky130_fd_sc_hd__buf_1
+Xinput29 N2END[4] VGND VGND VPWR VPWR net29 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_110 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+X_32_ Inst_N_term_RAM_IO_switch_matrix.S4BEG12 VGND VGND VPWR VPWR net101 sky130_fd_sc_hd__clkbuf_1
+X_15_ Inst_N_term_RAM_IO_switch_matrix.S2BEGb3 VGND VGND VPWR VPWR net93 sky130_fd_sc_hd__clkbuf_1
+Xstrobe_inbuf_1._0_ net12 VGND VGND VPWR VPWR strobe_inbuf_1.X sky130_fd_sc_hd__clkbuf_1
+XTAP_28 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XTAP_39 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XInst_N_term_RAM_IO_switch_matrix._23_ net51 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG11
++ sky130_fd_sc_hd__buf_1
+XPHY_12 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_6_41 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_6_85 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XInst_N_term_RAM_IO_switch_matrix._06_ net38 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEG2
++ sky130_fd_sc_hd__clkbuf_1
+Xoutput106 net106 VGND VGND VPWR VPWR S4BEG[2] sky130_fd_sc_hd__clkbuf_4
+Xstrobe_outbuf_16._0_ strobe_inbuf_16.X VGND VGND VPWR VPWR strobe_outbuf_16.X sky130_fd_sc_hd__clkbuf_1
+Xinput19 FrameStrobe[8] VGND VGND VPWR VPWR net19 sky130_fd_sc_hd__buf_1
+XFILLER_0_2_133 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+X_31_ Inst_N_term_RAM_IO_switch_matrix.S4BEG11 VGND VGND VPWR VPWR net100 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_225 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_7_203 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+X_14_ Inst_N_term_RAM_IO_switch_matrix.S2BEGb2 VGND VGND VPWR VPWR net92 sky130_fd_sc_hd__clkbuf_1
+Xstrobe_inbuf_13._0_ net5 VGND VGND VPWR VPWR strobe_inbuf_13.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_9_85 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_0_253 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XTAP_29 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XInst_N_term_RAM_IO_switch_matrix._22_ net52 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG10
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_6_53 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_6_97 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_8_183 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_8_150 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XPHY_13 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_4_3 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xoutput107 net107 VGND VGND VPWR VPWR S4BEG[3] sky130_fd_sc_hd__clkbuf_4
+XFILLER_0_6_109 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XInst_N_term_RAM_IO_switch_matrix._05_ net39 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEG1
++ sky130_fd_sc_hd__clkbuf_1
+X_30_ Inst_N_term_RAM_IO_switch_matrix.S4BEG10 VGND VGND VPWR VPWR net99 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_7_237 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_13_ Inst_N_term_RAM_IO_switch_matrix.S2BEGb1 VGND VGND VPWR VPWR net91 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_9_97 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_9_42 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XInst_N_term_RAM_IO_switch_matrix._21_ net46 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG1
++ sky130_fd_sc_hd__buf_1
+XFILLER_0_8_195 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_8_162 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XPHY_14 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_6_65 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xoutput90 net90 VGND VGND VPWR VPWR S2BEGb[0] sky130_fd_sc_hd__clkbuf_4
+Xoutput108 net108 VGND VGND VPWR VPWR S4BEG[4] sky130_fd_sc_hd__clkbuf_4
+XInst_N_term_RAM_IO_switch_matrix._04_ net40 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S2BEG0
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_102 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_3_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_7_249 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_12_ Inst_N_term_RAM_IO_switch_matrix.S2BEGb0 VGND VGND VPWR VPWR net90 sky130_fd_sc_hd__clkbuf_1
+Xstrobe_inbuf_4._0_ net15 VGND VGND VPWR VPWR strobe_inbuf_4.X sky130_fd_sc_hd__clkbuf_1
+Xstrobe_outbuf_19._0_ strobe_inbuf_19.X VGND VGND VPWR VPWR strobe_outbuf_19.X sky130_fd_sc_hd__clkbuf_1
+XInst_N_term_RAM_IO_switch_matrix._20_ net47 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S4BEG0
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_8_141 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XPHY_15 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_6_77 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+Xoutput109 net109 VGND VGND VPWR VPWR S4BEG[5] sky130_fd_sc_hd__clkbuf_4
+Xoutput91 net91 VGND VGND VPWR VPWR S2BEGb[1] sky130_fd_sc_hd__buf_2
+Xoutput80 net80 VGND VGND VPWR VPWR S1BEG[2] sky130_fd_sc_hd__buf_2
+XInst_N_term_RAM_IO_switch_matrix._03_ net21 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S1BEG3
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_111 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xstrobe_outbuf_1._0_ strobe_inbuf_1.X VGND VGND VPWR VPWR strobe_outbuf_1.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_158 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+Xstrobe_inbuf_16._0_ net8 VGND VGND VPWR VPWR strobe_inbuf_16.X sky130_fd_sc_hd__clkbuf_1
+X_11_ Inst_N_term_RAM_IO_switch_matrix.S2BEG7 VGND VGND VPWR VPWR net89 sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_4_209 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_9_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_3_253 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XPHY_16 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_8_197 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_8_175 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+Xoutput70 net70 VGND VGND VPWR VPWR FrameStrobe_O[2] sky130_fd_sc_hd__clkbuf_4
+Xoutput92 net92 VGND VGND VPWR VPWR S2BEGb[2] sky130_fd_sc_hd__clkbuf_4
+Xoutput81 net81 VGND VGND VPWR VPWR S1BEG[3] sky130_fd_sc_hd__clkbuf_4
+XInst_N_term_RAM_IO_switch_matrix._02_ net22 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S1BEG2
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_167 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_3_57 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+X_10_ Inst_N_term_RAM_IO_switch_matrix.S2BEG6 VGND VGND VPWR VPWR net88 sky130_fd_sc_hd__clkbuf_1
+XPHY_17 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XANTENNA_1 net16 VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+Xoutput60 net60 VGND VGND VPWR VPWR FrameStrobe_O[11] sky130_fd_sc_hd__clkbuf_4
+Xoutput71 net71 VGND VGND VPWR VPWR FrameStrobe_O[3] sky130_fd_sc_hd__clkbuf_4
+Xoutput82 net82 VGND VGND VPWR VPWR S2BEG[0] sky130_fd_sc_hd__buf_2
+Xoutput93 net93 VGND VGND VPWR VPWR S2BEGb[3] sky130_fd_sc_hd__buf_2
+XInst_N_term_RAM_IO_switch_matrix._01_ net23 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S1BEG1
++ sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_113 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_2_149 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_3_69 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_7_208 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_inbuf_7._0_ net18 VGND VGND VPWR VPWR strobe_inbuf_7.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_9_35 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XANTENNA_2 net20 VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XPHY_18 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+Xoutput61 net61 VGND VGND VPWR VPWR FrameStrobe_O[12] sky130_fd_sc_hd__clkbuf_4
+Xoutput72 net72 VGND VGND VPWR VPWR FrameStrobe_O[4] sky130_fd_sc_hd__clkbuf_4
+Xoutput83 net83 VGND VGND VPWR VPWR S2BEG[1] sky130_fd_sc_hd__clkbuf_4
+Xoutput94 net94 VGND VGND VPWR VPWR S2BEGb[4] sky130_fd_sc_hd__clkbuf_4
+XInst_N_term_RAM_IO_switch_matrix._00_ net24 VGND VGND VPWR VPWR Inst_N_term_RAM_IO_switch_matrix.S1BEG0
++ sky130_fd_sc_hd__clkbuf_1
+Xstrobe_outbuf_4._0_ strobe_inbuf_4.X VGND VGND VPWR VPWR strobe_outbuf_4.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_5_125 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_5_169 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+Xstrobe_inbuf_19._0_ net11 VGND VGND VPWR VPWR strobe_inbuf_19.X sky130_fd_sc_hd__clkbuf_1
+XFILLER_0_2_106 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_2_128 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_2_139 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_3_15 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_6_253 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_9_25 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_3_223 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XANTENNA_3 net114 VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XFILLER_0_6_15 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XPHY_19 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_8_189 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+Xoutput62 net62 VGND VGND VPWR VPWR FrameStrobe_O[13] sky130_fd_sc_hd__clkbuf_4
+Xoutput73 net73 VGND VGND VPWR VPWR FrameStrobe_O[5] sky130_fd_sc_hd__clkbuf_4
+Xoutput95 net95 VGND VGND VPWR VPWR S2BEGb[5] sky130_fd_sc_hd__clkbuf_4
+Xoutput84 net84 VGND VGND VPWR VPWR S2BEG[2] sky130_fd_sc_hd__buf_2
+XFILLER_0_5_137 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_3_27 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_9_240 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_0_0_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_6_221 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_9_48 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_8_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_8_124 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_8
+XFILLER_0_6_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xoutput63 net63 VGND VGND VPWR VPWR FrameStrobe_O[14] sky130_fd_sc_hd__clkbuf_4
+Xoutput74 net74 VGND VGND VPWR VPWR FrameStrobe_O[6] sky130_fd_sc_hd__clkbuf_4
+Xoutput96 net96 VGND VGND VPWR VPWR S2BEGb[6] sky130_fd_sc_hd__buf_2
+Xoutput85 net85 VGND VGND VPWR VPWR S2BEG[3] sky130_fd_sc_hd__buf_2
+XFILLER_0_5_105 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
+XFILLER_0_5_149 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+.ends
+
