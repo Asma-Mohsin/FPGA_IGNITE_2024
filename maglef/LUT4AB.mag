@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1732487376
+timestamp 1732542991
 << obsli1 >>
 rect 1104 1071 43516 43537
 << obsm1 >>
@@ -1816,7 +1816,7 @@ string FIXED_BBOX 0 0 44655 44623
 string LEFclass BLOCK
 string LEFview TRUE
 string GDS_END 7918788
-string GDS_FILE /home/asma/Desktop/FPGA_IGNITE_2024/openlane/LUT_redo/runs/24_11_24_22_23/results/signoff/LUT4AB.magic.gds
+string GDS_FILE /home/asma/Desktop/FPGA_IGNITE_2024/openlane/LUT_redo/runs/24_11_25_13_50/results/signoff/LUT4AB.magic.gds
 string GDS_START 224838
 << end >>
 

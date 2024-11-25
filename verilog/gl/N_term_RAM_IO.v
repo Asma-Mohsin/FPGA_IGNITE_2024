@@ -218,12 +218,17 @@ module N_term_RAM_IO (UserCLK,
  wire \strobe_outbuf_8.X ;
  wire \strobe_outbuf_9.X ;
 
- sky130_fd_sc_hd__diode_2 ANTENNA_1 (.DIODE(net14),
+ sky130_fd_sc_hd__diode_2 ANTENNA_1 (.DIODE(net16),
     .VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- sky130_fd_sc_hd__diode_2 ANTENNA_2 (.DIODE(net15),
+ sky130_fd_sc_hd__diode_2 ANTENNA_2 (.DIODE(net20),
+    .VGND(VGND),
+    .VNB(VGND),
+    .VPB(VPWR),
+    .VPWR(VPWR));
+ sky130_fd_sc_hd__diode_2 ANTENNA_3 (.DIODE(net114),
     .VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
@@ -844,7 +849,11 @@ module N_term_RAM_IO (UserCLK,
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- sky130_fd_sc_hd__decap_8 FILLER_0_7_126 (.VGND(VGND),
+ sky130_fd_sc_hd__decap_4 FILLER_0_7_126 (.VGND(VGND),
+    .VNB(VGND),
+    .VPB(VPWR),
+    .VPWR(VPWR));
+ sky130_fd_sc_hd__fill_2 FILLER_0_7_132 (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
@@ -940,11 +949,7 @@ module N_term_RAM_IO (UserCLK,
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- sky130_fd_sc_hd__fill_2 FILLER_0_7_60 (.VGND(VGND),
-    .VNB(VGND),
-    .VPB(VPWR),
-    .VPWR(VPWR));
- sky130_fd_sc_hd__fill_2 FILLER_0_7_64 (.VGND(VGND),
+ sky130_fd_sc_hd__decap_8 FILLER_0_7_60 (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
@@ -952,7 +957,7 @@ module N_term_RAM_IO (UserCLK,
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- sky130_fd_sc_hd__decap_8 FILLER_0_7_73 (.VGND(VGND),
+ sky130_fd_sc_hd__decap_6 FILLER_0_7_73 (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
@@ -1124,11 +1129,11 @@ module N_term_RAM_IO (UserCLK,
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- sky130_ef_sc_hd__decap_12 FILLER_0_9_16 (.VGND(VGND),
+ sky130_fd_sc_hd__decap_6 FILLER_0_9_162 (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- sky130_fd_sc_hd__decap_6 FILLER_0_9_162 (.VGND(VGND),
+ sky130_fd_sc_hd__decap_8 FILLER_0_9_17 (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
@@ -1153,6 +1158,10 @@ module N_term_RAM_IO (UserCLK,
     .VPB(VPWR),
     .VPWR(VPWR));
  sky130_fd_sc_hd__decap_3 FILLER_0_9_240 (.VGND(VGND),
+    .VNB(VGND),
+    .VPB(VPWR),
+    .VPWR(VPWR));
+ sky130_fd_sc_hd__decap_3 FILLER_0_9_25 (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
@@ -1188,7 +1197,7 @@ module N_term_RAM_IO (UserCLK,
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- sky130_fd_sc_hd__decap_3 FILLER_0_9_9 (.VGND(VGND),
+ sky130_fd_sc_hd__fill_2 FILLER_0_9_9 (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));

@@ -215,8 +215,9 @@ module N_term_RAM_IO (UserCLK,
  wire \strobe_outbuf_8.X ;
  wire \strobe_outbuf_9.X ;
 
- sky130_fd_sc_hd__diode_2 ANTENNA_1 (.DIODE(net14));
- sky130_fd_sc_hd__diode_2 ANTENNA_2 (.DIODE(net15));
+ sky130_fd_sc_hd__diode_2 ANTENNA_1 (.DIODE(net16));
+ sky130_fd_sc_hd__diode_2 ANTENNA_2 (.DIODE(net20));
+ sky130_fd_sc_hd__diode_2 ANTENNA_3 (.DIODE(net114));
  sky130_fd_sc_hd__fill_2 FILLER_0_0_110 ();
  sky130_fd_sc_hd__fill_2 FILLER_0_0_126 ();
  sky130_fd_sc_hd__decap_4 FILLER_0_0_136 ();
@@ -371,7 +372,8 @@ module N_term_RAM_IO (UserCLK,
  sky130_fd_sc_hd__decap_4 FILLER_0_7_113 ();
  sky130_fd_sc_hd__fill_1 FILLER_0_7_117 ();
  sky130_fd_sc_hd__fill_2 FILLER_0_7_121 ();
- sky130_fd_sc_hd__decap_8 FILLER_0_7_126 ();
+ sky130_fd_sc_hd__decap_4 FILLER_0_7_126 ();
+ sky130_fd_sc_hd__fill_2 FILLER_0_7_132 ();
  sky130_fd_sc_hd__decap_8 FILLER_0_7_137 ();
  sky130_fd_sc_hd__fill_1 FILLER_0_7_145 ();
  sky130_ef_sc_hd__decap_12 FILLER_0_7_15 ();
@@ -395,10 +397,9 @@ module N_term_RAM_IO (UserCLK,
  sky130_ef_sc_hd__decap_12 FILLER_0_7_39 ();
  sky130_fd_sc_hd__decap_4 FILLER_0_7_51 ();
  sky130_fd_sc_hd__fill_1 FILLER_0_7_55 ();
- sky130_fd_sc_hd__fill_2 FILLER_0_7_60 ();
- sky130_fd_sc_hd__fill_2 FILLER_0_7_64 ();
+ sky130_fd_sc_hd__decap_8 FILLER_0_7_60 ();
  sky130_fd_sc_hd__fill_2 FILLER_0_7_68 ();
- sky130_fd_sc_hd__decap_8 FILLER_0_7_73 ();
+ sky130_fd_sc_hd__decap_6 FILLER_0_7_73 ();
  sky130_fd_sc_hd__fill_2 FILLER_0_7_81 ();
  sky130_fd_sc_hd__decap_8 FILLER_0_7_86 ();
  sky130_fd_sc_hd__fill_1 FILLER_0_7_94 ();
@@ -441,14 +442,15 @@ module N_term_RAM_IO (UserCLK,
  sky130_fd_sc_hd__decap_3 FILLER_0_9_113 ();
  sky130_fd_sc_hd__decap_3 FILLER_0_9_126 ();
  sky130_fd_sc_hd__decap_4 FILLER_0_9_136 ();
- sky130_ef_sc_hd__decap_12 FILLER_0_9_16 ();
  sky130_fd_sc_hd__decap_6 FILLER_0_9_162 ();
+ sky130_fd_sc_hd__decap_8 FILLER_0_9_17 ();
  sky130_fd_sc_hd__fill_1 FILLER_0_9_178 ();
  sky130_fd_sc_hd__decap_8 FILLER_0_9_188 ();
  sky130_fd_sc_hd__fill_1 FILLER_0_9_206 ();
  sky130_fd_sc_hd__decap_3 FILLER_0_9_217 ();
  sky130_fd_sc_hd__decap_3 FILLER_0_9_228 ();
  sky130_fd_sc_hd__decap_3 FILLER_0_9_240 ();
+ sky130_fd_sc_hd__decap_3 FILLER_0_9_25 ();
  sky130_fd_sc_hd__fill_2 FILLER_0_9_253 ();
  sky130_fd_sc_hd__fill_1 FILLER_0_9_35 ();
  sky130_fd_sc_hd__decap_6 FILLER_0_9_42 ();
@@ -457,7 +459,7 @@ module N_term_RAM_IO (UserCLK,
  sky130_fd_sc_hd__fill_2 FILLER_0_9_60 ();
  sky130_fd_sc_hd__decap_4 FILLER_0_9_71 ();
  sky130_fd_sc_hd__decap_3 FILLER_0_9_85 ();
- sky130_fd_sc_hd__decap_3 FILLER_0_9_9 ();
+ sky130_fd_sc_hd__fill_2 FILLER_0_9_9 ();
  sky130_fd_sc_hd__decap_4 FILLER_0_9_97 ();
  sky130_fd_sc_hd__clkbuf_1 \Inst_N_term_RAM_IO_switch_matrix._00_  (.A(net24),
     .X(\Inst_N_term_RAM_IO_switch_matrix.S1BEG0 ));
