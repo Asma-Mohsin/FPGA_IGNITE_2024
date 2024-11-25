@@ -116,7 +116,7 @@ wire [2*N-1+3:0]tmp_o = {{N{~div_e[es+Bs+1]}},div_e[es+Bs+1],e_o,div_mN[2*M:2*M-
 
 //Including Regime bits in Exponent-Mantissa Packing
 wire [3*N-1+3:0] tmp1_o;
-DSR_right_N_S #(.N(3*N+3), .S(Bs+1)) dsr2 (.a({tmp_o,{N{1'b0}}}), .b(r_o[Bs-1] ? {Bs{1'b1}} : {1'b1 ,r_o}), .c(tmp1_o));
+DSR_right_N_S #(.N(3*N+3), .S(Bs+1)) dsr2 (.a({tmp_o,{N{1'b0}}}), .b(r_o[Bs-1] ? {Bs{1'b1}} : {1'b0, r_o}), .c(tmp1_o));
 
 
 //Rounding RNE : ulp_add = G.(R + S) + L.G.(~(R+S))

@@ -1,11 +1,11 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1732489416
+timestamp 1732543930
 << obsli1 >>
 rect 1104 1071 24840 6545
 << obsm1 >>
-rect 198 212 25654 6576
+rect 198 144 25654 6576
 << metal2 >>
 rect 938 7840 994 8000
 rect 2134 7840 2190 8000
@@ -238,7 +238,7 @@ rect 24878 54 24986 216
 rect 25154 54 25262 216
 rect 25430 54 25538 216
 << obsm3 >>
-rect 1485 579 24998 6561
+rect 1945 174 24998 6561
 << metal4 >>
 rect 3911 1040 4231 6576
 rect 6878 1040 7198 6576
@@ -249,17 +249,11 @@ rect 18746 1040 19066 6576
 rect 21713 1040 22033 6576
 rect 24680 1040 25000 6576
 << obsm4 >>
-rect 2550 960 3831 4181
-rect 4311 960 6798 4181
-rect 7278 960 9765 4181
-rect 10245 960 12732 4181
-rect 13212 960 15699 4181
-rect 16179 960 18666 4181
-rect 19146 960 21633 4181
-rect 22113 960 22205 4181
-rect 2550 902 22205 960
-<< obsm5 >>
-rect 2508 860 11292 1180
+rect 15147 960 15699 6357
+rect 16179 960 18666 6357
+rect 19146 960 21633 6357
+rect 22113 960 22389 6357
+rect 15147 851 22389 960
 << labels >>
 rlabel metal2 s 20350 0 20406 160 6 FrameStrobe[0]
 port 1 nsew signal input
@@ -509,8 +503,8 @@ port 116 nsew power bidirectional
 string FIXED_BBOX 0 0 26000 8000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 493904
-string GDS_FILE /home/asma/Desktop/FPGA_IGNITE_2024/openlane/N_term_RAMIO_redo/runs/24_11_24_23_02/results/signoff/N_term_RAM_IO.magic.gds
+string GDS_END 485630
+string GDS_FILE /home/asma/Desktop/FPGA_IGNITE_2024/openlane/N_term_RAMIO_redo/runs/24_11_25_14_10/results/signoff/N_term_RAM_IO.magic.gds
 string GDS_START 45964
 << end >>
 
