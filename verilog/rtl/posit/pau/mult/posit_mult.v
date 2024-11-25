@@ -62,8 +62,8 @@ add_N_Cin #(.N(Bs+es+1)) uut_add_exp ({r1,e1}, {r2,e2}, mult_m_ovf, mult_e);
 
 //Exponent and Regime Computation
 wire [es-1:0] e_o;
-wire [Bs:0] r_o;
-reg_exp_op #(.es(es), .Bs(Bs)) uut_reg_ro (mult_e[es+Bs+1:0], e_o, r_o);
+wire [Bs-1:0] r_o;
+reg_exp_op #(.es(es), .Bs(Bs)) uut_reg_ro (mult_e[es+Bs:0], e_o, r_o);
 
 //Exponent, Mantissa and GRS Packing
 wire [2*N-1+3:0]tmp_o = {{N{~mult_e[es+Bs+1]}},mult_e[es+Bs+1],e_o,mult_mN[2*(N-es):2*(N-es)-(N-es-1)+1], mult_mN[2*(N-es)-(N-es-1):2*(N-es)-(N-es-1)-1], |mult_mN[2*(N-es)-(N-es-1)-2:0] }; 
@@ -71,7 +71,7 @@ wire [2*N-1+3:0]tmp_o = {{N{~mult_e[es+Bs+1]}},mult_e[es+Bs+1],e_o,mult_mN[2*(N-
 
 //Including Regime bits in Exponent-Mantissa Packing
 wire [3*N-1+3:0] tmp1_o;
-DSR_right_N_S #(.N(3*N+3), .S(Bs+1)) dsr2 (.a({tmp_o,{N{1'b0}}}), .b(r_o[Bs] ? {Bs{1'b1}} : r_o), .c(tmp1_o));
+DSR_right_N_S #(.N(3*N+3), .S(Bs+1)) dsr2 (.a({tmp_o,{N{1'b0}}}), .b(r_o[Bs-1] ? {Bs{1'b1}} : {1'b0, r_o}), .c(tmp1_o));
 
 //Rounding RNE : ulp_add = G.(R + S) + L.G.(~(R+S))
 wire L = tmp1_o[N+4], G = tmp1_o[N+3], R = tmp1_o[N+2], St = |tmp1_o[N+1:0],
