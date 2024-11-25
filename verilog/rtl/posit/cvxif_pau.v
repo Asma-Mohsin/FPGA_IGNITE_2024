@@ -57,6 +57,7 @@ module cvxif_pau (
 	reg mul_z;
 	reg div_i;
 	reg div_z;
+	assign register_ready = 1'b0;
 	posit_add #(
 		.N(PAU_N),
 		.es(PAU_ES)
