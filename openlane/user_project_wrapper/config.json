@@ -171,16 +171,10 @@
     "SYNTH_BUFFERING": 1,
    
     "VDD_NETS": [
-        "vccd1",
-        "vccd2",
-        "vdda1",
-        "vdda2"
+        "vccd1"
     ],
     "GND_NETS": [
-        "vssd1",
-        "vssd2",
-        "vssa1",
-        "vssa2"
+        "vssd1"
     ],
 
 
