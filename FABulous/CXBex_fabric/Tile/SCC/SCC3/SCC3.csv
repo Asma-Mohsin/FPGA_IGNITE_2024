@@ -1,0 +1,10 @@
+TILE,SCC3,,,,,,,,,,,,,,,,,
+#direction,source_name,X-offset,Y-offset,destination_name,wires,,,,,,,,,,,,,
+
+
+INCLUDE,../SCC_mid_route.csv,,,,,,,,,,,,,,,,,
+
+INCLUDE,../SCC_base.csv,,,,,,,,,,,,,,,,,
+
+MATRIX,./SCC_top_switchmatrix.list,,,,,,,,,,,,,,,,,
+EndTILE,,,,,,,,,,,,,,,,,,

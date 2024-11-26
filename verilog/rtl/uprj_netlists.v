@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 // SPDX-FileCopyrightText: 2020 Efabless Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +17,15 @@
 // Include caravel global defines for the number of the user project IO pads 
 `include "defines.v"
 `define USE_POWER_PINS
-
+/*
 `ifdef GL
     // Assume default net type to be wire because GL netlists don't have the wire definitions
     `default_nettype wire
     `include "gl/user_project_wrapper.v"
-    `include "gl/summer_school.v"
+    `include "gl/summer_school_mpd_wrapper.v"
 `else
     `include "user_project_wrapper.v"
-    `include "summer_school.v"
+    `include "summer_school_mpd_wrapper.v"
 `endif
+*/
+

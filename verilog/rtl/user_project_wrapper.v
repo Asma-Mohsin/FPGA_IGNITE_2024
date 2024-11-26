@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 // SPDX-FileCopyrightText: 2020 Efabless Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +33,7 @@
 module user_project_wrapper #(
     parameter BITS = 32
 ) (
-`ifdef USE_POWER_PINS
+   /*  `ifdef USE_POWER_PINS
     inout vdda1,	// User area 1 3.3V supply
     inout vdda2,	// User area 2 3.3V supply
     inout vssa1,	// User area 1 analog ground
@@ -41,7 +42,7 @@ module user_project_wrapper #(
     inout vccd2,	// User area 2 1.8v supply
     inout vssd1,	// User area 1 digital ground
     inout vssd2,	// User area 2 digital ground
-`endif
+`endif*/
 
     // Wishbone Slave ports (WB MI A)
     input wb_clk_i,
@@ -83,11 +84,11 @@ module user_project_wrapper #(
 /*--------------------------------------*/
 
 summer_school_top_wrapper FPGA_IGNITE ( 
-    `ifdef USE_POWER_PINS
+   /* `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
 	.vssd1(vssd1),	// User area 1 digital ground
      `endif
-
+    */
 
     // Wishbone ports (WB MI A)
     .wb_clk_i(wb_clk_i),
@@ -106,12 +107,11 @@ summer_school_top_wrapper FPGA_IGNITE (
    .la_oenb(la_oenb),
 
     // IOs
-    .io_in(io_in([37:7]),
+    .io_in(io_in[37:7]),
     .io_out(io_out[37:7]),
-    .io_oeb([37:7]),
+    .io_oeb(io_oeb[37:7]),
 
     // Independent clock (on independent integer divider)
-    // NOTE: unused, we are using the wishbone clock
     .user_clock2(user_clock2)
 );
 endmodule	// user_project_wrapper

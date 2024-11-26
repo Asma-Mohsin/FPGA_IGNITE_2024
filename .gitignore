@@ -12,3 +12,8 @@
 /dependencies
 /mgmt_core_wrapper
 /logs
+/venv-cocotb
+/verilog/dv/cocotb/design_info.yaml
+*.swp
+lint.log
+*.zip
