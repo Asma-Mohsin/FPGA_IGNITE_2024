@@ -74,9 +74,6 @@ module config_UART #(
     //signal W0, W1, W2, W3, W4, W5, W6, W7 : std_logic_vector(7 downto 0);
 
     reg [23:0] ID_Reg;
-    reg [31:0] Start_Reg;
-    reg [15:0] Size_Reg;
-    reg [15:0] CRC_Reg;
     reg [7:0] Command_Reg;
     reg [7:0] Data_Reg;
 
@@ -135,7 +132,6 @@ module config_UART #(
             ComState <= WaitForStartBit;
             ReceivedWord <= 8'b0;
             ID_Reg <= 24'b0;
-            Start_Reg <= 32'b0;
             Command_Reg <= 8'b0;
         end else begin
             case (ComState)

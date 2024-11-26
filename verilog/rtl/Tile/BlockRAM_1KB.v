@@ -1,24 +1,37 @@
-(* blackbox *)
-/// sta-blackbox/* verilator lint_off UNUSEDSIGNAL */
+
+/* verilator lint_off UNOPTFLAT */
+
+
+/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off LATCH */
 `timescale 1ns/1ps
-module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4, C5);
+module BlockRAM_1KB 
+
+       ( `ifdef USE_POWER_PINS
+                inout vccd1,
+                inout vssd1,
+        `endif
+    input clk,
+    input [7:0] rd_addr,
+    output [31:0] rd_data,
+    
+    input [7:0] wr_addr,
+    input [31:0] wr_data,
+    
+    input C0,//naming of these doesnt really matter
+    input C1,// C0,C1 select write port width
+    input C2,// C2,C3 select read port width
+    input C3,
+    input C4,//C4 selects the alwaysWriteEnable
+    input C5 //C5 selects register bypass
+
+       );
 
 	parameter READ_ADDRESS_MSB_FROM_DATALSB = 24; //default 24 means bits wr_data[25:24] will become bits [9:8] of read address
 	parameter WRITE_ADDRESS_MSB_FROM_DATALSB = 16; //default 16 means bits wr_data[17:16] will become bits [9:8] of write address
 	parameter WRITE_ENABLE_FROM_DATA = 20; //default 20 means bit wr_data[20] will become the dynamic writeEnable input
-    input clk;
-    input [7:0] rd_addr;
-    output [31:0] rd_data;
-    
-    input [7:0] wr_addr;
-    input [31:0] wr_data;
-    
-    input C0;//naming of these doesnt really matter
-    input C1;// C0,C1 select write port width
-    input C2;// C2,C3 select read port width
-    input C3;
-    input C4;//C4 selects the alwaysWriteEnable
-    input C5; //C5 selects register bypass
+
+
       // NOTE, the read enable is currently constantly ON
       // NOTE, the R/W port on the standard cell is used only in write mode
       // NOTE, enable ports on the primitive RAM are active lows
@@ -76,7 +89,8 @@ module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4
     wire [31:0] mem_dout;
     //dout0 is unused
 /* verilator lint_off PINCONNECTEMPTY */
-    sram_1rw1r_32_256_8_sky130 memory_cell(
+    (*blackbox*)
+    sky130_sram_1kbyte_1rw1r_32x256_8 memory_cell(
     .clk0(clk),
     .csb0(memWriteEnable),
     .web0(memWriteEnable),
@@ -132,8 +146,13 @@ module BlockRAM_1KB (clk, rd_addr, rd_data, wr_addr, wr_data, C0, C1, C2, C3, C4
     end
 endmodule
 
+/* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on LATCH */
 
-(* blackbox *)
+/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNUSEDPARAM */
+/* verilator lint_off UNDRIVEN */
+/*(* blackbox *)
 module sram_1rw1r_32_256_8_sky130(
 //`ifdef USE_POWER_PINS
 //	vdd,
@@ -167,4 +186,10 @@ module sram_1rw1r_32_256_8_sky130(
   input [ADDR_WIDTH-1:0]  addr1;
   output [DATA_WIDTH-1:0] dout1;
 endmodule
+
+*/
 /* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNUSEDPARAM */
+/* verilator lint_on UNDRIVEN */
+/* verilator lint_on UNOPTFLAT */
+

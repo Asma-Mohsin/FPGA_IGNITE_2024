@@ -1,5 +1,7 @@
 /// sta-blackbox
 /* verilator lint_off UNOPTFLAT *//* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNUSEDPARAM */
+
 `timescale 1ns/1ps
 module LUT4AB
     #(
@@ -12,6 +14,10 @@ module LUT4AB
     )
     (
  //Side.NORTH
+ `ifdef USE_POWER_PINS
+     input wire vccd1,
+     input wire vssd1,
+ `endif
         output [3:0] N1BEG,        //Port(Name=N1BEG, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=4, Side=NORTH)
         output [7:0] N2BEG,        //Port(Name=N2BEG, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=8, Side=NORTH)
         output [7:0] N2BEGb,        //Port(Name=N2BEGb, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=8, Side=NORTH)
@@ -2301,3 +2307,5 @@ LUT4AB_switch_matrix Inst_LUT4AB_switch_matrix (
 
 endmodule
 /* verilator lint_on UNOPTFLAT *//* verilator lint_on UNUSEDSIGNAL */
+/* verilator lint_on UNUSEDPARAM */
+
