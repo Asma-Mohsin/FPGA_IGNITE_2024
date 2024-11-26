@@ -1,6 +1,5 @@
 {
     "DESIGN_NAME": "user_project_wrapper",
-    "DESIGN_IS_CORE": 1,
     "VERILOG_FILES": [
         "dir::../../verilog/rtl/defines.v",
         "dir::../../verilog/rtl/*.v",
@@ -48,13 +47,16 @@
     "FP_TAP_VERTICAL_HALO": 50,
     "FP_PDN_HORIZONTAL_HALO": 10,
     "FP_PDN_VERTICAL_HALO": 10,
+
     "FP_PDN_CORE_RING": 1,
-    "FP_PDN_CORE_RING_HOFFSET": 14,
+    "FP_PDN_CORE_RING_HOFFSET": 12.45,
     "FP_PDN_CORE_RING_HSPACING": 1.7,
     "FP_PDN_CORE_RING_HWIDTH": 3.1,
-    "FP_PDN_CORE_RING_VOFFSET": 14,
+    "FP_PDN_CORE_RING_VOFFSET": 12.45,
     "FP_PDN_CORE_RING_VSPACING": 1.7,
     "FP_PDN_CORE_RING_VWIDTH": 3.1,
+
+
     "FP_PDN_ENABLE_GLOBAL_CONNECTIONS": 1,
     "FP_PDN_MACRO_HOOKS": [
         "FPGA_IGNITE.flexbex_eFPGA.data_mem_i vccd1 vssd1 vccd1 vssd1,",
@@ -149,7 +151,7 @@
     "EXTRA_LIBS": [
         "dir::./macros/lib/*.lib"
     ],
-    "RUN_IRDROP_REPORT": 1,
+    "RUN_IRDROP_REPORT": 0,
     "FP_PDN_MULTILAYER": true,
     "PDK": "sky130A",
     "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
@@ -171,13 +173,18 @@
     "SYNTH_BUFFERING": 1,
    
     "VDD_NETS": [
-        "vccd1"
-    ],
+        "vccd1",
+        "vccd2",
+        "vdda1",
+        "vdda2"    ],
     "GND_NETS": [
-        "vssd1"
+        "vssd1",
+        "vssd2",
+        "vssa1",
+        "vssa2"
     ],
 
-
+      "FP_PDN_CFG":"dir::pdn_cfg.tcl",
     "IO_SYNC": 0,
     "BASE_SDC_FILE": "dir::summer_school.sdc",
     "pdk::sky130*": {
