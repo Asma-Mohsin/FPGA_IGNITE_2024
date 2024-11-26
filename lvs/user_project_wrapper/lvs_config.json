@@ -33,5 +33,10 @@
 		"$UPRJ_ROOT/verilog/gl/S_term_single.v",
 		"$UPRJ_ROOT/verilog/gl/$TOP_SOURCE.v"
 	],
-	"LAYOUT_FILE": "$UPRJ_ROOT/gds/$TOP_LAYOUT.gds"
+	"LAYOUT_FILE": "$UPRJ_ROOT/gds/$TOP_LAYOUT.gds",
+	"SRAM_MACRO": "sky130_sram_1kbyte_1rw1r_32x256_8",
+	  "INCLUDE_CONFIGS": [
+		  "$LVS_ROOT/tech/$PDK/lvs_config.base.json",
+		  "$LVS_ROOT/tech/$PDK/lvs_config.sram.json"
+	  ],
 }
