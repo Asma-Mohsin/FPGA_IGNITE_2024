@@ -1,1 +1,4 @@
-openlane/LUT_redo.zip filter=lfs diff=lfs merge=lfs -text
+*.mag filter=lfs diff=lfs merge=lfs -text
+*.gds filter=lfs diff=lfs merge=lfs -text
+*.spef filter=lfs diff=lfs merge=lfs -text
+verilog/gl/summer_school_top_wrapper.v filter=lfs diff=lfs merge=lfs -text

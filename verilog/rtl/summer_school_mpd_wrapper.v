@@ -5,11 +5,11 @@ module summer_school_top_wrapper #(
     parameter NUM_OF_LOGIC_ANALYZER_BITS = 128,
     parameter WB_DATA_WIDTH = 32
 ) (
-`ifdef USE_POWER_PINS
+/*`ifdef USE_POWER_PINS
     inout vccd1,  // User area 1 1.8V supply
     inout vssd1,  // User area 1 digital ground
 `endif
-
+*/
     // Wishbone ports (WB MI A)
     input wb_clk_i,
     input wb_rst_i,
@@ -228,10 +228,6 @@ module summer_school_top_wrapper #(
     // Pixel Processing Unit
     /* verilator lint_off PINCONNECTEMPTY */
     ppu ppu_inst (
-        `ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-    `endif
         .clk(CLK),
         .rst(resetn),
         .sync(UIO_BOT_UOUT_PAD[0]),
@@ -251,10 +247,6 @@ module summer_school_top_wrapper #(
 
     /* verilator lint_off PINCONNECTEMPTY */
     vga_driver vga_driver_inst (
-        `ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-    `endif
         .clk_pix(CLK),
         .rst_pix(resetn),
         .wb_data(data_o),  // PPU's data output is written to VGA
