@@ -1,7 +1,12 @@
 `timescale 1ns/1ps
+/* verilator lint_off UNOPTFLAT*/
 module ro_top #(
     parameter SIZE = 8
 ) (
+    `ifdef USE_POWER_PINS
+	input wire vccd1,
+	input wire vssd1,
+`endif
     input clk,
     input en,
     output [SIZE-1:0] d_out
@@ -18,12 +23,20 @@ module ro_top #(
             generic_ro #(
                 .SIZE(1)
             ) ro_1 (
+                 `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
                 .en(en),
                 .ro_out(ro_out[2*i])
             );  // 3-inv elements
             generic_ro #(
                 .SIZE(2)
             ) ro_2 (
+                 `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
                 .en(en),
                 .ro_out(ro_out[2*i+1])
             );  // 5-inv elements
@@ -109,3 +122,4 @@ module randModule (
     );
     assign randOut = w2;
 endmodule
+/* verilator lint_on UNOPTFLAT*/

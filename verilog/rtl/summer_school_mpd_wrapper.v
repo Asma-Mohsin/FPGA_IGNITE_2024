@@ -5,6 +5,11 @@ module summer_school_top_wrapper #(
     parameter NUM_OF_LOGIC_ANALYZER_BITS = 128,
     parameter WB_DATA_WIDTH = 32
 ) (
+/*`ifdef USE_POWER_PINS
+    inout vccd1,  // User area 1 1.8V supply
+    inout vssd1,  // User area 1 digital ground
+`endif
+*/
     // Wishbone ports (WB MI A)
     input wb_clk_i,
     input wb_rst_i,
@@ -13,14 +18,16 @@ module summer_school_top_wrapper #(
     input wbs_we_i,
     input [WB_DATA_WIDTH-1:0] wbs_dat_i,
     input [WB_DATA_WIDTH-1:0] wbs_adr_i,
-    output [WB_DATA_WIDTH-1:0] wbs_dat_o, // not used
+    output [WB_DATA_WIDTH-1:0] wbs_dat_o,  // not used
     output reg wbs_ack_o,
     output wire wbs_sta_o,
 
     // Logic Analyzer Signals
-    input  [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_in,
     output [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_out,
-    input  [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_oenb, // not used
+    /* verilator lint_off UNUSEDSIGNAL */
+    input [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_data_in,  // la_data_in'[127:109,39:9,7:0] not used
+    input [NUM_OF_LOGIC_ANALYZER_BITS-1:0] la_oenb,  // not used
+    /* verilator lint_on UNUSEDSIGNAL */
 
     // IOs
     input  [NUM_OF_TOTAL_FABRIC_IOS-1:0] io_in,
@@ -73,9 +80,7 @@ module summer_school_top_wrapper #(
 
     // NOTE: The external clock is not used anymore but still left in since we
     // did not want to mess anything up shortly before the tapeout
-    localparam EXTERNAL_CLK_SHIFTED_IO = RESETN_IO + 1;  // shifted external clock is located after resetn
-
-
+    localparam EXTERNAL_CLK_SHIFTED_IO = RESETN_IO + 1;  // unused IO - was shifted external clock is located after resetn
     wire [NUM_FABRIC_USER_IOS-1:0] I_top;
     wire [NUM_FABRIC_USER_IOS-1:0] T_top;
     wire [NUM_FABRIC_USER_IOS-1:0] O_top;
@@ -83,7 +88,6 @@ module summer_school_top_wrapper #(
     wire CLK;  // This clock can go to the CPU (connects to the fabric LUT output flops)
     wire resetn;
     wire external_clock;
-    wire external_clock_shifted;
 
     // CPU configuration port
     wire SelfWriteStrobe;  // must decode address and write enable
@@ -91,12 +95,15 @@ module summer_school_top_wrapper #(
 
     // Wishbone configuration signals
     wire config_strobe;
-    wire fabric_strobe;
     reg [31:0] config_data;
+
+    //Whishbone clock domain crossing signals
+    reg wb_to_fpga;
+    reg feedback0;
+    reg feedback1;
 
     // UART configuration port
     wire efpga_uart_rx;
-    wire ComActive;
     wire ReceiveLED;
 
     // BitBang configuration port
@@ -110,23 +117,27 @@ module summer_school_top_wrapper #(
     wire [1:0] clk_sel;
 
     // Latch for config_strobe
-    reg latch_config_strobe = 0;
     reg config_strobe_reg1 = 0;
     reg config_strobe_reg2 = 0;
     reg config_strobe_reg3 = 0;
-    wire latch_config_strobe_inverted1;
-    wire latch_config_strobe_inverted2;
 
-    wire [58:0] UIO_TOP_UOUT_PAD;
-    wire [139:0] UIO_BOT_UOUT_PAD;
+    /* verilator lint_off UNUSEDSIGNAL */
+    wire [78:0] UIO_TOP_UOUT_PAD;
+    wire [159:0] UIO_BOT_UOUT_PAD;
+    /* verilator lint_on UNUSEDSIGNAL */
 
-    reg [114:0] UIO_BOT_UIN_PAD;
+    reg [159:0] UIO_BOT_UIN_PAD;
+    assign UIO_BOT_UIN_PAD[159:40] = 120'b0;
 
     // Drive unused IOs low
     assign wbs_dat_o = 32'b0;
 
     /* verilator lint_off PINCONNECTEMPTY */
     flexbex_soc_top flexbex_eFPGA (
+        `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .A_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
         .B_config_C(),  // NOTE: Dirk said to leave this empty since its not needed
         .Config_accessC(),  // NOTE: Dirk said to leave this empty since its not needed
@@ -172,7 +183,6 @@ module summer_school_top_wrapper #(
     wire [31:0] result_data;  // Signal for result data (assuming 32-bit width)
 
     // POSIT coprocessor
-    (* blackbox *)
     cvxif_pau cvxif_pau_inst (
         .clk(CLK),
         .rst(!resetn),
@@ -184,8 +194,8 @@ module summer_school_top_wrapper #(
         .issue_resp_register_read(issue_resp_register_read),
         .register_valid(register_valid),
         .register_ready(register_ready),
-        .register_rs0(register_rs[0]),
-        .register_rs1(register_rs[1]),
+        .register_rs0({16'b0, register_rs[0]}),
+        .register_rs1({16'b0, register_rs[1]}),
         .register_rs_valid(register_rs_valid),
         .result_valid(result_valid),
         .result_ready(result_ready),
@@ -196,6 +206,10 @@ module summer_school_top_wrapper #(
     reg en;
     wire [7:0] d_out;
     ro_top ring_inst (
+         `ifdef USE_POWER_PINS
+        .vccd1(vccd1),
+        .vssd1(vssd1),
+    `endif
         .clk(CLK),
         .en(en),
         .d_out(d_out)
@@ -251,12 +265,12 @@ module summer_school_top_wrapper #(
     always @(*) begin
         la_data_out[125:0] = 126'b0;
         en = 1'b0;
-        UIO_BOT_UIN_PAD[114:1] = 114'b0;
+        UIO_BOT_UIN_PAD[39:1] = 'b0;
         issue_req_instr = 32'b0;
         issue_valid = 1'b0;
         register_valid = 1'b0;
-        register_rs[1] = 32'b0;
-        register_rs[0] = 32'b0;
+        register_rs[1] = 16'b0;
+        register_rs[0] = 16'b0;
         register_rs_valid = 2'b0;
         result_ready = 1'b0;
 
@@ -270,7 +284,7 @@ module summer_school_top_wrapper #(
                     // Logic Analyzer
                     1'b1: begin
                         en = la_data_in[8];
-                        la_data_out[7:0] <= d_out;
+                        la_data_out[7:0] = d_out;
 
                     end
 
@@ -291,7 +305,7 @@ module summer_school_top_wrapper #(
                     // LA
                     1'b1: begin
                         // inputs
-                        issue_req_instr = la_data_in[112:77];
+                        issue_req_instr = la_data_in[108:77];
                         issue_valid = la_data_in[76];
                         register_valid = la_data_in[75];
                         register_rs[1] = la_data_in[74:59];
@@ -336,32 +350,32 @@ module summer_school_top_wrapper #(
     end
 
     assign wbs_sta_o = 0;
-
-    always @(*) begin
-        latch_config_strobe = 1'b0;
-        if (config_strobe_reg2) begin
-            latch_config_strobe = 1'b0;
-        end else if (latch_config_strobe_inverted2) begin
-            latch_config_strobe = 1'b0;
-        end else if(wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS)) begin
-            latch_config_strobe = 1'b1;
+    //TODO test behaviour of this clock domain crossing (assume condition is
+    //true
+    always @(posedge wb_clk_i or negedge resetn) begin
+        if (!resetn) begin
+            wb_to_fpga <= 1'b0;
+        end else begin
+            if (feedback1 && !(wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS))) begin
+                wb_to_fpga <= 1'b0;
+            end else if (wbs_stb_i && wbs_cyc_i && wbs_we_i && !wbs_sta_o && (wbs_adr_i == CONFIG_DATA_WB_ADDRESS)) begin
+                wb_to_fpga <= 1'b1;
+            end else begin
+                wb_to_fpga <= wb_to_fpga;
+            end
         end
     end
 
-    // These are the two inverters
-    //NOTE: keep the comment for reference
-    //assign latch_config_strobe_inverted1 = (!latch_config_strobe);
-    sky130_fd_sc_hd__inv latch_config_strobe_inv_0 (
-        .Y(latch_config_strobe_inverted1),
-        .A(latch_config_strobe)
-    );
+    always @(posedge wb_clk_i or negedge resetn) begin
+        if (!resetn) begin
+            feedback0 <= 1'b0;
+            feedback1 <= 1'b0;
+        end else begin
+            feedback0 <= config_strobe_reg2;
+            feedback1 <= feedback0;
+        end
+    end
 
-    //NOTE: keep the comment for reference
-    //assign latch_config_strobe_inverted2 = (!latch_config_strobe_inverted1);
-    sky130_fd_sc_hd__inv latch_config_strobe_inv_1 (
-        .Y(latch_config_strobe_inverted2),
-        .A(latch_config_strobe_inverted1)
-    );
 
     always @(posedge CLK or negedge resetn) begin
         if (!resetn) begin
@@ -369,13 +383,13 @@ module summer_school_top_wrapper #(
             config_strobe_reg2 <= 1'b0;
             config_strobe_reg3 <= 1'b0;
         end else begin
-            config_strobe_reg1 <= latch_config_strobe;
+            config_strobe_reg1 <= wb_to_fpga;
             config_strobe_reg2 <= config_strobe_reg1;
             config_strobe_reg3 <= config_strobe_reg2;
         end
     end
 
-    assign config_strobe = (config_strobe_reg3 && (!config_strobe_reg2)); //posedge pulse for config strobe
+    assign config_strobe = (!config_strobe_reg3 && (config_strobe_reg2)); //posedge pulse for config strobe
 
     // Write the config data register from the wishbone bus
     always @(posedge wb_clk_i) begin
@@ -410,7 +424,6 @@ module summer_school_top_wrapper #(
     assign sel = io_in[SEL_IO];
 
     assign resetn = io_in[RESETN_IO];
-    assign external_clock_shifted = io_in[EXTERNAL_CLK_SHIFTED_IO];
 
     assign io_oeb[EXTERNAL_CLK_IO] = OUTPUT_DISABLE;
     assign io_oeb[CLK_SEL_0_IO] = OUTPUT_DISABLE;

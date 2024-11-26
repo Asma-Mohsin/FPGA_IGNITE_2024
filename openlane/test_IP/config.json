@@ -10,12 +10,13 @@
     "CLOCK_NET":"wb_clk_i",
     "SYNTH_STRATEGY":"DELAY 4",
     "FP_SIZING": "absolute",
-    "DIE_AREA": "0 0 2920 3520",   
-    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg", 
-    "QUIT_ON_SYNTH_CHECKS": 0,
+    "DIE_AREA": "0 0 2920 3520",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "QUIT_ON_SYNTH_CHECKS": 1,
+    "QUIT_ON_UNMAPPED_CELLS" : 1,
     "LVS_CONNECT_BY_LABEL":1,
     "LVS_INSERT_POWER_PINS": 1,
-    "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/cvxif_pau.v",
+    "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/black_box_modules/cvxif_pau.v",
                                 "dir::../../verilog/rtl/Tile/N_term_single/*.v",
                                 "dir::../../verilog/rtl/Tile/N_term_RAM_IO/*.v",
                                  "dir::../../verilog/rtl/Tile/LUT4AB/*.v",
@@ -119,7 +120,7 @@
 
 "flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_0 vccd1 vssd1 vccd1 vssd1,",
 "flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_1 vccd1 vssd1 vccd1 vssd1,",
-"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_2 vccd1 vssd1 vccd1 vssd1"], 
+"flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_2 vccd1 vssd1 vccd1 vssd1"],
     "EXTRA_LEFS": ["dir::../../lef/cvxif_pau.lef","dir::./macros/lef/*.lef" ],
     "EXTRA_GDS_FILES": ["dir::../../gds/cvxif_pau.gds", "dir::./macros/gds/*.gds"],
 
@@ -137,15 +138,15 @@
     "PL_TARGET_DENSITY":1,
     "PL_TIME_DRIVEN":0,
 
-   
+
 
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
-    
-    
+
+
 
     "MAX_TRANSITION_CONSTRAINT": 1.0,
     "MAX_FANOUT_CONSTRAINT": 16,
-    
+
      "RUN_LINTER": 0,
 
     "PL_RESIZER_SETUP_SLACK_MARGIN": 0.4,
@@ -156,9 +157,9 @@
     "SYNTH_BUFFERING": 0,
     "RUN_HEURISTIC_DIODE_INSERTION": 0,
     "GRT_REPAIR_ANTENNAS":0,
-    
 
-    
+
+
     "VDD_NETS": [
         "vccd1"
     ],
@@ -166,8 +167,8 @@
         "vssd1"
     ],
     "IO_SYNC": 0,
-    "BASE_SDC_FILE": "dir::base_user_proj_example.sdc",  
-    
+    "BASE_SDC_FILE": "dir::base_user_proj_example.sdc",
+
     "pdk::sky130*": {
         "FP_CORE_UTIL": 30,
         "scl::sky130_fd_sc_hd": {
