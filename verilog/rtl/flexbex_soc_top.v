@@ -155,10 +155,6 @@ module flexbex_soc_top #(
     /* verilator lint_on PINCONNECTEMPTY */
 
     ibex_core ibex_i (
-         `ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-    `endif
         .clk_i (clk),    //
         .rst_ni(resetn),
 
