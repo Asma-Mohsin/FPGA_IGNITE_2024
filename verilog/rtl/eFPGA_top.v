@@ -63,10 +63,6 @@ module eFPGA_top #(
         .desync_flag(desync_flag),
         .FrameBitsPerRow(FrameBitsPerRow)
     ) eFPGA_Config_inst (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .CLK(CLK),
         .resetn(resetn),
         .Rx(Rx),
@@ -89,10 +85,6 @@ module eFPGA_top #(
         .RowSelectWidth(RowSelectWidth),
         .Row(1)
     ) inst_Frame_Data_Reg_0 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameData_I(LocalWriteData),
         .FrameData_O(FrameRegister[0*FrameBitsPerRow+FrameBitsPerRow-1:0*FrameBitsPerRow]),
         .RowSelect(RowSelect),
@@ -104,10 +96,6 @@ module eFPGA_top #(
         .RowSelectWidth(RowSelectWidth),
         .Row(2)
     ) inst_Frame_Data_Reg_1 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameData_I(LocalWriteData),
         .FrameData_O(FrameRegister[1*FrameBitsPerRow+FrameBitsPerRow-1:1*FrameBitsPerRow]),
         .RowSelect(RowSelect),
@@ -119,10 +107,6 @@ module eFPGA_top #(
         .RowSelectWidth(RowSelectWidth),
         .Row(3)
     ) inst_Frame_Data_Reg_2 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameData_I(LocalWriteData),
         .FrameData_O(FrameRegister[2*FrameBitsPerRow+FrameBitsPerRow-1:2*FrameBitsPerRow]),
         .RowSelect(RowSelect),
@@ -134,10 +118,6 @@ module eFPGA_top #(
         .RowSelectWidth(RowSelectWidth),
         .Row(4)
     ) inst_Frame_Data_Reg_3 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameData_I(LocalWriteData),
         .FrameData_O(FrameRegister[3*FrameBitsPerRow+FrameBitsPerRow-1:3*FrameBitsPerRow]),
         .RowSelect(RowSelect),
@@ -149,10 +129,6 @@ module eFPGA_top #(
         .RowSelectWidth(RowSelectWidth),
         .Row(5)
     ) inst_Frame_Data_Reg_4 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameData_I(LocalWriteData),
         .FrameData_O(FrameRegister[4*FrameBitsPerRow+FrameBitsPerRow-1:4*FrameBitsPerRow]),
         .RowSelect(RowSelect),
@@ -164,10 +140,6 @@ module eFPGA_top #(
         .RowSelectWidth(RowSelectWidth),
         .Row(6)
     ) inst_Frame_Data_Reg_5 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameData_I(LocalWriteData),
         .FrameData_O(FrameRegister[5*FrameBitsPerRow+FrameBitsPerRow-1:5*FrameBitsPerRow]),
         .RowSelect(RowSelect),
@@ -180,10 +152,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(0)
     ) inst_Frame_Select_0 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[0*MaxFramesPerCol+MaxFramesPerCol-1:0*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -195,10 +163,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(1)
     ) inst_Frame_Select_1 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[1*MaxFramesPerCol+MaxFramesPerCol-1:1*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -210,10 +174,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(2)
     ) inst_Frame_Select_2 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[2*MaxFramesPerCol+MaxFramesPerCol-1:2*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -225,10 +185,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(3)
     ) inst_Frame_Select_3 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[3*MaxFramesPerCol+MaxFramesPerCol-1:3*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -240,10 +196,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(4)
     ) inst_Frame_Select_4 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[4*MaxFramesPerCol+MaxFramesPerCol-1:4*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -255,10 +207,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(5)
     ) inst_Frame_Select_5 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[5*MaxFramesPerCol+MaxFramesPerCol-1:5*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -270,10 +218,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(6)
     ) inst_Frame_Select_6 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[6*MaxFramesPerCol+MaxFramesPerCol-1:6*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -285,10 +229,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(7)
     ) inst_Frame_Select_7 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[7*MaxFramesPerCol+MaxFramesPerCol-1:7*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -300,10 +240,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(8)
     ) inst_Frame_Select_8 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[8*MaxFramesPerCol+MaxFramesPerCol-1:8*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
@@ -315,10 +251,6 @@ module eFPGA_top #(
         .FrameSelectWidth(FrameSelectWidth),
         .Col(9)
     ) inst_Frame_Select_9 (
-`ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-`endif
         .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
         .FrameStrobe_O(FrameSelect[9*MaxFramesPerCol+MaxFramesPerCol-1:9*MaxFramesPerCol]),
         .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),

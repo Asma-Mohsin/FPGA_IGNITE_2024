@@ -1,10 +1,6 @@
 `timescale 1ns / 1ps
 
 module ppu(
-	`ifdef USE_POWER_PINS
-	input wire vccd1,
-	input wire vssd1,
-`endif
 
 	input wire clk,
 	input wire rst,
@@ -102,11 +98,11 @@ always @(posedge clk or negedge rst) begin
 	end
 end
 
-logic [9:0] random_pattern;
+reg [9:0] random_pattern;
 /* verilator lint_off UNUSEDSIGNAL */
-logic [9:0] pixel_pattern_r;
-logic [9:0] pixel_pattern_g;
-logic [9:0] pixel_pattern_b;
+reg [9:0] pixel_pattern_r;
+reg [9:0] pixel_pattern_g;
+reg [9:0] pixel_pattern_b;
 /* verilator lint_off UNUSEDSIGNAL */
 //output handshake
 always @(posedge clk or negedge rst) begin
@@ -215,11 +211,6 @@ endmodule
 
 
 module vga_driver (
-	`ifdef USE_POWER_PINS
-	input wire vccd1,
-	input wire vssd1,
-`endif
-
     input  wire clk_pix,   // pixel clock
     input  wire rst_pix,   // reset in pixel clock domain
     input  wire [7:0] wb_data, // write data
