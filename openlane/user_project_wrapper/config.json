@@ -10,54 +10,15 @@
         "dir::../../verilog/rtl/posit/pau/div/*.v",
         "dir::../../verilog/rtl/posit/pau/mult/*.v"
     ],
+    "FP_TAP_VERTICAL_HALO": 50,  "//": "no cell placed between IPs",
+    "FP_TAP_HORIZONTAL_HALO": 50, "//": "no cell placed between IPs",
+    "PL_TARGET_DENSITY":0.35,
+
+    "ROUTING_CORES": 12,
     "CLOCK_PERIOD": 40,
     "CLOCK_PORT": "wb_clk_i",
     "CLOCK_NET": "wb_clk_i",
-    "SYNTH_STRATEGY": "DELAY 4",
-    "FP_SIZING": "absolute",
-    "DIE_AREA": "0 0 2920 3520",
-    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
-    "FP_PDN_VWIDTH": 3,
-    "FP_PDN_HWIDTH": 3,
-    "FP_PDN_VOFFSET": 0,
-    "FP_PDN_HOFFSET": 0,
-    "FP_PDN_VPITCH": 50,
-    "FP_PDN_HPITCH": 50,
-
-    "HEURISTIC_ANTENNA_THRESHOLD": 110,    
-   "GRT_REPAIR_ANTENNAS": 1,
-   "QUIT_ON_SYNTH_CHECKS": 0
-   ,
-    "SNYTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
-    "PL_TARGET_DENSITY": 0.35,
-    "LVS_CONNECT_BY_LABEL": 1,
-    "LVS_INSERT_POWER_PINS": 1,
-    "VERILOG_FILES_BLACKBOX": [
-        "dir::../../verilog/rtl/black_box_modules/*.v",
-        "dir::../../verilog/rtl/Tile/N_term_single/*.v",
-        "dir::../../verilog/rtl/Tile/N_term_RAM_IO/*.v",
-        "dir::../../verilog/rtl/Tile/LUT4AB/*.v",
-        "dir::../../verilog/rtl/Tile/RAM_IO/*.v",
-        "dir::../../verilog/rtl/Tile/S_term_single/*.v",
-        "dir::../../verilog/rtl/Tile/S_term_RAM_IO/*.v",
-        "dir::../../verilog/rtl/Tile/W_IO/*.v"
-    ],
-    "ROUTING_CORES": 10,
-    "FP_TAP_HORIZONTAL_HALO": 50,
-    "FP_TAP_VERTICAL_HALO": 50,
-    "FP_PDN_HORIZONTAL_HALO": 10,
-    "FP_PDN_VERTICAL_HALO": 10,
-
-    "FP_PDN_CORE_RING": 1,
-    "FP_PDN_CORE_RING_HOFFSET": 12.45,
-    "FP_PDN_CORE_RING_HSPACING": 1.7,
-    "FP_PDN_CORE_RING_HWIDTH": 3.1,
-    "FP_PDN_CORE_RING_VOFFSET": 12.45,
-    "FP_PDN_CORE_RING_VSPACING": 1.7,
-    "FP_PDN_CORE_RING_VWIDTH": 3.1,
-
-
-    "FP_PDN_ENABLE_GLOBAL_CONNECTIONS": 1,
+"SYNTH_STRATEGY": "DELAY 4",
     "FP_PDN_MACRO_HOOKS": [
         "FPGA_IGNITE.flexbex_eFPGA.data_mem_i vccd1 vssd1 vccd1 vssd1,",
         "FPGA_IGNITE.flexbex_eFPGA.eFPGA_top_i.eFPGA_inst.Tile_X1Y0_N_term_single  vccd1 vssd1 vccd1 vssd1,",
@@ -142,53 +103,87 @@
         "FPGA_IGNITE.flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_1.memory_cell vccd1 vssd1 vccd1 vssd1,",
         "FPGA_IGNITE.flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_2.memory_cell vccd1 vssd1 vccd1 vssd1"
     ],
-    "EXTRA_LEFS": [
-        "dir::./macros/lef/*.lef"
-    ],
-    "EXTRA_GDS_FILES": [
-        "dir::./macros/gds/*.gds"
-    ],
-    "EXTRA_LIBS": [
-        "dir::./macros/lib/*.lib"
-    ],
-    "RUN_IRDROP_REPORT": 0,
-    "FP_PDN_MULTILAYER": true,
-    "PDK": "sky130A",
-    "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
-    "RUN_KLAYOUT_XOR": 0,
-    "KLAYOUT_XOR_GDS": 0,
-    "KLAYOUT_XOR_XML": 0,
-    "RUN_CVC": 0,
-    "FP_PDN_CHECK_NODES": 0,
-    "PL_TIME_DRIVEN": 0,
     "MACRO_PLACEMENT_CFG": "dir::macro_final_test.cfg",
-    "MAX_TRANSITION_CONSTRAINT": 1.0,
-    "MAX_FANOUT_CONSTRAINT": 16,
-    "RUN_LINTER": 0,
-    "PL_RESIZER_SETUP_SLACK_MARGIN": 0.4,
-    "GLB_RESIZER_SETUP_SLACK_MARGIN": 0.2,
-    "GLB_RESIZER_HOLD_SLACK_MARGIN": 1.2,
-    "PL_RESIZER_HOLD_SLACK_MARGIN": 1.4,
     "MAGIC_DEF_LABELS": 0,
-    "SYNTH_BUFFERING": 1,
-   
+    "VERILOG_FILES_BLACKBOX": [
+        "dir::../../verilog/rtl/black_box_modules/*.v",
+        "dir::../../verilog/rtl/Tile/N_term_single/*.v",
+        "dir::../../verilog/rtl/Tile/N_term_RAM_IO/*.v",
+        "dir::../../verilog/rtl/Tile/LUT4AB/*.v",
+        "dir::../../verilog/rtl/Tile/RAM_IO/*.v",
+        "dir::../../verilog/rtl/Tile/S_term_single/*.v",
+        "dir::../../verilog/rtl/Tile/S_term_RAM_IO/*.v",
+        "dir::../../verilog/rtl/Tile/W_IO/*.v"
+    ],
+
+    "EXTRA_LEFS": "dir::./macros/lef/*.lef",
+    "EXTRA_GDS_FILES": "dir::./macros/gds/*.gds",
+    "EXTRA_LIBS": "dir::./macros/lib/*.lib",
+    "BASE_SDC_FILE": "dir::summer_school.sdc",
+    "IO_SYNC": 0,
+
+
+    "MAX_TRANSITION_CONSTRAINT": 1.5,
+    "RUN_LINTER": 0,
+    "QUIT_ON_SYNTH_CHECKS": 0,
+    "FP_PDN_CHECK_NODES": 0,
+    "SYNTH_ELABORATE_ONLY": 0,
+    "PL_RANDOM_GLB_PLACEMENT": 0,                    "//": "our design is not small",
+    "PL_RESIZER_DESIGN_OPTIMIZATIONS": 1,            "//": "seems important",
+    "PL_RESIZER_TIMING_OPTIMIZATIONS": 0,            "//": "seems important",
+    "GLB_RESIZER_DESIGN_OPTIMIZATIONS": 1,           "//": "seems important",
+    "GLB_RESIZER_TIMING_OPTIMIZATIONS": 1,           "//": "seems important",
+    "PL_RESIZER_BUFFER_INPUT_PORTS": 0,
+    "FP_PDN_ENABLE_RAILS": 1,
+    "GRT_REPAIR_ANTENNAS": 1,
+    "RUN_FILL_INSERTION": 1,
+    "RUN_TAP_DECAP_INSERTION": 1,
+    "FP_PDN_VPITCH": 90,                               "//": "some macros wont get powered otherwise",
+    "FP_PDN_HPITCH": 90,                                "//": "some macros wont get powered otherwise",
+    "RUN_CTS": 1,
+    "FP_PDN_VOFFSET": 5,
+    "FP_PDN_HOFFSET": 5,
+    "MAGIC_ZEROIZE_ORIGIN": 0,
+    "FP_SIZING": "absolute",
+    "RUN_CVC": 0,
+    "UNIT": 2.4,
+    "FP_IO_VEXTEND": "expr::2 * $UNIT",
+    "FP_IO_HEXTEND": "expr::2 * $UNIT",
+    "FP_IO_VLENGTH": "expr::$UNIT",
+    "FP_IO_HLENGTH": "expr::$UNIT",
+    "FP_IO_VTHICKNESS_MULT": 4,
+    "FP_IO_HTHICKNESS_MULT": 4,
+    "FP_PDN_CORE_RING": 1,
+    "FP_PDN_CORE_RING_VWIDTH": 3.1,
+    "FP_PDN_CORE_RING_HWIDTH": 3.1,
+    "FP_PDN_CORE_RING_VOFFSET": 12.45,
+    "FP_PDN_CORE_RING_HOFFSET": 12.45,
+    "FP_PDN_CORE_RING_VSPACING": 1.7,
+    "FP_PDN_CORE_RING_HSPACING": 1.7,
+    "FP_PDN_VWIDTH": 3.1,
+    "FP_PDN_HWIDTH": 3.1,
+    "FP_PDN_VSPACING": "expr::(3.5 * $FP_PDN_CORE_RING_VWIDTH)",          "//": "some macros wont get powered otherwise",
+    "FP_PDN_HSPACING": "expr::(3.5 * $FP_PDN_CORE_RING_HWIDTH)",          "//": "some macros wont get powered otherwise",
     "VDD_NETS": [
         "vccd1",
         "vccd2",
         "vdda1",
-        "vdda2"    ],
+        "vdda2"
+    ],
     "GND_NETS": [
         "vssd1",
         "vssd2",
         "vssa1",
         "vssa2"
     ],
-
-      "FP_PDN_CFG":"dir::pdn_cfg.tcl",
-    "IO_SYNC": 0,
-    "BASE_SDC_FILE": "dir::summer_school.sdc",
+    "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
+    "FP_PDN_MULTILAYER": true,
+    "FP_PDN_CFG":"dir::pdn_cfg.tcl",
     "pdk::sky130*": {
+        "RT_MAX_LAYER": "met4",
+        "DIE_AREA": "0 0 2920 3520",
         "FP_CORE_UTIL": 30,
+        "FP_DEF_TEMPLATE": "dir::fixed_dont_change/user_project_wrapper.def",
         "scl::sky130_fd_sc_hd": {
             "CLOCK_PERIOD": 40
         },
@@ -208,10 +203,15 @@
     },
     "pdk::gf180mcuC": {
         "STD_CELL_LIBRARY": "gf180mcu_fd_sc_mcu7t5v0",
-        "CLOCK_PERIOD": 24.0,
-        "FP_CORE_UTIL": 40,
+        "FP_PDN_CHECK_NODES": 0,
+        "FP_PDN_ENABLE_RAILS": 0,
         "RT_MAX_LAYER": "Metal4",
-        "SYNTH_MAX_FANOUT": 4,
-        "PL_TARGET_DENSITY": 0.45
+        "DIE_AREA": "0 0 3000 3000",
+        "FP_DEF_TEMPLATE": "dir::fixed_dont_change/user_project_wrapper_gf180mcu.def",
+        "PL_OPENPHYSYN_OPTIMIZATIONS": 0,
+        "DIODE_INSERTION_STRATEGY": 0,
+        "MAGIC_WRITE_FULL_LEF": 0
     }
+    
+
 }
