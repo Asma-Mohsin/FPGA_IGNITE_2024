@@ -38,5 +38,5 @@
 	  "INCLUDE_CONFIGS": [
 		  "$LVS_ROOT/tech/$PDK/lvs_config.base.json",
 		  "$LVS_ROOT/tech/$PDK/lvs_config.sram.json"
-	  ],
+	  ]
 }
