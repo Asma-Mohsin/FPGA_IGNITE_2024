@@ -206,10 +206,6 @@ module summer_school_top_wrapper #(
     reg en;
     wire [7:0] d_out;
     ro_top ring_inst (
-         `ifdef USE_POWER_PINS
-        .vccd1(vccd1),
-        .vssd1(vssd1),
-    `endif
         .clk(CLK),
         .en(en),
         .d_out(d_out)

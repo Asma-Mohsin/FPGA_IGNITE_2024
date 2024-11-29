@@ -20,11 +20,23 @@
 	],
 	"LVS_SPICE_FILES": [
 		"$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__decap_12.spice",
+		"$PDK_ROOT/$PDK/libs.ref/sky130_sram_macros/spice/sky130_sram_1kbyte_1rw1r_32x256_8.spice",
 		"$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice"
 	],
 	"LVS_VERILOG_FILES": [
-		"$UPRJ_ROOT/verilog/gl/user_proj_example.v",
+		"$UPRJ_ROOT/verilog/gl/LUT4AB.v",
+		"$UPRJ_ROOT/verilog/gl/W_IO.v",
+		"$UPRJ_ROOT/verilog/gl/N_term_RAM_IO.v",
+		"$UPRJ_ROOT/verilog/gl/N_term_single.v",
+		"$UPRJ_ROOT/verilog/gl/RAM_IO.v",
+		"$UPRJ_ROOT/verilog/gl/S_term_RAM_IO.v",
+		"$UPRJ_ROOT/verilog/gl/S_term_single.v",
 		"$UPRJ_ROOT/verilog/gl/$TOP_SOURCE.v"
 	],
-	"LAYOUT_FILE": "$UPRJ_ROOT/gds/$TOP_LAYOUT.gds"
+	"LAYOUT_FILE": "$UPRJ_ROOT/gds/$TOP_LAYOUT.gds",
+	"SRAM_MACRO": "sky130_sram_1kbyte_1rw1r_32x256_8",
+	  "INCLUDE_CONFIGS": [
+		  "$LVS_ROOT/tech/$PDK/lvs_config.base.json",
+		  "$LVS_ROOT/tech/$PDK/lvs_config.sram.json"
+	  ]
 }
