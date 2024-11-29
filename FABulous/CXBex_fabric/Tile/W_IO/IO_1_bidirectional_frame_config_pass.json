@@ -1,0 +1,171 @@
+{
+  "creator": "Yosys 0.43 (git sha1 ead4718e5, g++ 14.2.1 -march=x86-64 -mtune=generic -O2 -fno-plt -fexceptions -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/build/yosys/src=/usr/src/debug/yosys -fPIC -Os)",
+  "modules": {
+    "IO_1_bidirectional_frame_config_pass": {
+      "attributes": {
+        "cells_not_processed": 1,
+        "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:19.1-60.10"
+      },
+      "ports": {
+        "I": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "T": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "O": {
+          "direction": "output",
+          "bits": [ 4 ]
+        },
+        "Q": {
+          "direction": "output",
+          "bits": [ 5 ]
+        },
+        "I_top": {
+          "direction": "output",
+          "bits": [ 2 ]
+        },
+        "T_top": {
+          "direction": "output",
+          "bits": [ 6 ]
+        },
+        "O_top": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "UserCLK": {
+          "direction": "input",
+          "bits": [ 7 ]
+        }
+      },
+      "cells": {
+        "$not$../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:51$2": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": 0,
+            "A_WIDTH": 1,
+            "Y_WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:51.17-51.19"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "Y": [ 6 ]
+          }
+        },
+        "$procdff$3": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": 1,
+            "WIDTH": 1
+          },
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:45.2-48.5"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 7 ],
+            "D": [ 4 ],
+            "Q": [ 5 ]
+          }
+        }
+      },
+      "netnames": {
+        "$0\\Q[0:0]": {
+          "hide_name": 1,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:45.2-48.5"
+          }
+        },
+        "$not$../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:51$2_Y": {
+          "hide_name": 1,
+          "bits": [ 6 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:51.17-51.19"
+          }
+        },
+        "I": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:22.8-22.9"
+          }
+        },
+        "I_top": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:26.34-26.39"
+          }
+        },
+        "O": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:24.9-24.10"
+          }
+        },
+        "O_top": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:28.33-28.38"
+          }
+        },
+        "Q": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "FABulous": 1,
+            "GLOBAL": 1,
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:25.9-25.10"
+          }
+        },
+        "T": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:23.8-23.9"
+          }
+        },
+        "T_top": {
+          "hide_name": 0,
+          "bits": [ 6 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:27.34-27.39"
+          }
+        },
+        "UserCLK": {
+          "hide_name": 0,
+          "bits": [ 7 ],
+          "attributes": {
+            "EXTERNAL": 1,
+            "FABulous": 1,
+            "SHARED_PORT": 1,
+            "src": "../CXBex_fabric/Tile/W_IO/IO_1_bidirectional_frame_config_pass.v:30.46-30.53"
+          }
+        }
+      }
+    }
+  }
+}
