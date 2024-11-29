@@ -33,7 +33,7 @@
 module user_project_wrapper #(
     parameter BITS = 32
 ) (
-   /*  `ifdef USE_POWER_PINS
+ /*`ifdef USE_POWER_PINS
     inout vdda1,	// User area 1 3.3V supply
     inout vdda2,	// User area 2 3.3V supply
     inout vssa1,	// User area 1 analog ground
@@ -84,12 +84,12 @@ module user_project_wrapper #(
 /*--------------------------------------*/
 
 summer_school_top_wrapper FPGA_IGNITE ( 
-   /* `ifdef USE_POWER_PINS
+  /* `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
 	.vssd1(vssd1),	// User area 1 digital ground
      `endif
-    */
-
+    
+*/
     // Wishbone ports (WB MI A)
     .wb_clk_i(wb_clk_i),
     .wb_rst_i(wb_rst_i),

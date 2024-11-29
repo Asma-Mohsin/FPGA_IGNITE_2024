@@ -19,9 +19,9 @@
     "GLB_RESIZER_HOLD_SLACK_MARGIN": 1.2,
     "PL_RESIZER_HOLD_SLACK_MARGIN": 1.4,
     
-     "RUN_KLAYOUT_XOR":                      0, "//": "WARNING: Disabled just to speed things up",
-    "RUN_KLAYOUT_DRC":                      0, "//": "WARNING: Disabled just to speed things up",
-    "RUN_MAGIC_DRC":                        0, "//": "WARNING: Disabled just to speed things up",
+     "RUN_KLAYOUT_XOR":                      1, "//": "WARNING: Disabled just to speed things up",
+    "RUN_KLAYOUT_DRC":                      1, "//": "WARNING: Disabled just to speed things up",
+    "RUN_MAGIC_DRC":                        1, "//": "WARNING: Disabled just to speed things up",
     "RUN_IRDROP_REPORT":                    0,
      
     "ROUTING_CORES": 12,
@@ -113,7 +113,7 @@
         "FPGA_IGNITE.flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_1.memory_cell vccd1 vssd1 vccd1 vssd1,",
         "FPGA_IGNITE.flexbex_eFPGA.eFPGA_top_i.Inst_BlockRAM_2.memory_cell vccd1 vssd1 vccd1 vssd1"
     ],
-    "MACRO_PLACEMENT_CFG": "dir::macro_placement.cfg",
+    "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "MAGIC_DEF_LABELS": 0,
     "VERILOG_FILES_BLACKBOX": [
         "dir::../../verilog/rtl/black_box_modules/*.v",
@@ -131,6 +131,8 @@
     "EXTRA_LIBS": "dir::./macros/lib/*.lib",
     "BASE_SDC_FILE": "dir::summer_school.sdc",
     "IO_SYNC": 0,
+     "GRT_ALLOW_CONGESTION": 1,
+
 
 
     "MAX_TRANSITION_CONSTRAINT": 1.5,
@@ -148,8 +150,8 @@
     "GRT_REPAIR_ANTENNAS": 1,
     "RUN_FILL_INSERTION": 1,
     "RUN_TAP_DECAP_INSERTION": 1,
-    "FP_PDN_VPITCH": 90,                               "//": "some macros wont get powered otherwise",
-    "FP_PDN_HPITCH": 90,                                "//": "some macros wont get powered otherwise",
+    "FP_PDN_VPITCH": 70,                               "//": "some macros wont get powered otherwise",
+    "FP_PDN_HPITCH": 70,                                "//": "some macros wont get powered otherwise",
     "RUN_CTS": 1,
     "FP_PDN_VOFFSET": 5,
     "FP_PDN_HOFFSET": 5,
